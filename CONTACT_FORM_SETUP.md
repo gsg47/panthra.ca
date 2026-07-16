@@ -1,13 +1,13 @@
 # Contact Form — Cloudflare Setup
 
-The contact form submits to `/api/contact`, handled by a **Cloudflare Pages Function** in `functions/api/contact.js`.
+The contact form submits to `/api/contact`, handled by a **Cloudflare Pages Function**.
 
-## Deployment order
+## Quick setup checklist
 
-1. **Deploy the site first** — email secrets are not required for the build.
-2. **Enable Cloudflare Email Sending** for `panthra.ca`.
-3. **Add secrets** in Cloudflare Pages (see below).
-4. Test the contact form.
+1. Deploy the site on Cloudflare Pages
+2. Add **Turnstile** keys (free spam protection)
+3. Add **Resend** API key (free email delivery — Email Sending requires Workers Paid)
+4. Redeploy and test
 
 > **Important:** Cloudflare Pages does **not** support `send_email` in `wrangler.toml`. Do not add it back — the build will fail.
 
@@ -20,44 +20,58 @@ The contact form submits to `/api/contact`, handled by a **Cloudflare Pages Func
 | Build output directory | `/` |
 | Node.js version | 18 or 20 |
 
-## Enable Cloudflare Email Sending
+## 1. Cloudflare Turnstile (free captcha)
 
-1. Cloudflare dashboard → **Compute** → **Email Service** → **Email Sending**
-2. **Onboard** `panthra.ca`
-3. Verify you can send from `noreply@panthra.ca` (or your chosen sender)
+1. Cloudflare dashboard → **Turnstile** → **Add widget**
+2. Widget mode: **Managed** (recommended)
+3. Domains: `panthra.ca` and `localhost`
+4. Copy the **Site Key** and **Secret Key**
 
-## Pages secrets (required after deploy)
+Add to **Pages → Settings → Environment variables**:
 
-In **Pages → your project → Settings → Environment variables**, add:
+| Variable | Type |
+|----------|------|
+| `TURNSTILE_SITE_KEY` | Plaintext |
+| `TURNSTILE_SECRET_KEY` | Secret |
 
-| Variable | Type | Purpose |
-|----------|------|---------|
-| `CLOUDFLARE_ACCOUNT_ID` | Plaintext | Your Cloudflare account ID |
-| `CLOUDFLARE_API_TOKEN` | Secret | API token with **Email Sending → Send** permission |
-| `CONTACT_TO_EMAIL` | Plaintext | *(optional)* Defaults to `contact@panthra.ca` |
-| `CONTACT_FROM_EMAIL` | Plaintext | *(optional)* Defaults to `noreply@panthra.ca` |
+The site key is served to the browser via `/api/config`. The secret is verified server-side on every submission.
 
-To create the API token: **My Profile → API Tokens → Create Token** → use the Email Sending template or add `Account → Email Sending → Send`.
+## 2. Email delivery via Resend (free tier)
 
-### Optional Resend fallback
+Cloudflare Email Sending requires **Workers Paid**. Use Resend instead:
 
-If you prefer Resend instead, add `RESEND_API_KEY` as a secret. The function uses it only when Cloudflare Email API credentials are not set.
+1. Sign up at [resend.com](https://resend.com)
+2. Add and verify **`panthra.ca`** (DNS records in Cloudflare)
+3. Create an API key
+
+Add to Pages environment variables:
+
+| Variable | Type | Value |
+|----------|------|-------|
+| `RESEND_API_KEY` | Secret | your `re_...` key |
+| `CONTACT_TO_EMAIL` | Plaintext | `contact@panthra.ca` |
+| `CONTACT_FROM_EMAIL` | Plaintext | `PANTHRA <noreply@panthra.ca>` |
+
+## 3. Redeploy
+
+After adding environment variables, trigger a new deployment so the functions pick them up.
 
 ## Local testing
 
 ```bash
 npm install -g wrangler
 cp .dev.vars.example .dev.vars
-# Edit .dev.vars with your account ID and API token
+# Edit .dev.vars with your keys
 npx wrangler pages dev .
 ```
 
 Submit the form at `http://localhost:8788/contact.html`.
 
-## Custom endpoint
+## Custom overrides
 
 ```html
 <script>
   window.PANTHRA_CONTACT_ENDPOINT = '/api/contact';
+  window.PANTHRA_TURNSTILE_SITE_KEY = 'your_site_key';
 </script>
 ```

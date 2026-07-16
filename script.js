@@ -314,7 +314,38 @@ function initScrollAnimations() {
 const PANTHRA_CONTACT_EMAIL = 'contact@panthra.ca';
 const PANTHRA_CONTACT_API = '/api/contact';
 
-function buildContactPayload(form) {
+function loadTurnstileScript() {
+  return new Promise((resolve, reject) => {
+    if (window.turnstile) {
+      resolve();
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+    script.async = true;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error('Failed to load Turnstile'));
+    document.head.appendChild(script);
+  });
+}
+
+async function getTurnstileSiteKey() {
+  if (window.PANTHRA_TURNSTILE_SITE_KEY) {
+    return window.PANTHRA_TURNSTILE_SITE_KEY;
+  }
+
+  try {
+    const response = await fetch('/api/config');
+    if (!response.ok) return '';
+    const config = await response.json();
+    return config.turnstileSiteKey || '';
+  } catch (_) {
+    return '';
+  }
+}
+
+function buildContactPayload(form, turnstileToken = '') {
   const formData = new FormData(form);
   const name = String(formData.get('name') || '').trim();
   const email = String(formData.get('email') || '').trim();
@@ -327,12 +358,13 @@ function buildContactPayload(form) {
     message: String(formData.get('message') || '').trim() || 'No message provided.',
     services: services.length ? services.join(', ') : 'Not specified',
     _honey: String(formData.get('_honey') || '').trim(),
+    turnstileToken,
   };
 }
 
-async function submitContactForm(form) {
+async function submitContactForm(form, turnstileToken = '') {
   const endpoint = window.PANTHRA_CONTACT_ENDPOINT || PANTHRA_CONTACT_API;
-  const payload = buildContactPayload(form);
+  const payload = buildContactPayload(form, turnstileToken);
 
   const response = await fetch(endpoint, {
     method: 'POST',
@@ -366,12 +398,40 @@ function initContactForm() {
 
   form.setAttribute('action', PANTHRA_CONTACT_API);
   form.setAttribute('method', 'POST');
+
+  let turnstileWidgetId = null;
+  let turnstileEnabled = false;
+
+  getTurnstileSiteKey().then(async (siteKey) => {
+    const container = document.getElementById('contactTurnstile');
+    if (!siteKey || !container) return;
+
+    try {
+      await loadTurnstileScript();
+      turnstileWidgetId = window.turnstile.render(container, {
+        sitekey: siteKey,
+        theme: 'dark',
+      });
+      turnstileEnabled = true;
+    } catch (error) {
+      console.error('Turnstile failed to load:', error);
+    }
+  });
   
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
     const submitBtn = form.querySelector('.btn-submit');
     const originalText = submitBtn.innerHTML;
+
+    let turnstileToken = '';
+    if (turnstileEnabled && turnstileWidgetId != null) {
+      turnstileToken = window.turnstile.getResponse(turnstileWidgetId) || '';
+      if (!turnstileToken) {
+        alert('Please complete the security verification.');
+        return;
+      }
+    }
     
     submitBtn.innerHTML = `
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="spinner">
@@ -388,8 +448,12 @@ function initContactForm() {
     }
 
     try {
-      const result = await submitContactForm(form);
+      const result = await submitContactForm(form, turnstileToken);
       form.reset();
+
+      if (turnstileEnabled && turnstileWidgetId != null) {
+        window.turnstile.reset(turnstileWidgetId);
+      }
 
       if (modal) {
         modal.classList.add('active');
@@ -397,6 +461,10 @@ function initContactForm() {
         alert(result?.message || 'Thank you, your message has been sent.');
       }
     } catch (error) {
+      if (turnstileEnabled && turnstileWidgetId != null) {
+        window.turnstile.reset(turnstileWidgetId);
+      }
+
       alert(
         `${error.message || 'Unable to send your message right now.'} Please email ${PANTHRA_CONTACT_EMAIL} or call +1 587-816-0621.`
       );

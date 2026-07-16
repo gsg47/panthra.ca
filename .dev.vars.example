@@ -1,11 +1,11 @@
 # Copy to .dev.vars for local testing with `npx wrangler pages dev .`
 
-# Cloudflare Email REST API (recommended for Pages)
-CLOUDFLARE_ACCOUNT_ID=your_account_id
-CLOUDFLARE_API_TOKEN=your_api_token_with_email_sending_permission
+# Cloudflare Turnstile (free)
+TURNSTILE_SITE_KEY=your_turnstile_site_key
+TURNSTILE_SECRET_KEY=your_turnstile_secret_key
 
-# Optional Resend fallback
-# RESEND_API_KEY=re_your_key_here
+# Resend (recommended for contact form email on free Cloudflare plan)
+RESEND_API_KEY=re_your_key_here
 
 CONTACT_TO_EMAIL=contact@panthra.ca
 CONTACT_FROM_EMAIL=noreply@panthra.ca

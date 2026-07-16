@@ -92,6 +92,39 @@ async function sendViaResend(env, message) {
   }
 }
 
+async function verifyTurnstile(env, token, request) {
+  if (!env.TURNSTILE_SECRET_KEY) {
+    return true;
+  }
+
+  if (!token) {
+    return false;
+  }
+
+  const body = new FormData();
+  body.append('secret', env.TURNSTILE_SECRET_KEY);
+  body.append('response', token);
+
+  const remoteIp = request.headers.get('CF-Connecting-IP');
+  if (remoteIp) {
+    body.append('remoteip', remoteIp);
+  }
+
+  const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+    method: 'POST',
+    body,
+  });
+
+  let result = null;
+  try {
+    result = await response.json();
+  } catch (_) {
+    result = null;
+  }
+
+  return result?.success === true;
+}
+
 export async function onRequestPost({ request, env }) {
   let data;
 
@@ -103,6 +136,14 @@ export async function onRequestPost({ request, env }) {
 
   if (data._honey) {
     return json({ success: true, message: 'Thank you — your message has been sent.' });
+  }
+
+  const turnstileValid = await verifyTurnstile(env, data.turnstileToken, request);
+  if (!turnstileValid) {
+    return json(
+      { success: false, message: 'Security verification failed. Please try again.' },
+      403
+    );
   }
 
   const name = cleanLine(data.name);
