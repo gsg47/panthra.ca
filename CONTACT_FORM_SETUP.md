@@ -2,82 +2,59 @@
 
 The contact form submits to `/api/contact`, handled by a **Cloudflare Pages Function** in `functions/api/contact.js`.
 
-## Deployment order (read this first)
+## Deployment order
 
-1. **Fix the build and deploy the site first** — outbound email is **not** required for the build to succeed.
-2. **After deploy succeeds**, enable Cloudflare outbound email (or add a Resend API key).
-3. Test the contact form on the live site.
+1. **Deploy the site first** — email secrets are not required for the build.
+2. **Enable Cloudflare Email Sending** for `panthra.ca`.
+3. **Add secrets** in Cloudflare Pages (see below).
+4. Test the contact form.
 
-If the form fails **after** a successful deploy, that is an email configuration issue — not a build issue.
+> **Important:** Cloudflare Pages does **not** support `send_email` in `wrangler.toml`. Do not add it back — the build will fail.
 
-## Deploy on Cloudflare Pages
-
-Use these settings in **Cloudflare Pages → Settings → Builds**:
+## Cloudflare Pages build settings
 
 | Setting | Value |
 |---------|-------|
 | Framework preset | None |
 | Build command | `npm run build` *(or leave empty)* |
 | Build output directory | `/` |
-| Root directory | *(leave empty)* |
 | Node.js version | 18 or 20 |
 
-Then deploy from the **main** branch.
+## Enable Cloudflare Email Sending
 
-Cloudflare automatically picks up:
+1. Cloudflare dashboard → **Compute** → **Email Service** → **Email Sending**
+2. **Onboard** `panthra.ca`
+3. Verify you can send from `noreply@panthra.ca` (or your chosen sender)
 
-- `functions/api/contact.js` → `POST /api/contact`
-- `wrangler.toml` → Email binding config
+## Pages secrets (required after deploy)
 
-### Build failed?
+In **Pages → your project → Settings → Environment variables**, add:
 
-Common fixes:
+| Variable | Type | Purpose |
+|----------|------|---------|
+| `CLOUDFLARE_ACCOUNT_ID` | Plaintext | Your Cloudflare account ID |
+| `CLOUDFLARE_API_TOKEN` | Secret | API token with **Email Sending → Send** permission |
+| `CONTACT_TO_EMAIL` | Plaintext | *(optional)* Defaults to `contact@panthra.ca` |
+| `CONTACT_FROM_EMAIL` | Plaintext | *(optional)* Defaults to `noreply@panthra.ca` |
 
-- **"Missing script: build"** — pull latest `main` (includes a no-op `build` script in `package.json`).
-- **Build command should not be `npm start`** — that starts a dev server and hangs/fails. Use `npm run build` or leave blank.
-- **Output directory must be `/`** — not `dist` or `public` (this repo serves from the root).
+To create the API token: **My Profile → API Tokens → Create Token** → use the Email Sending template or add `Account → Email Sending → Send`.
 
-## Enable outbound email (after deploy succeeds)
+### Optional Resend fallback
 
-### Option A — Cloudflare Email Service (recommended)
-
-1. In Cloudflare dashboard, open **Email** → **Email Routing** / **Email Service**
-2. Enable sending from your domain (`panthra.ca`)
-3. Verify the sender address used by the worker (`noreply@panthra.ca` by default)
-4. Ensure the Pages project has the `send_email` binding (already defined in `wrangler.toml` as `EMAIL`)
-
-### Option B — Resend fallback (optional)
-
-If Email Service is not ready yet, add a **Resend** API key as a Pages secret:
-
-- Variable name: `RESEND_API_KEY`
-- Value: your Resend API key
-
-The worker tries Cloudflare Email first, then Resend if configured.
-
-## Optional environment variables
-
-Set these in **Cloudflare Pages → Settings → Environment variables**:
-
-| Variable | Default | Purpose |
-|----------|---------|---------|
-| `CONTACT_TO_EMAIL` | `contact@panthra.ca` | Inbox that receives submissions |
-| `CONTACT_FROM_EMAIL` | `noreply@panthra.ca` | Sender address (must be verified) |
-| `RESEND_API_KEY` | — | Optional Resend fallback |
+If you prefer Resend instead, add `RESEND_API_KEY` as a secret. The function uses it only when Cloudflare Email API credentials are not set.
 
 ## Local testing
 
 ```bash
 npm install -g wrangler
 cp .dev.vars.example .dev.vars
+# Edit .dev.vars with your account ID and API token
 npx wrangler pages dev .
 ```
 
 Submit the form at `http://localhost:8788/contact.html`.
 
 ## Custom endpoint
-
-To override the API URL, set this before `script.js` loads:
 
 ```html
 <script>

@@ -1,5 +1,11 @@
 # Copy to .dev.vars for local testing with `npx wrangler pages dev .`
-# Optional Resend fallback if Cloudflare Email binding is unavailable locally.
+
+# Cloudflare Email REST API (recommended for Pages)
+CLOUDFLARE_ACCOUNT_ID=your_account_id
+CLOUDFLARE_API_TOKEN=your_api_token_with_email_sending_permission
+
+# Optional Resend fallback
 # RESEND_API_KEY=re_your_key_here
+
 CONTACT_TO_EMAIL=contact@panthra.ca
 CONTACT_FROM_EMAIL=noreply@panthra.ca
