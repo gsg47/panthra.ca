@@ -1790,6 +1790,15 @@ body:has(.mobile-menu.active) .chatbot-container {
   pointer-events: none;
 }
 
+.turnstile-wrap {
+  min-height: 65px;
+}
+
+.contact-turnstile {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .form-group {
   display: flex;
   flex-direction: column;
