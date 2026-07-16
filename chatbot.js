@@ -20,28 +20,30 @@ class PanthraChatbot {
     const chatbotHTML = `
       <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-window" id="chatbotWindow">
-          <div class="chatbot-sheet-handle" id="chatbotSheetHandle" aria-hidden="true">
-            <span class="chatbot-sheet-grab"></span>
-          </div>
-          <div class="chatbot-header">
-            <div class="chatbot-header-content">
-              <div class="chatbot-icon-small">
-                <img src="panthra_logo.png" alt="PANTHRA" class="header-logo" />
-              </div>
-              <div class="chatbot-header-text">
-                <h3>PANTHRA Assistant</h3>
-                <p class="chatbot-status">
-                  <span class="status-dot"></span>
-                  Online
-                </p>
-              </div>
+          <div class="chatbot-sheet-drag-zone" id="chatbotSheetDragZone">
+            <div class="chatbot-sheet-handle" id="chatbotSheetHandle" aria-hidden="true">
+              <span class="chatbot-sheet-grab"></span>
             </div>
-            <button class="chatbot-close" id="chatbotClose" aria-label="Close chatbot">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="18" y1="6" x2="6" y2="18"/>
-                <line x1="6" y1="6" x2="18" y2="18"/>
-              </svg>
-            </button>
+            <div class="chatbot-header">
+              <div class="chatbot-header-content">
+                <div class="chatbot-icon-small">
+                  <img src="panthra_logo.png" alt="PANTHRA" class="header-logo" />
+                </div>
+                <div class="chatbot-header-text">
+                  <h3>PANTHRA Assistant</h3>
+                  <p class="chatbot-status">
+                    <span class="status-dot"></span>
+                    Online
+                  </p>
+                </div>
+              </div>
+              <button class="chatbot-close" id="chatbotClose" aria-label="Close chatbot">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="6" x2="6" y2="18"/>
+                  <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+            </div>
           </div>
           
           <div class="chatbot-messages" id="chatbotMessages">
@@ -104,7 +106,15 @@ class PanthraChatbot {
   }
 
   isMobileSheet() {
-    return window.matchMedia('(max-width: 768px)').matches;
+    const dragZone = document.getElementById('chatbotSheetDragZone');
+    return dragZone && getComputedStyle(dragZone).display !== 'none';
+  }
+
+  getPointerY(event) {
+    if (typeof event.clientY === 'number') return event.clientY;
+    if (event.touches?.[0]) return event.touches[0].clientY;
+    if (event.changedTouches?.[0]) return event.changedTouches[0].clientY;
+    return 0;
   }
 
   getSheetViewportHeight() {
@@ -128,6 +138,10 @@ class PanthraChatbot {
     chatWindow.classList.remove('chatbot-window-dragging');
     chatWindow.style.height = '';
     chatWindow.style.maxHeight = '';
+    document.body.classList.remove('chatbot-sheet-dragging');
+    if (this.sheetDrag) {
+      this.sheetDrag.active = false;
+    }
   }
 
   setSheetExpanded(expanded) {
@@ -151,9 +165,9 @@ class PanthraChatbot {
 
   attachSheetGestures() {
     const chatWindow = document.getElementById('chatbotWindow');
+    const dragZone = document.getElementById('chatbotSheetDragZone');
     const handle = document.getElementById('chatbotSheetHandle');
-    const header = chatWindow?.querySelector('.chatbot-header');
-    if (!chatWindow || !handle) return;
+    if (!chatWindow || !dragZone) return;
 
     this.sheetDrag = {
       active: false,
@@ -161,43 +175,85 @@ class PanthraChatbot {
       startY: 0,
       startHeight: 0,
       currentHeight: 0,
+      pointerId: null,
     };
 
-    const dragZone = [handle, header].filter(Boolean);
+    const canUseSheet = () => this.isOpen && this.isMobileSheet();
 
-    const onStart = (event) => {
-      if (!this.isMobileSheet() || !this.isOpen) return;
-      if (event.target.closest('.chatbot-close')) return;
+    const startDrag = (event) => {
+      if (!canUseSheet()) return;
+      if (event.target.closest('.chatbot-close, button, a, input, textarea')) return;
 
-      const touch = event.touches[0];
       this.sheetDrag.active = true;
       this.sheetDrag.moved = false;
-      this.sheetDrag.startY = touch.clientY;
+      this.sheetDrag.startY = this.getPointerY(event);
       this.sheetDrag.startHeight = chatWindow.getBoundingClientRect().height;
       this.sheetDrag.currentHeight = this.sheetDrag.startHeight;
+      this.sheetDrag.pointerId = event.pointerId ?? null;
+
       chatWindow.classList.add('chatbot-window-dragging');
+      document.body.classList.add('chatbot-sheet-dragging');
+
+      if (typeof dragZone.setPointerCapture === 'function' && event.pointerId != null) {
+        try {
+          dragZone.setPointerCapture(event.pointerId);
+        } catch (_) {
+          /* ignore */
+        }
+      }
     };
 
-    const onMove = (event) => {
+    const moveDrag = (event) => {
       if (!this.sheetDrag.active) return;
+      if (
+        this.sheetDrag.pointerId != null &&
+        event.pointerId != null &&
+        event.pointerId !== this.sheetDrag.pointerId
+      ) {
+        return;
+      }
 
-      const touch = event.touches[0];
-      const deltaY = touch.clientY - this.sheetDrag.startY;
-      if (Math.abs(deltaY) > 6) {
+      const deltaY = this.getPointerY(event) - this.sheetDrag.startY;
+      if (Math.abs(deltaY) > 4) {
         this.sheetDrag.moved = true;
       }
-      const minHeight = this.getSheetCompactHeight() * 0.55;
+
+      const minHeight = this.getSheetCompactHeight() * 0.5;
       const maxHeight = this.getSheetExpandedHeight();
-      const nextHeight = Math.min(maxHeight, Math.max(minHeight, this.sheetDrag.startHeight - deltaY));
+      const nextHeight = Math.min(
+        maxHeight,
+        Math.max(minHeight, this.sheetDrag.startHeight - deltaY)
+      );
 
       this.sheetDrag.currentHeight = nextHeight;
       this.applySheetHeight(nextHeight);
-      event.preventDefault();
+
+      if (event.cancelable) {
+        event.preventDefault();
+      }
     };
 
-    const onEnd = () => {
+    const endDrag = (event) => {
       if (!this.sheetDrag.active) return;
+      if (
+        event &&
+        this.sheetDrag.pointerId != null &&
+        event.pointerId != null &&
+        event.pointerId !== this.sheetDrag.pointerId
+      ) {
+        return;
+      }
+
       this.sheetDrag.active = false;
+      document.body.classList.remove('chatbot-sheet-dragging');
+
+      if (typeof dragZone.releasePointerCapture === 'function' && event?.pointerId != null) {
+        try {
+          dragZone.releasePointerCapture(event.pointerId);
+        } catch (_) {
+          /* ignore */
+        }
+      }
 
       const compactHeight = this.getSheetCompactHeight();
       const expandedHeight = this.getSheetExpandedHeight();
@@ -219,24 +275,28 @@ class PanthraChatbot {
 
       setTimeout(() => {
         this.sheetDrag.moved = false;
-      }, 80);
+      }, 100);
     };
 
-    dragZone.forEach((element) => {
-      element.addEventListener('touchstart', onStart, { passive: true });
-      element.addEventListener('touchmove', onMove, { passive: false });
-      element.addEventListener('touchend', onEnd);
-      element.addEventListener('touchcancel', onEnd);
-    });
+    dragZone.addEventListener('pointerdown', startDrag);
+    dragZone.addEventListener('pointermove', moveDrag, { passive: false });
+    dragZone.addEventListener('pointerup', endDrag);
+    dragZone.addEventListener('pointercancel', endDrag);
 
-    handle.addEventListener('click', (event) => {
-      if (this.sheetDrag.moved) {
-        event.preventDefault();
-        return;
-      }
-      if (!this.isMobileSheet() || !this.isOpen) return;
-      this.setSheetExpanded(!this.isExpanded);
-    });
+    document.addEventListener('pointermove', moveDrag, { passive: false });
+    document.addEventListener('pointerup', endDrag);
+    document.addEventListener('pointercancel', endDrag);
+
+    if (handle) {
+      handle.addEventListener('click', (event) => {
+        if (this.sheetDrag.moved) {
+          event.preventDefault();
+          return;
+        }
+        if (!canUseSheet()) return;
+        this.setSheetExpanded(!this.isExpanded);
+      });
+    }
   }
 
   toggle() {
