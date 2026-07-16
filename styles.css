@@ -8704,6 +8704,11 @@ a.footer-contact-item:hover {
   display: none;
 }
 
+.chatbot-sheet-drag-zone {
+  display: none;
+  flex-shrink: 0;
+}
+
 .chatbot-header-content {
   display: flex;
   align-items: center;
@@ -9020,6 +9025,7 @@ a.footer-contact-item:hover {
     padding: 0;
     padding-bottom: env(safe-area-inset-bottom, 0px);
     align-items: stretch;
+    pointer-events: auto !important;
   }
 
   .chatbot-toggle {
@@ -9060,17 +9066,21 @@ a.footer-contact-item:hover {
     transition: none !important;
   }
 
+  .chatbot-sheet-drag-zone {
+    display: block;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: grab;
+  }
+
   .chatbot-sheet-handle {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 44px;
-    padding: 14px 16px 6px;
-    touch-action: none;
-    cursor: grab;
+    min-height: 28px;
+    padding: 10px 16px 0;
     flex-shrink: 0;
-    -webkit-user-select: none;
-    user-select: none;
   }
 
   .chatbot-sheet-grab {
@@ -9078,13 +9088,11 @@ a.footer-contact-item:hover {
     height: 5px;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.35);
+    pointer-events: none;
   }
 
   .chatbot-header {
     padding: 8px 16px 16px;
-    touch-action: none;
-    -webkit-user-select: none;
-    user-select: none;
   }
 
   .chatbot-messages {
@@ -9101,6 +9109,11 @@ a.footer-contact-item:hover {
   .chatbot-message-bot .message-content {
     max-width: 85%;
   }
+}
+
+body.chatbot-sheet-dragging {
+  overflow: hidden;
+  touch-action: none;
 }
 
 /* ============================================
