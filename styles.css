@@ -9105,6 +9105,10 @@ a.footer-contact-item:hover {
     padding-bottom: max(16px, env(safe-area-inset-bottom, 0px));
   }
 
+  .chatbot-input {
+    font-size: 16px;
+  }
+
   .chatbot-message-user .message-content,
   .chatbot-message-bot .message-content {
     max-width: 85%;
