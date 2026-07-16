@@ -311,6 +311,80 @@ function initScrollAnimations() {
 /* ============================================
    Contact Form
    ============================================ */
+const PANTHRA_CONTACT_EMAIL = 'contact@panthra.ca';
+const PANTHRA_FORM_SUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${PANTHRA_CONTACT_EMAIL}`;
+
+function buildContactPayload(form) {
+  const formData = new FormData(form);
+  const name = String(formData.get('name') || '').trim();
+  const email = String(formData.get('email') || '').trim();
+  const services = formData.getAll('services[]').filter(Boolean);
+
+  return {
+    name,
+    email,
+    company: String(formData.get('company') || '').trim() || 'Not provided',
+    message: String(formData.get('message') || '').trim() || 'No message provided.',
+    services: services.length ? services.join(', ') : 'Not specified',
+    _subject: `New inquiry from ${name} — PANTHRA website`,
+    _template: 'table',
+    _captcha: 'false',
+  };
+}
+
+function isContactSubmitSuccess(result) {
+  return result?.success === true || result?.success === 'true';
+}
+
+async function submitContactForm(form) {
+  const endpoint = window.PANTHRA_CONTACT_ENDPOINT || PANTHRA_FORM_SUBMIT_ENDPOINT;
+  const useFormSubmit = endpoint.includes('formsubmit.co');
+
+  if (useFormSubmit) {
+    const payload = buildContactPayload(form);
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+
+    let result = null;
+    try {
+      result = await response.json();
+    } catch (_) {
+      result = null;
+    }
+
+    if (!response.ok || !isContactSubmitSuccess(result)) {
+      throw new Error(result?.message || 'Unable to send your message right now.');
+    }
+
+    return result;
+  }
+
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    body: new FormData(form),
+    headers: { Accept: 'application/json' },
+  });
+
+  let result = null;
+  try {
+    result = await response.json();
+  } catch (_) {
+    result = null;
+  }
+
+  if (!response.ok || !result?.success) {
+    throw new Error(result?.message || 'Unable to send your message right now.');
+  }
+
+  return result;
+}
+
 function initContactForm() {
   const form = document.getElementById('contactForm');
   const modal = document.getElementById('successModal');
@@ -318,7 +392,7 @@ function initContactForm() {
   
   if (!form) return;
 
-  form.setAttribute('action', 'contact-submit.php');
+  form.setAttribute('action', PANTHRA_FORM_SUBMIT_ENDPOINT);
   form.setAttribute('method', 'POST');
   
   form.addEventListener('submit', async (e) => {
@@ -342,32 +416,18 @@ function initContactForm() {
     }
 
     try {
-      const response = await fetch('contact-submit.php', {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      });
-
-      let result = null;
-      try {
-        result = await response.json();
-      } catch (_) {
-        result = null;
-      }
-
-      if (!response.ok || !result?.success) {
-        throw new Error(result?.message || 'Unable to send your message. Please email contact@panthra.ca.');
-      }
-
+      const result = await submitContactForm(form);
       form.reset();
 
       if (modal) {
         modal.classList.add('active');
       } else {
-        alert(result.message || 'Thank you, your message has been sent.');
+        alert(result?.message || 'Thank you, your message has been sent.');
       }
     } catch (error) {
-      alert(error.message || 'Unable to send your message. Please email contact@panthra.ca or call +1 587-816-0621.');
+      alert(
+        `${error.message || 'Unable to send your message right now.'} Please email ${PANTHRA_CONTACT_EMAIL} or call +1 587-816-0621.`
+      );
     } finally {
       submitBtn.innerHTML = originalText;
       submitBtn.disabled = false;
