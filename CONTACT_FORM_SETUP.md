@@ -2,19 +2,42 @@
 
 The contact form submits to `/api/contact`, handled by a **Cloudflare Pages Function** in `functions/api/contact.js`.
 
+## Deployment order (read this first)
+
+1. **Fix the build and deploy the site first** — outbound email is **not** required for the build to succeed.
+2. **After deploy succeeds**, enable Cloudflare outbound email (or add a Resend API key).
+3. Test the contact form on the live site.
+
+If the form fails **after** a successful deploy, that is an email configuration issue — not a build issue.
+
 ## Deploy on Cloudflare Pages
 
-1. Connect this repo to **Cloudflare Pages**
-2. Build command: *(leave empty — static site)*
-3. Build output directory: `.`
-4. Deploy
+Use these settings in **Cloudflare Pages → Settings → Builds**:
+
+| Setting | Value |
+|---------|-------|
+| Framework preset | None |
+| Build command | `npm run build` *(or leave empty)* |
+| Build output directory | `/` |
+| Root directory | *(leave empty)* |
+| Node.js version | 18 or 20 |
+
+Then deploy from the **main** branch.
 
 Cloudflare automatically picks up:
 
 - `functions/api/contact.js` → `POST /api/contact`
 - `wrangler.toml` → Email binding config
 
-## Enable outbound email (required)
+### Build failed?
+
+Common fixes:
+
+- **"Missing script: build"** — pull latest `main` (includes a no-op `build` script in `package.json`).
+- **Build command should not be `npm start`** — that starts a dev server and hangs/fails. Use `npm run build` or leave blank.
+- **Output directory must be `/`** — not `dist` or `public` (this repo serves from the root).
+
+## Enable outbound email (after deploy succeeds)
 
 ### Option A — Cloudflare Email Service (recommended)
 

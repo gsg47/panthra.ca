@@ -4,7 +4,11 @@
   "description": "PANTHRA - Elite Cybersecurity Solutions. Silent protection. Absolute security.",
   "main": "index.html",
   "scripts": {
-    "start": "serve"
+    "start": "serve",
+    "build": "node -e \"console.log('Static site — no build step required')\""
+  },
+  "engines": {
+    "node": ">=18"
   },
   "keywords": [
     "cybersecurity",
