@@ -37,7 +37,9 @@ The site key is served to the browser via `/api/config`. The secret is verified 
 
 ## Email delivery via FormSubmit
 
-After Turnstile passes, the server forwards the submission to **FormSubmit** at `contact@panthra.ca`. No Resend or Workers Paid plan required.
+After Turnstile passes server-side verification, the browser sends the submission directly to **FormSubmit** at `contact@panthra.ca` (same flow as before Turnstile was added). No Resend or Workers Paid plan required.
+
+> **Note:** FormSubmit blocks server-side requests from Cloudflare Workers, so email must be sent from the visitor's browser after captcha verification.
 
 The first FormSubmit delivery triggers a one-time activation email to `contact@panthra.ca` — click the link to start receiving submissions.
 

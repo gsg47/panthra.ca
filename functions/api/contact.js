@@ -1,5 +1,3 @@
-const CONTACT_TO = 'contact@panthra.ca';
-
 function json(data, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
@@ -16,38 +14,6 @@ function cleanLine(value) {
 
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-async function sendViaFormSubmit(toEmail, fields) {
-  const response = await fetch(`https://formsubmit.co/ajax/${toEmail}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    },
-    body: JSON.stringify({
-      name: fields.name,
-      email: fields.email,
-      company: fields.company,
-      message: fields.message,
-      services: fields.services,
-      _subject: fields.subject,
-      _template: 'table',
-      _captcha: 'false',
-    }),
-  });
-
-  let result = null;
-  try {
-    result = await response.json();
-  } catch (_) {
-    result = null;
-  }
-
-  const success = result?.success === true || result?.success === 'true';
-  if (!response.ok || !success) {
-    throw new Error(result?.message || 'FormSubmit delivery failed.');
-  }
 }
 
 async function verifyTurnstile(env, token, request) {
@@ -106,9 +72,6 @@ export async function onRequestPost({ request, env }) {
 
   const name = cleanLine(data.name);
   const email = cleanLine(data.email);
-  const company = cleanLine(data.company) || 'Not provided';
-  const message = String(data.message || '').trim() || 'No message provided.';
-  const services = cleanLine(data.services) || 'Not specified';
 
   if (!name || !email) {
     return json({ success: false, message: 'Name and email are required.' }, 400);
@@ -118,34 +81,10 @@ export async function onRequestPost({ request, env }) {
     return json({ success: false, message: 'Please enter a valid email address.' }, 400);
   }
 
-  const subject = `New inquiry from ${name} — PANTHRA website`;
-  const toEmail = env.CONTACT_TO_EMAIL || CONTACT_TO;
-
-  try {
-    await sendViaFormSubmit(toEmail, {
-      name,
-      email,
-      company,
-      message,
-      services,
-      subject,
-    });
-
-    return json({
-      success: true,
-      message: 'Thank you — your message has been sent.',
-    });
-  } catch (error) {
-    console.error('Contact form send failed:', error);
-
-    return json(
-      {
-        success: false,
-        message: 'Unable to send your message right now. Please email contact@panthra.ca directly.',
-      },
-      500
-    );
-  }
+  return json({
+    success: true,
+    message: 'Verified',
+  });
 }
 
 export async function onRequestOptions() {
