@@ -5,9 +5,8 @@ The contact form submits to `/api/contact`, handled by a **Cloudflare Pages Func
 ## Quick setup checklist
 
 1. Deploy the site on Cloudflare Pages
-2. Add **Turnstile** keys (free spam protection)
-3. Add **Resend** API key (free email delivery — Email Sending requires Workers Paid)
-4. Redeploy and test
+2. Add **Turnstile** keys (free captcha)
+3. Redeploy and test
 
 > **Important:** Cloudflare Pages does **not** support `send_email` in `wrangler.toml`. Do not add it back — the build will fail.
 
@@ -36,23 +35,13 @@ Add to **Pages → Settings → Environment variables**:
 
 The site key is served to the browser via `/api/config`. The secret is verified server-side on every submission.
 
-## 2. Email delivery via Resend (free tier)
+## Email delivery via FormSubmit
 
-Cloudflare Email Sending requires **Workers Paid**. Use Resend instead:
+After Turnstile passes, the server forwards the submission to **FormSubmit** at `contact@panthra.ca`. No Resend or Workers Paid plan required.
 
-1. Sign up at [resend.com](https://resend.com)
-2. Add and verify **`panthra.ca`** (DNS records in Cloudflare)
-3. Create an API key
+The first FormSubmit delivery triggers a one-time activation email to `contact@panthra.ca` — click the link to start receiving submissions.
 
-Add to Pages environment variables:
-
-| Variable | Type | Value |
-|----------|------|-------|
-| `RESEND_API_KEY` | Secret | your `re_...` key |
-| `CONTACT_TO_EMAIL` | Plaintext | `contact@panthra.ca` |
-| `CONTACT_FROM_EMAIL` | Plaintext | `PANTHRA <noreply@panthra.ca>` |
-
-## 3. Redeploy
+## 2. Redeploy
 
 After adding environment variables, trigger a new deployment so the functions pick them up.
 
