@@ -312,7 +312,7 @@ function initScrollAnimations() {
    Contact Form
    ============================================ */
 const PANTHRA_CONTACT_EMAIL = 'contact@panthra.ca';
-const PANTHRA_FORM_SUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${PANTHRA_CONTACT_EMAIL}`;
+const PANTHRA_CONTACT_API = '/api/contact';
 
 function buildContactPayload(form) {
   const formData = new FormData(form);
@@ -326,49 +326,21 @@ function buildContactPayload(form) {
     company: String(formData.get('company') || '').trim() || 'Not provided',
     message: String(formData.get('message') || '').trim() || 'No message provided.',
     services: services.length ? services.join(', ') : 'Not specified',
-    _subject: `New inquiry from ${name} — PANTHRA website`,
-    _template: 'table',
-    _captcha: 'false',
+    _honey: String(formData.get('_honey') || '').trim(),
   };
 }
 
-function isContactSubmitSuccess(result) {
-  return result?.success === true || result?.success === 'true';
-}
-
 async function submitContactForm(form) {
-  const endpoint = window.PANTHRA_CONTACT_ENDPOINT || PANTHRA_FORM_SUBMIT_ENDPOINT;
-  const useFormSubmit = endpoint.includes('formsubmit.co');
-
-  if (useFormSubmit) {
-    const payload = buildContactPayload(form);
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify(payload),
-    });
-
-    let result = null;
-    try {
-      result = await response.json();
-    } catch (_) {
-      result = null;
-    }
-
-    if (!response.ok || !isContactSubmitSuccess(result)) {
-      throw new Error(result?.message || 'Unable to send your message right now.');
-    }
-
-    return result;
-  }
+  const endpoint = window.PANTHRA_CONTACT_ENDPOINT || PANTHRA_CONTACT_API;
+  const payload = buildContactPayload(form);
 
   const response = await fetch(endpoint, {
     method: 'POST',
-    body: new FormData(form),
-    headers: { Accept: 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify(payload),
   });
 
   let result = null;
@@ -392,7 +364,7 @@ function initContactForm() {
   
   if (!form) return;
 
-  form.setAttribute('action', PANTHRA_FORM_SUBMIT_ENDPOINT);
+  form.setAttribute('action', PANTHRA_CONTACT_API);
   form.setAttribute('method', 'POST');
   
   form.addEventListener('submit', async (e) => {
