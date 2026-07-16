@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solutions | PANTHRA</title>
+    <link rel="canonical" href="https://panthra.ca/solutions.html" />
+    <meta name="description" content="Discover PANTHRA's elite cybersecurity solutions. Tailored protection strategies for enterprises, SMBs, and industry-specific security challenges." />
+    <meta name="theme-color" content="#050507" />
+    
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=30" />
+    <!-- Lottie Player for animated hologram (only needed if using Lottie) -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script>
+  </head>
+  <body>
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="grid-overlay"></div>
+    <div class="scan-line"></div>
+
+    <!-- Navigation -->
+    <header class="header" id="header">
+      <nav class="nav">
+        <a href="index.html" class="nav-logo">
+          <img src="panthra_logo.png" alt="Panthra" class="logo-icon" />
+          <span class="logo-text">PANTHRA</span>
+        </a>
+        
+        <div class="nav-links">
+          <div class="nav-dropdown">
+            <a href="services.html" class="nav-link dropdown-trigger">
+              Services
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <div class="dropdown-grid">
+                <div class="dropdown-column">
+                  <a href="secure.html" class="dropdown-heading">Secure</a>
+                  <a href="secure.html#identity-access" class="dropdown-item">Identity & Access Security</a>
+                  <a href="secure.html#infrastructure" class="dropdown-item">Infrastructure Security</a>
+                  <a href="secure.html#data-endpoint" class="dropdown-item">Data & Endpoint Protection</a>
+                  <a href="secure.html#microsoft-365" class="dropdown-item">Microsoft 365 Security</a>
+                </div>
+                <div class="dropdown-column">
+                  <a href="monitor.html" class="dropdown-heading">Monitor</a>
+                  <a href="monitor.html#siem-soc" class="dropdown-item">Security Monitoring (SIEM/SOC)</a>
+                  <a href="monitor.html#threat-detection" class="dropdown-item">Threat Detection</a>
+                  <a href="monitor.html#vulnerability-management" class="dropdown-item">Vulnerability Management</a>
+                  <a href="monitor.html#security-reporting" class="dropdown-item">Security Reporting</a>
+                </div>
+                <div class="dropdown-column">
+                  <a href="respond.html" class="dropdown-heading">Respond</a>
+                  <a href="respond.html#incident-response" class="dropdown-item">Incident Response</a>
+                  <a href="respond.html#backup-disaster-recovery" class="dropdown-item">Backup & Disaster Recovery</a>
+                  <a href="respond.html#business-continuity" class="dropdown-item">Business Continuity</a>
+                  <a href="respond.html#emergency-response" class="dropdown-item">Emergency Response Planning</a>
+                </div>
+                <div class="dropdown-column">
+                  <a href="advise.html" class="dropdown-heading">Advise</a>
+                  <a href="advise.html#security-assessments" class="dropdown-item">Security Assessments</a>
+                  <a href="advise.html#compliance" class="dropdown-item">Compliance Services</a>
+                  <a href="advise.html#vciso" class="dropdown-item">Security Strategy / vCISO</a>
+                  <a href="advise.html#awareness-training" class="dropdown-item">Security Awareness & Training</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <a href="solutions.html" class="nav-link dropdown-trigger">
+              Solutions
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-small">
+              <div class="dropdown-simple">
+                <a href="solutions.html" class="dropdown-item dropdown-item-highlight">Solutions Overview</a>
+                <div class="dropdown-divider"></div>
+                <a href="solutions.html#approach" class="dropdown-item">The Predator Method™</a>
+                <a href="solutions.html#tiers" class="dropdown-item">Security Tiers</a>
+                <a href="solutions.html#industries" class="dropdown-item">Industry Solutions</a>
+              </div>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <a href="insights.html" class="nav-link dropdown-trigger">
+              Insights
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-small">
+              <div class="dropdown-simple">
+                <a href="insights.html" class="dropdown-item dropdown-item-highlight">All Articles</a>
+                <div class="dropdown-divider"></div>
+                <span class="dropdown-label">Latest Posts</span>
+                <a href="blog/ransomware-landscape-2026.html" class="dropdown-item">Ransomware Landscape 2026</a>
+                <a href="blog/zero-trust-implementation.html" class="dropdown-item">Zero Trust Implementation</a>
+                <a href="blog/incident-response-playbook.html" class="dropdown-item">Incident Response Playbook</a>
+                <a href="blog/multi-cloud-security.html" class="dropdown-item">Multi-Cloud Security</a>
+                <a href="blog/pipeda-compliance-2026.html" class="dropdown-item">PIPEDA Compliance 2026</a>
+                <a href="blog/security-first-culture.html" class="dropdown-item">Security-First Culture</a>
+              </div>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <a href="about.html" class="nav-link dropdown-trigger">
+              About
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-small">
+              <div class="dropdown-simple">
+                <a href="about.html#mission" class="dropdown-item">Our Mission</a>
+                <a href="about.html#story" class="dropdown-item">Our Story</a>
+                <a href="about.html#results" class="dropdown-item">Proven Results</a>
+                <a href="about.html#values" class="dropdown-item">Our Values</a>
+                <a href="about.html#commitment" class="dropdown-item">Our Commitment</a>
+                <a href="about.html#partners" class="dropdown-item">Partners & Standards</a>
+              </div>
+            </div>
+          </div>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+        
+        <a href="contact.html" class="nav-cta">
+          <span>Get Protected</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          Services
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </button>
+                <div class="mobile-dropdown-content">
+          <a href="secure.html" class="mobile-dropdown-item">Secure</a>
+          <a href="monitor.html" class="mobile-dropdown-item">Monitor</a>
+          <a href="respond.html" class="mobile-dropdown-item">Respond</a>
+          <a href="advise.html" class="mobile-dropdown-item">Advise</a>
+        </div>
+      </div>
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          Solutions
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="solutions.html" class="mobile-dropdown-item">Solutions Overview</a>
+          <a href="solutions.html#approach" class="mobile-dropdown-item">The Predator Method™</a>
+          <a href="solutions.html#tiers" class="mobile-dropdown-item">Security Tiers</a>
+          <a href="solutions.html#industries" class="mobile-dropdown-item">Industry Solutions</a>
+        </div>
+      </div>
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          Insights
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="insights.html" class="mobile-dropdown-item">All Articles</a>
+          <span class="mobile-dropdown-heading">Latest Posts</span>
+          <a href="blog/ransomware-landscape-2026.html" class="mobile-dropdown-item">Ransomware Landscape 2026</a>
+          <a href="blog/zero-trust-implementation.html" class="mobile-dropdown-item">Zero Trust Implementation</a>
+          <a href="blog/incident-response-playbook.html" class="mobile-dropdown-item">Incident Response Playbook</a>
+          <a href="blog/multi-cloud-security.html" class="mobile-dropdown-item">Multi-Cloud Security</a>
+          <a href="blog/pipeda-compliance-2026.html" class="mobile-dropdown-item">PIPEDA Compliance 2026</a>
+          <a href="blog/security-first-culture.html" class="mobile-dropdown-item">Security-First Culture</a>
+        </div>
+      </div>
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          About
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="about.html" class="mobile-dropdown-item">About Us Overview</a>
+          <a href="about.html#mission" class="mobile-dropdown-item">Our Mission</a>
+          <a href="about.html#story" class="mobile-dropdown-item">Our Story</a>
+          <a href="about.html#results" class="mobile-dropdown-item">Proven Results</a>
+          <a href="about.html#values" class="mobile-dropdown-item">Our Values</a>
+          <a href="about.html#commitment" class="mobile-dropdown-item">Our Commitment</a>
+          <a href="about.html#partners" class="mobile-dropdown-item">Partners & Standards</a>
+        </div>
+      </div>
+      <a href="contact.html" class="mobile-link">Contact</a>
+      <a href="contact.html" class="mobile-cta">Get Protected</a>
+    </div>
+
+    <!-- Solutions Hero -->
+    <section class="solutions-hero">
+      <div class="container">
+        <div class="solutions-hero-content">
+          <span class="section-tag">Tailored Protection</span>
+          <h1 class="solutions-hero-title">Security Solutions<br>Built for Your Reality</h1>
+          <p class="solutions-hero-desc">
+            Every organization faces unique threats. We architect comprehensive security programs 
+            that align with your industry, scale with your growth, and adapt to the evolving threat landscape.
+          </p>
+          <div class="solutions-hero-actions">
+            <a href="#approach" class="btn-primary">
+              <span>Discover The Predator Method™</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </a>
+            <a href="contact.html" class="btn-secondary">
+              <span>Schedule Consultation</span>
+            </a>
+          </div>
+        </div>
+        <div class="solutions-hero-visual">
+          <div class="solution-orbit">
+            <div class="orbit-ring orbit-ring-1"></div>
+            <div class="orbit-ring orbit-ring-2"></div>
+            <div class="orbit-ring orbit-ring-3"></div>
+            <div class="orbit-center">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+            </div>
+            <div class="orbit-node orbit-node-1">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="8" rx="2"/>
+                <rect x="2" y="14" width="20" height="8" rx="2"/>
+              </svg>
+            </div>
+            <div class="orbit-node orbit-node-2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+              </svg>
+            </div>
+            <div class="orbit-node orbit-node-3">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Predator Method / Our Approach Section -->
+    <section class="predator-method" id="approach">
+      <div class="container">
+        <!-- Intro Block -->
+        <div class="predator-intro">
+          <div class="predator-intro-content">
+            <span class="section-tag">The Predator Method™</span>
+            <h2 class="predator-title">Your Business Deserves<br><span class="text-gradient">Relentless Protection</span></h2>
+            <p class="predator-subtitle">
+              Every breach starts with a blind spot. Every attack exploits a moment of weakness. That's why we developed 
+              the Predator Method™, a battle-tested framework that doesn't just respond to threats, it <strong>hunts them down 
+              before they reach you</strong>.
+            </p>
+            <div class="predator-promise">
+              <div class="promise-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <path d="M12 8v4M12 16h.01"/>
+                </svg>
+              </div>
+              <div class="promise-text">
+                <strong>Our Promise:</strong> We treat your business as if it were our own. Your data, your reputation, 
+                and your clients' trust: we guard it all with the same intensity we'd protect our family.
+              </div>
+            </div>
+          </div>
+          <div class="predator-intro-visual">
+            <!-- Holographic Panther Animation -->
+            <div class="holo-panther-display">
+              <!-- Subtle glow beneath -->
+              <div class="holo-base-platform">
+                <div class="base-glow-effect"></div>
+              </div>
+              
+              <!-- Video container -->
+              <div class="panther-animation-wrap">
+                <video 
+                  class="panther-video"
+                  id="pantherVideo"
+                  autoplay 
+                  muted 
+                  playsinline
+                  webkit-playsinline
+                  loop
+                  preload="auto"
+                  disablepictureinpicture
+                  disableremoteplayback
+                  poster="panthra_logo.png"
+                >
+                  <source src="assets/Panther-Loop.mp4" type="video/mp4">
+                </video>
+                
+                <!-- Fallback image for mobile if video fails -->
+                <img 
+                  src="panthra_logo.png" 
+                  alt="PANTHRA" 
+                  class="panther-video-fallback"
+                  id="pantherFallback"
+                />
+                
+                <!-- Clean overlay effects -->
+                <div class="holo-effects">
+                  <div class="effect-tint"></div>
+                  <div class="effect-scanlines"></div>
+                  <div class="effect-flicker"></div>
+                  <div class="effect-edge-glow"></div>
+                </div>
+              </div>
+              
+              <!-- Minimal corner accents -->
+              <div class="tech-frame">
+                <span class="corner c-tl"></span>
+                <span class="corner c-tr"></span>
+                <span class="corner c-bl"></span>
+                <span class="corner c-br"></span>
+              </div>
+              
+              <!-- Subtle particles -->
+              <div class="ambient-particles">
+                <span class="a-particle ap1"></span>
+                <span class="a-particle ap2"></span>
+                <span class="a-particle ap3"></span>
+                <span class="a-particle ap4"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Method Timeline -->
+        <div class="method-timeline">
+          <div class="timeline-line">
+            <div class="timeline-progress"></div>
+          </div>
+          
+          <!-- Phase 1: Stalk -->
+          <div class="method-phase phase-stalk">
+            <div class="phase-marker">
+              <span class="phase-number">01</span>
+              <div class="phase-pulse"></div>
+            </div>
+            <div class="phase-content">
+              <div class="phase-header">
+                <div class="phase-icon-wrap">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                </div>
+                <div class="phase-titles">
+                  <span class="phase-label">Phase One</span>
+                  <h3 class="phase-name">The Stalk</h3>
+                  <p class="phase-tagline">See what hackers see, before they do.</p>
+                </div>
+              </div>
+              <div class="phase-body">
+                <p class="phase-description">
+                  Before any predator attacks, it observes. We do the same, mapping your entire digital ecosystem with the precision 
+                  of a hunter studying its terrain. We identify every vulnerability, every weak point, every potential entry that 
+                  attackers could exploit. <strong>You can't defend what you can't see.</strong>
+                </p>
+                <div class="phase-details">
+                  <div class="detail-block">
+                    <h4>What We Uncover</h4>
+                    <ul class="detail-list">
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                        <span>Hidden vulnerabilities in your network, applications & infrastructure</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                        <span>Exposed credentials, data leaks & dark web mentions of your company</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                        <span>Compliance gaps that put you at legal & financial risk</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                        <span>Human factors: social engineering susceptibility in your team</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="detail-block">
+                    <h4>How We Do It</h4>
+                    <div class="service-tags">
+                      <a href="advise.html#security-assessments" class="service-tag">Security Assessments</a>
+                      <a href="monitor.html#vulnerability-management" class="service-tag">Vulnerability Management</a>
+                      <a href="advise.html#compliance" class="service-tag">Compliance Services</a>
+                      <a href="advise.html#awareness-training" class="service-tag">Security Awareness &amp; Training</a>
+                      <a href="monitor.html#security-reporting" class="service-tag">Security Reporting</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="phase-outcome">
+                  <div class="outcome-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                      <polyline points="14 2 14 8 20 8"/>
+                      <line x1="16" y1="13" x2="8" y2="13"/>
+                      <line x1="16" y1="17" x2="8" y2="17"/>
+                    </svg>
+                  </div>
+                  <div class="outcome-text">
+                    <strong>Outcome:</strong> A comprehensive security roadmap prioritized by actual risk, not guesswork. 
+                    You'll know exactly where you're vulnerable and how to fix it.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phase 2: Strike -->
+          <div class="method-phase phase-strike">
+            <div class="phase-marker">
+              <span class="phase-number">02</span>
+              <div class="phase-pulse"></div>
+            </div>
+            <div class="phase-content">
+              <div class="phase-header">
+                <div class="phase-icon-wrap">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                  </svg>
+                </div>
+                <div class="phase-titles">
+                  <span class="phase-label">Phase Two</span>
+                  <h3 class="phase-name">The Strike</h3>
+                  <p class="phase-tagline">When threats emerge, we're already there.</p>
+                </div>
+              </div>
+              <div class="phase-body">
+                <p class="phase-description">
+                  A panther doesn't wait for prey to attack first. Neither do we. Our 24/7 Security Operations Center watches 
+                  your systems like a hawk, using AI-powered threat detection backed by human expertise. The moment something 
+                  suspicious appears, <strong>we strike, containing threats in minutes, not days</strong>.
+                </p>
+                <div class="phase-details">
+                  <div class="detail-block">
+                    <h4>What We Neutralize</h4>
+                    <ul class="detail-list">
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                        <span>Ransomware attacks, stopped before encryption begins</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                        <span>Phishing & BEC attempts targeting your employees & executives</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                        <span>Insider threats & unauthorized data access in real-time</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                        <span>Zero-day exploits using behavioral analysis & threat intel</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="detail-block">
+                    <h4>How We Do It</h4>
+                    <div class="service-tags">
+                      <a href="monitor.html#siem-soc" class="service-tag">Security Monitoring (SIEM/SOC)</a>
+                      <a href="monitor.html#threat-detection" class="service-tag">Threat Detection</a>
+                      <a href="respond.html#incident-response" class="service-tag">Incident Response</a>
+                      <a href="secure.html#microsoft-365" class="service-tag">Microsoft 365 Security</a>
+                      <a href="secure.html#data-endpoint" class="service-tag">Data &amp; Endpoint Protection</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="phase-stats">
+                  <div class="mini-stat">
+                    <span class="mini-stat-value">&lt;5min</span>
+                    <span class="mini-stat-label">Response Time</span>
+                  </div>
+                  <div class="mini-stat">
+                    <span class="mini-stat-value">24/7</span>
+                    <span class="mini-stat-label">Monitoring</span>
+                  </div>
+                  <div class="mini-stat">
+                    <span class="mini-stat-value">99.9%</span>
+                    <span class="mini-stat-label">Threat Detection</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phase 3: Guard -->
+          <div class="method-phase phase-guard">
+            <div class="phase-marker">
+              <span class="phase-number">03</span>
+              <div class="phase-pulse"></div>
+            </div>
+            <div class="phase-content">
+              <div class="phase-header">
+                <div class="phase-icon-wrap">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                  </svg>
+                </div>
+                <div class="phase-titles">
+                  <span class="phase-label">Phase Three</span>
+                  <h3 class="phase-name">The Guard</h3>
+                  <p class="phase-tagline">Learn. Adapt. Strengthen. Repeat.</p>
+                </div>
+              </div>
+              <div class="phase-body">
+                <p class="phase-description">
+                  Every encounter makes us stronger. After neutralizing a threat, we don't just move on, we conduct deep forensic 
+                  analysis, extract lessons, and fortify your defenses. Your security posture continuously evolves, 
+                  <strong>ensuring yesterday's attack can never succeed tomorrow</strong>.
+                </p>
+                <div class="phase-details">
+                  <div class="detail-block">
+                    <h4>What We Deliver</h4>
+                    <ul class="detail-list">
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                        <span>Complete forensic analysis: know exactly what happened & why</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                        <span>Rapid disaster recovery: get back to business in hours, not weeks</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                        <span>Updated playbooks & hardened defenses based on real attack data</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                        <span>Executive reports for stakeholders, boards & cyber insurance</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="detail-block">
+                    <h4>How We Do It</h4>
+                    <div class="service-tags">
+                      <a href="respond.html#backup-disaster-recovery" class="service-tag">Backup &amp; Disaster Recovery</a>
+                      <a href="respond.html#business-continuity" class="service-tag">Business Continuity</a>
+                      <a href="secure.html#infrastructure" class="service-tag">Infrastructure Security</a>
+                      <a href="advise.html#vciso" class="service-tag">Security Strategy / vCISO</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="phase-outcome">
+                  <div class="outcome-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                      <path d="M12 8v8M8 12h8"/>
+                    </svg>
+                  </div>
+                  <div class="outcome-text">
+                    <strong>Outcome:</strong> A security program that gets smarter with every threat, building an impenetrable 
+                    defense that adapts faster than attackers can evolve.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Solutions Tiers -->
+    <section class="solutions-tiers" id="tiers">
+      <div class="container">
+        <div class="section-header centered">
+          <span class="section-tag">Choose Your Protection Level</span>
+          <h2 class="section-title">Security Solutions That Scale With You</h2>
+          <p class="section-desc">From startups to enterprises, we have a security program designed for your size, needs, and budget.</p>
+        </div>
+        
+        <div class="tiers-comparison">
+          <!-- Tier 1: Vigil -->
+          <div class="tier-card tier-vigil">
+            <div class="tier-header">
+              <div class="tier-badge">Vigil</div>
+              <h3 class="tier-name">Essential Defense</h3>
+              <p class="tier-subtitle">Secure, a strong security foundation for small businesses.</p>
+            </div>
+            <div class="tier-features">
+              <div class="tier-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Identity &amp; Access Security</span>
+              </div>
+              <div class="tier-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Email Protection</span>
+              </div>
+              <div class="tier-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Endpoint Protection</span>
+              </div>
+              <div class="tier-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Firewall Management</span>
+              </div>
+              <div class="tier-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Secure Backups</span>
+              </div>
+              <div class="tier-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Security Awareness Training</span>
+              </div>
+            </div>
+            <a href="contact.html" class="tier-cta btn-secondary">
+              <span>Get Quote</span>
+            </a>
+          </div>
+
+          <!-- Tier 2: Phantom (Featured) -->
+          <div class="tier-card tier-phantom tier-featured">
+            <div class="tier-popular">Most Popular</div>
+            <div class="tier-header">
+              <div class="tier-badge">Phantom</div>
+              <h3 class="tier-name">Advanced Protection</h3>
+              <p class="tier-subtitle">Detect &amp; Respond, active defense for growing businesses.</p>
+            </div>
+            <div class="tier-features">
+              <div class="tier-feature-item tier-feature-lead">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Everything in Essential, plus:</span>
+              </div>
+              <div class="tier-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>24/7 Security Operations Center (SOC) Monitoring</span>
+              </div>
+              <div class="tier-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Threat Hunting</span>
+              </div>
+              <div class="tier-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Vulnerability Management</span>
+              </div>
+              <div class="tier-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Security Analytics &amp; Detection</span>
+              </div>
+              <div class="tier-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Incident Response</span>
+              </div>
+            </div>
+            <a href="contact.html" class="tier-cta btn-primary">
+              <span>Get Started</span>
+            </a>
+          </div>
+
+          <!-- Tier 3: Apex -->
+          <div class="tier-card tier-apex">
+            <div class="tier-header">
+              <div class="tier-badge">Apex</div>
+              <h3 class="tier-name">Enterprise Security</h3>
+              <p class="tier-subtitle">Govern &amp; Improve, full resilience for large organizations.</p>
+            </div>
+            <div class="tier-features">
+              <div class="tier-feature-item tier-feature-lead">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Everything in Advanced, plus:</span>
+              </div>
+              <div class="tier-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Penetration Testing</span>
+              </div>
+              <div class="tier-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>vCISO Services</span>
+              </div>
+              <div class="tier-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Risk Management &amp; Governance</span>
+              </div>
+              <div class="tier-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Compliance Consulting</span>
+              </div>
+              <div class="tier-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Executive Reporting</span>
+              </div>
+            </div>
+            <a href="contact.html" class="tier-cta btn-secondary">
+              <span>Contact Sales</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Industry Solutions -->
+    <section class="solutions-industries" id="industries">
+      <div class="container">
+        <div class="section-header centered">
+          <span class="section-tag">Specialized Expertise</span>
+          <h2 class="section-title">Industry-Specific Solutions</h2>
+          <p class="section-desc">We understand that different industries face unique security challenges, compliance requirements, and threat vectors. Our solutions are tailored to your reality.</p>
+        </div>
+        <div class="industries-grid">
+          <div class="industry-card">
+            <div class="industry-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+            </div>
+            <h3>Healthcare</h3>
+            <p>Protect patient records, clinical systems, Microsoft 365, and medical devices from ransomware and unauthorized access, keeping care running and patient data private.</p>
+            <ul class="industry-compliance">
+              <li>HIA</li>
+              <li>PIPA</li>
+              <li>PIPEDA</li>
+            </ul>
+          </div>
+          <div class="industry-card">
+            <div class="industry-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <line x1="12" y1="1" x2="12" y2="23"/>
+                <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+              </svg>
+            </div>
+            <h3>Financial Services</h3>
+            <p>Secure client financial data, payment systems, and identities against fraud, account takeover, and phishing, so operations and remote work stay protected.</p>
+            <ul class="industry-compliance">
+              <li>PCI DSS</li>
+              <li>PIPEDA</li>
+              <li>OSFI</li>
+            </ul>
+          </div>
+          <div class="industry-card">
+            <div class="industry-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+              </svg>
+            </div>
+            <h3>Legal & Professional</h3>
+            <p>Keep client files, case data, and email confidential and protected from breaches and impersonation, preserving privilege and client trust.</p>
+            <ul class="industry-compliance">
+              <li>PIPA</li>
+              <li>PIPEDA</li>
+              <li>Law Society of Alberta</li>
+            </ul>
+          </div>
+          <div class="industry-card">
+            <div class="industry-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/>
+                <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/>
+              </svg>
+            </div>
+            <h3>Education</h3>
+            <p>Protect student and faculty accounts, Microsoft 365, and campus networks from phishing and ransomware, keeping remote and in-person learning running.</p>
+            <ul class="industry-compliance">
+              <li>FOIP</li>
+              <li>PIPA</li>
+              <li>PIPEDA</li>
+            </ul>
+          </div>
+          <div class="industry-card">
+            <div class="industry-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>
+              </svg>
+            </div>
+            <h3>Manufacturing & OT</h3>
+            <p>Keep production lines, industrial control systems, and OT running by preventing downtime, ransomware, and supply-chain attacks.</p>
+            <ul class="industry-compliance">
+              <li>IEC 62443</li>
+              <li>NIST CSF</li>
+              <li>ISO/IEC 27001</li>
+            </ul>
+          </div>
+          <div class="industry-card">
+            <div class="industry-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <h3>Government & Public Sector</h3>
+            <p>Protect public services, citizen data, and critical infrastructure, securing Microsoft 365 and identities with rapid incident response.</p>
+            <ul class="industry-compliance">
+              <li>FOIP</li>
+              <li>CyberSecure Canada</li>
+              <li>GC Cloud Guardrails</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="solutions-why">
+      <div class="container">
+        <div class="why-grid">
+          <div class="why-content">
+            <span class="section-tag">The PANTHRA Difference</span>
+            <h2 class="section-title">Why Organizations Choose Us</h2>
+            <p class="why-desc">
+              We don't just deploy tools. We become an extension of your team, invested in your security outcomes.
+            </p>
+          </div>
+          <div class="why-stats">
+            <div class="why-stat">
+              <div class="why-stat-value">0</div>
+              <div class="why-stat-label">Successful Breaches</div>
+            </div>
+            <div class="why-stat">
+              <div class="why-stat-value">&lt;5 min</div>
+              <div class="why-stat-label">Response Time</div>
+            </div>
+            <div class="why-stat">
+              <div class="why-stat-value">99.9%</div>
+              <div class="why-stat-label">Threat Detection</div>
+            </div>
+            <div class="why-stat">
+              <div class="why-stat-value">24/7</div>
+              <div class="why-stat-label">Active Monitoring</div>
+            </div>
+          </div>
+        </div>
+        <div class="why-differentiators">
+          <div class="differentiator">
+            <div class="diff-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <h4>Proactive, Not Reactive</h4>
+            <p>We hunt threats before they find you. Our threat intelligence operations identify emerging attacks targeting your industry.</p>
+          </div>
+          <div class="differentiator">
+            <div class="diff-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+                <path d="M16 3.13a4 4 0 010 7.75"/>
+              </svg>
+            </div>
+            <h4>Dedicated Team, Your Side</h4>
+            <p>Experienced security architects and engineers focused on practical protection, clear communication, and support when it matters.</p>
+          </div>
+          <div class="differentiator">
+            <div class="diff-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <h4>Measurable Outcomes</h4>
+            <p>We tie security investments to business outcomes. Clear metrics, regular reporting, and demonstrated ROI.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="solutions-cta">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Ready to Architect Your Security Program?</h2>
+          <p>Let's discuss your unique challenges and build a solution that protects what matters most.</p>
+          <div class="cta-actions">
+            <a href="contact.html" class="btn-primary">
+              <span>Schedule Consultation</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <a href="advise.html#security-assessments" class="btn-secondary">
+              <span>View All Services</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="footer-logo">
+              <span class="logo-text">PANTHRA</span>
+            </a>
+            <p class="footer-tagline">Silent protection. Absolute security.</p>
+            <div class="footer-contact">
+              <a href="mailto:contact@panthra.ca" class="footer-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                <span>contact@panthra.ca</span>
+              </a>
+              <a href="tel:+15878160621" class="footer-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                <span>+1 587-816-0621</span>
+              </a>
+              <div class="footer-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>421 7 Ave SW, Calgary, AB T2P 4K9</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="footer-links">
+            <h4>Services</h4>
+            <a href="services.html">All Services</a>
+            <a href="secure.html">Secure</a>
+            <a href="monitor.html">Monitor</a>
+            <a href="respond.html">Respond</a>
+            <a href="advise.html">Advise</a>
+          </div>
+          
+          <div class="footer-links">
+            <h4>Solutions</h4>
+            <a href="solutions.html">Solutions Overview</a>
+            <a href="solutions.html#tiers">Security Tiers</a>
+            <a href="solutions.html#industries">Industry Solutions</a>
+            <a href="solutions.html#approach">The Predator Method™</a>
+          </div>
+          
+          <div class="footer-links">
+            <h4>About</h4>
+            <a href="about.html">About Us</a>
+            <a href="about.html#story">Our Story</a>
+            <a href="about.html#values">Our Values</a>
+            <a href="about.html#commitment">Our Commitment</a>
+          </div>
+          
+          <div class="footer-links">
+            <h4>Resources</h4>
+            <a href="insights.html">Insights</a>
+            <a href="contact.html">Contact</a>
+            <a href="about.html#partners">Partners</a>
+            <a href="solutions.html#tiers">Plans</a>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>&copy; 2026 PANTHRA Cybersecurity. All rights reserved.</p>
+          <div class="footer-legal">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="security.html">Security</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js?v=4"></script>
+    <script src="chatbot.js"></script>
+    
+    <!-- Panther Video Loop Control -->
+    <script>
+      (function() {
+        const video = document.getElementById('pantherVideo');
+        const fallback = document.getElementById('pantherFallback');
+        if (!video) return;
+        
+        let videoPlaying = false;
+        
+        // Optimize video playback settings for smoother rendering
+        video.playsInline = true;
+        video.defaultMuted = true;
+        video.muted = true;
+        video.controls = false;
+        video.removeAttribute('controls');
+        
+        // Function to show fallback
+        function showFallback() {
+          if (fallback && !videoPlaying) {
+            fallback.classList.add('show');
+            video.style.opacity = '0';
+          }
+        }
+        
+        // Function to hide fallback
+        function hideFallback() {
+          if (fallback) {
+            fallback.classList.remove('show');
+            video.style.opacity = '';
+          }
+        }
+        
+        // Function to start video
+        function playVideo() {
+          video.play().then(function() {
+            videoPlaying = true;
+            hideFallback();
+          }).catch(function(error) {
+            console.log('Video autoplay prevented:', error);
+            showFallback();
+          });
+        }
+        
+        // Ensure video plays when ready
+        video.addEventListener('canplay', playVideo, { once: true });
+        
+        // Also try to play on load
+        video.addEventListener('loadeddata', playVideo, { once: true });
+        
+        // When video starts playing
+        video.addEventListener('playing', function() {
+          videoPlaying = true;
+          hideFallback();
+        });
+        
+        // Fallback: try to play on first user interaction
+        function playOnInteraction() {
+          playVideo();
+          document.removeEventListener('touchstart', playOnInteraction);
+          document.removeEventListener('click', playOnInteraction);
+          document.removeEventListener('scroll', playOnInteraction);
+        }
+        
+        document.addEventListener('touchstart', playOnInteraction, { once: true, passive: true });
+        document.addEventListener('click', playOnInteraction, { once: true });
+        document.addEventListener('scroll', playOnInteraction, { once: true, passive: true });
+        
+        // Ensure video loops seamlessly
+        video.addEventListener('ended', function() {
+          video.currentTime = 0;
+          video.play();
+        });
+        
+        // If video fails to load, show fallback
+        video.addEventListener('error', showFallback);
+        
+        // Check after 3 seconds if video hasn't started
+        setTimeout(function() {
+          if (!videoPlaying && video.paused) {
+            showFallback();
+          }
+        }, 3000);
+
+        // --- Safari-only: swap to the real alpha-channel HEVC video. ---
+        // Safari ignores mix-blend-mode on the composited <video>, so the
+        // black-background + screen-blend trick (used by Chrome) leaves a box.
+        // This alpha video composites natively transparent. Chrome never runs
+        // this branch, so it keeps the original H.264 + screen-blend pipeline.
+        var isSafari = !!(window.CSS && CSS.supports && CSS.supports('-webkit-hyphens', 'none'));
+        if (isSafari) {
+          var alphaSrc = 'assets/Panther-Loop-alpha.mp4';
+          // Only swap if Safari can actually decode HEVC.
+          if (video.canPlayType('video/mp4; codecs="hvc1"')) {
+            video.querySelectorAll('source').forEach(function (s) { s.remove(); });
+            video.setAttribute('src', alphaSrc);
+            video.load();
+            playVideo();
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
+

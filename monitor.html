@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monitor | PANTHRA</title>
+    <link rel="canonical" href="https://panthra.ca/monitor.html" />
+    <meta name="description" content="The Monitor service from PANTHRA: Security Monitoring (SIEM/SOC), Threat Detection, Vulnerability Management, and Security Reporting, ongoing activities that detect problems early." />
+    <meta name="theme-color" content="#050507" />
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=30" />
+  </head>
+  <body>
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="grid-overlay"></div>
+    <div class="scan-line"></div>
+
+    <!-- Navigation -->
+    <header class="header" id="header">
+      <nav class="nav">
+        <a href="index.html" class="nav-logo">
+          <img src="panthra_logo.png" alt="Panthra" class="logo-icon" />
+          <span class="logo-text">PANTHRA</span>
+        </a>
+        
+        <div class="nav-links">
+          <div class="nav-dropdown">
+            <a href="services.html" class="nav-link dropdown-trigger">
+              Services
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <div class="dropdown-grid">
+                <div class="dropdown-column">
+                  <a href="secure.html" class="dropdown-heading">Secure</a>
+                  <a href="secure.html#identity-access" class="dropdown-item">Identity & Access Security</a>
+                  <a href="secure.html#infrastructure" class="dropdown-item">Infrastructure Security</a>
+                  <a href="secure.html#data-endpoint" class="dropdown-item">Data & Endpoint Protection</a>
+                  <a href="secure.html#microsoft-365" class="dropdown-item">Microsoft 365 Security</a>
+                </div>
+                <div class="dropdown-column">
+                  <a href="monitor.html" class="dropdown-heading">Monitor</a>
+                  <a href="monitor.html#siem-soc" class="dropdown-item">Security Monitoring (SIEM/SOC)</a>
+                  <a href="monitor.html#threat-detection" class="dropdown-item">Threat Detection</a>
+                  <a href="monitor.html#vulnerability-management" class="dropdown-item">Vulnerability Management</a>
+                  <a href="monitor.html#security-reporting" class="dropdown-item">Security Reporting</a>
+                </div>
+                <div class="dropdown-column">
+                  <a href="respond.html" class="dropdown-heading">Respond</a>
+                  <a href="respond.html#incident-response" class="dropdown-item">Incident Response</a>
+                  <a href="respond.html#backup-disaster-recovery" class="dropdown-item">Backup & Disaster Recovery</a>
+                  <a href="respond.html#business-continuity" class="dropdown-item">Business Continuity</a>
+                  <a href="respond.html#emergency-response" class="dropdown-item">Emergency Response Planning</a>
+                </div>
+                <div class="dropdown-column">
+                  <a href="advise.html" class="dropdown-heading">Advise</a>
+                  <a href="advise.html#security-assessments" class="dropdown-item">Security Assessments</a>
+                  <a href="advise.html#compliance" class="dropdown-item">Compliance Services</a>
+                  <a href="advise.html#vciso" class="dropdown-item">Security Strategy / vCISO</a>
+                  <a href="advise.html#awareness-training" class="dropdown-item">Security Awareness & Training</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <a href="solutions.html" class="nav-link dropdown-trigger">
+              Solutions
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-small">
+              <div class="dropdown-simple">
+                <a href="solutions.html" class="dropdown-item dropdown-item-highlight">Solutions Overview</a>
+                <div class="dropdown-divider"></div>
+                <a href="solutions.html#approach" class="dropdown-item">The Predator Method™</a>
+                <a href="solutions.html#tiers" class="dropdown-item">Security Tiers</a>
+                <a href="solutions.html#industries" class="dropdown-item">Industry Solutions</a>
+              </div>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <a href="insights.html" class="nav-link dropdown-trigger">
+              Insights
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-small">
+              <div class="dropdown-simple">
+                <a href="insights.html" class="dropdown-item dropdown-item-highlight">All Articles</a>
+                <div class="dropdown-divider"></div>
+                <span class="dropdown-label">Latest Posts</span>
+                <a href="blog/ransomware-landscape-2026.html" class="dropdown-item">Ransomware Landscape 2026</a>
+                <a href="blog/zero-trust-implementation.html" class="dropdown-item">Zero Trust Implementation</a>
+                <a href="blog/incident-response-playbook.html" class="dropdown-item">Incident Response Playbook</a>
+                <a href="blog/multi-cloud-security.html" class="dropdown-item">Multi-Cloud Security</a>
+                <a href="blog/pipeda-compliance-2026.html" class="dropdown-item">PIPEDA Compliance 2026</a>
+                <a href="blog/security-first-culture.html" class="dropdown-item">Security-First Culture</a>
+              </div>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <a href="about.html" class="nav-link dropdown-trigger">
+              About
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-small">
+              <div class="dropdown-simple">
+                <a href="about.html#mission" class="dropdown-item">Our Mission</a>
+                <a href="about.html#story" class="dropdown-item">Our Story</a>
+                <a href="about.html#results" class="dropdown-item">Proven Results</a>
+                <a href="about.html#values" class="dropdown-item">Our Values</a>
+                <a href="about.html#commitment" class="dropdown-item">Our Commitment</a>
+                <a href="about.html#partners" class="dropdown-item">Partners & Standards</a>
+              </div>
+            </div>
+          </div>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+        
+        <a href="contact.html" class="nav-cta">
+          <span>Get Protected</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          Services
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </button>
+                <div class="mobile-dropdown-content">
+          <a href="secure.html" class="mobile-dropdown-item">Secure</a>
+          <a href="monitor.html" class="mobile-dropdown-item">Monitor</a>
+          <a href="respond.html" class="mobile-dropdown-item">Respond</a>
+          <a href="advise.html" class="mobile-dropdown-item">Advise</a>
+        </div>
+      </div>
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          Solutions
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="solutions.html" class="mobile-dropdown-item">Solutions Overview</a>
+          <a href="solutions.html#approach" class="mobile-dropdown-item">The Predator Method™</a>
+          <a href="solutions.html#tiers" class="mobile-dropdown-item">Security Tiers</a>
+          <a href="solutions.html#industries" class="mobile-dropdown-item">Industry Solutions</a>
+        </div>
+      </div>
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          Insights
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="insights.html" class="mobile-dropdown-item">All Articles</a>
+          <span class="mobile-dropdown-heading">Latest Posts</span>
+          <a href="blog/ransomware-landscape-2026.html" class="mobile-dropdown-item">Ransomware Landscape 2026</a>
+          <a href="blog/zero-trust-implementation.html" class="mobile-dropdown-item">Zero Trust Implementation</a>
+          <a href="blog/incident-response-playbook.html" class="mobile-dropdown-item">Incident Response Playbook</a>
+          <a href="blog/multi-cloud-security.html" class="mobile-dropdown-item">Multi-Cloud Security</a>
+          <a href="blog/pipeda-compliance-2026.html" class="mobile-dropdown-item">PIPEDA Compliance 2026</a>
+          <a href="blog/security-first-culture.html" class="mobile-dropdown-item">Security-First Culture</a>
+        </div>
+      </div>
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          About
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="about.html" class="mobile-dropdown-item">About Us Overview</a>
+          <a href="about.html#mission" class="mobile-dropdown-item">Our Mission</a>
+          <a href="about.html#story" class="mobile-dropdown-item">Our Story</a>
+          <a href="about.html#results" class="mobile-dropdown-item">Proven Results</a>
+          <a href="about.html#values" class="mobile-dropdown-item">Our Values</a>
+          <a href="about.html#commitment" class="mobile-dropdown-item">Our Commitment</a>
+          <a href="about.html#partners" class="mobile-dropdown-item">Partners & Standards</a>
+        </div>
+      </div>
+      <a href="contact.html" class="mobile-link">Contact</a>
+      <a href="contact.html" class="mobile-cta">Get Protected</a>
+    </div>
+
+    <!-- Pillar Hero -->
+    <section class="pillar-hero">
+      <div class="container">
+        <span class="pillar-hero-badge">Monitor</span>
+        <h1>Detect Problems<br><span class="text-gradient">Before They Escalate</span></h1>
+        <p>
+          Monitor is your early-warning system. These are the ongoing activities that watch your environment
+          around the clock, spotting suspicious activity, exposing weaknesses, and turning raw data into
+          answers before a small problem becomes a breach.
+        </p>
+        <div class="pillar-hero-actions">
+          <a href="contact.html" class="btn-primary">
+            <span>Start 24/7 Monitoring</span>
+          </a>
+          <a href="services.html" class="btn-secondary"><span>Explore All Services</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="pillar-intro">
+      <div class="container">
+        <h2>Always Watching, So You Don't Have To</h2>
+        <p>
+          The average breach goes undetected for months. The Monitor service closes that gap with continuous
+          visibility across your systems, combining a managed SIEM/SOC, active threat detection, ongoing
+          vulnerability management, and clear reporting so you always know where you stand.
+        </p>
+        <div class="pillar-jump">
+          <a href="#siem-soc">Security Monitoring (SIEM/SOC)</a>
+          <a href="#threat-detection">Threat Detection</a>
+          <a href="#vulnerability-management">Vulnerability Management</a>
+          <a href="#security-reporting">Security Reporting</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Sections -->
+    <section class="pillar-services">
+      <div class="container">
+
+        <!-- Security Monitoring (SIEM/SOC) -->
+        <div class="pillar-service" id="siem-soc">
+          <div class="pillar-service-media">
+            <div class="pillar-media-card">
+              <div class="pillar-media-glow"></div>
+              <span class="pillar-media-index">01</span>
+              <svg class="pillar-media-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+          </div>
+          <div class="pillar-service-body">
+            <h2>Security Monitoring (SIEM/SOC)</h2>
+            <p class="pillar-service-overview">
+              We collect and correlate security signals from across your environment in a managed SIEM, watched around the clock by a Security Operations Center. Suspicious activity is investigated and escalated the moment it appears, day or night.
+            </p>
+            <div class="pillar-cols">
+              <div class="pillar-block">
+                <h4>What it includes</h4>
+                <ul class="pillar-list">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Managed SIEM setup &amp; log collection</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>24/7 Security Operations Center coverage</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Correlation &amp; alert triage by analysts</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Escalation &amp; response guidance</span></li>
+                </ul>
+              </div>
+              <div class="pillar-block">
+                <h4>The benefits</h4>
+                <ul class="pillar-list">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Threats are seen in minutes, not months</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>No need to build an in-house SOC</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Constant coverage on nights &amp; weekends</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="pillar-why">
+              <h4>Why businesses need it</h4>
+              <p>Attacks don't keep business hours. Without continuous monitoring, an intruder can operate undetected for weeks. A managed SIEM/SOC gives you enterprise-grade visibility and expert eyes on your environment at all times.</p>
+            </div>
+            <a href="contact.html" class="pillar-service-cta">
+              <span>Start 24/7 monitoring</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Threat Detection -->
+        <div class="pillar-service reverse" id="threat-detection">
+          <div class="pillar-service-media">
+            <div class="pillar-media-card">
+              <div class="pillar-media-glow"></div>
+              <span class="pillar-media-index">02</span>
+              <svg class="pillar-media-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+                <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+            </div>
+          </div>
+          <div class="pillar-service-body">
+            <h2>Threat Detection</h2>
+            <p class="pillar-service-overview">
+              Beyond simple alerts, we use behavioral analytics and current threat intelligence to hunt for the subtle signs of compromise: unusual logins, lateral movement, and behaviour that doesn't fit.
+            </p>
+            <div class="pillar-cols">
+              <div class="pillar-block">
+                <h4>What it includes</h4>
+                <ul class="pillar-list">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Behavioral &amp; anomaly detection</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Threat intelligence enrichment</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Proactive threat hunting</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Detection tuning to cut false alarms</span></li>
+                </ul>
+              </div>
+              <div class="pillar-block">
+                <h4>The benefits</h4>
+                <ul class="pillar-list">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Catches attacks that bypass basic tools</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Fewer false alarms, faster real ones</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Early warning before damage is done</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="pillar-why">
+              <h4>Why businesses need it</h4>
+              <p>Modern attackers blend in with normal activity to avoid detection. Behaviour-based threat detection spots the anomalies that signature-based tools miss, letting you stop an intruder while they're still looking around, not after they've struck.</p>
+            </div>
+            <a href="contact.html" class="pillar-service-cta">
+              <span>Improve your threat detection</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Vulnerability Management -->
+        <div class="pillar-service" id="vulnerability-management">
+          <div class="pillar-service-media">
+            <div class="pillar-media-card">
+              <div class="pillar-media-glow"></div>
+              <span class="pillar-media-index">03</span>
+              <svg class="pillar-media-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+            </div>
+          </div>
+          <div class="pillar-service-body">
+            <h2>Vulnerability Management</h2>
+            <p class="pillar-service-overview">
+              We continuously scan your systems for weaknesses, then help you prioritize and fix the ones that actually matter, so you're patching the holes attackers would use first.
+            </p>
+            <div class="pillar-cols">
+              <div class="pillar-block">
+                <h4>What it includes</h4>
+                <ul class="pillar-list">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Continuous vulnerability scanning</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Risk-based prioritization</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Remediation tracking &amp; guidance</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Regular re-testing &amp; verification</span></li>
+                </ul>
+              </div>
+              <div class="pillar-block">
+                <h4>The benefits</h4>
+                <ul class="pillar-list">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Close the gaps attackers exploit most</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Spend effort where risk is highest</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Measurable reduction in exposure over time</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="pillar-why">
+              <h4>Why businesses need it</h4>
+              <p>New vulnerabilities appear every day, and attackers weaponize them fast. A one-time scan goes stale within weeks. Ongoing vulnerability management keeps a live picture of your exposure and ensures the riskiest issues get fixed first.</p>
+            </div>
+            <a href="contact.html" class="pillar-service-cta">
+              <span>Get a vulnerability review</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Security Reporting -->
+        <div class="pillar-service reverse" id="security-reporting">
+          <div class="pillar-service-media">
+            <div class="pillar-media-card">
+              <div class="pillar-media-glow"></div>
+              <span class="pillar-media-index">04</span>
+              <svg class="pillar-media-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
+              </svg>
+            </div>
+          </div>
+          <div class="pillar-service-body">
+            <h2>Security Reporting</h2>
+            <p class="pillar-service-overview">
+              Security data is only useful if it drives decisions. We turn activity, alerts, and trends into clear, regular reports your team and leadership can actually understand and act on.
+            </p>
+            <div class="pillar-cols">
+              <div class="pillar-block">
+                <h4>What it includes</h4>
+                <ul class="pillar-list">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Executive &amp; technical reporting</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Trend &amp; incident summaries</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Compliance-ready evidence</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Regular review meetings</span></li>
+                </ul>
+              </div>
+              <div class="pillar-block">
+                <h4>The benefits</h4>
+                <ul class="pillar-list">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Everyone sees where you stand</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Confident conversations with leadership &amp; boards</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Ready evidence for audits &amp; insurers</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="pillar-why">
+              <h4>Why businesses need it</h4>
+              <p>You can't improve what you can't measure, and you can't justify security spend without proof of value. Clear reporting gives leadership visibility, supports compliance, and turns your security program into a story you can tell with confidence.</p>
+            </div>
+            <a href="contact.html" class="pillar-service-cta">
+              <span>See what reporting looks like</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="solutions-cta">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Ready to See What's Happening in Your Environment?</h2>
+          <p>Let's set up continuous monitoring so threats are caught early, before they turn into incidents.</p>
+          <div class="cta-actions">
+            <a href="contact.html" class="btn-primary">
+              <span>Book a Security Consultation</span>
+            </a>
+            <a href="respond.html" class="btn-secondary"><span>Next: Respond</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="footer-logo">
+              <span class="logo-text">PANTHRA</span>
+            </a>
+            <p class="footer-tagline">Silent protection. Absolute security.</p>
+            <div class="footer-contact">
+              <a href="mailto:contact@panthra.ca" class="footer-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                <span>contact@panthra.ca</span>
+              </a>
+              <a href="tel:+15878160621" class="footer-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                <span>+1 587-816-0621</span>
+              </a>
+              <div class="footer-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>421 7 Ave SW, Calgary, AB T2P 4K9</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="footer-links">
+            <h4>Services</h4>
+            <a href="services.html">All Services</a>
+            <a href="secure.html">Secure</a>
+            <a href="monitor.html">Monitor</a>
+            <a href="respond.html">Respond</a>
+            <a href="advise.html">Advise</a>
+          </div>
+          
+          <div class="footer-links">
+            <h4>Solutions</h4>
+            <a href="solutions.html">Solutions Overview</a>
+            <a href="solutions.html#tiers">Security Tiers</a>
+            <a href="solutions.html#industries">Industry Solutions</a>
+            <a href="solutions.html#approach">The Predator Method™</a>
+          </div>
+          
+          <div class="footer-links">
+            <h4>About</h4>
+            <a href="about.html">About Us</a>
+            <a href="about.html#story">Our Story</a>
+            <a href="about.html#values">Our Values</a>
+            <a href="about.html#commitment">Our Commitment</a>
+          </div>
+          
+          <div class="footer-links">
+            <h4>Resources</h4>
+            <a href="insights.html">Insights</a>
+            <a href="contact.html">Contact</a>
+            <a href="about.html#partners">Partners</a>
+            <a href="solutions.html#tiers">Plans</a>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>&copy; 2026 PANTHRA Cybersecurity. All rights reserved.</p>
+          <div class="footer-legal">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="security.html">Security</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js?v=4"></script>
+    <script src="chatbot.js"></script>
+  </body>
+</html>

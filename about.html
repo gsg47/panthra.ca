@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | PANTHRA</title>
+    <link rel="canonical" href="https://panthra.ca/about.html" />
+    <meta name="description" content="Learn about PANTHRA's mission, proven results, and commitment to protecting your business from cyber threats. See why businesses trust us." />
+    <meta name="theme-color" content="#050507" />
+    
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=30" />
+  </head>
+  <body>
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="grid-overlay"></div>
+    <div class="scan-line"></div>
+
+    <!-- Navigation -->
+    <header class="header" id="header">
+      <nav class="nav">
+        <a href="index.html" class="nav-logo">
+          <img src="panthra_logo.png" alt="Panthra" class="logo-icon" />
+          <span class="logo-text">PANTHRA</span>
+        </a>
+        
+        <div class="nav-links">
+          <div class="nav-dropdown">
+            <a href="services.html" class="nav-link dropdown-trigger">
+              Services
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <div class="dropdown-grid">
+                <div class="dropdown-column">
+                  <a href="secure.html" class="dropdown-heading">Secure</a>
+                  <a href="secure.html#identity-access" class="dropdown-item">Identity & Access Security</a>
+                  <a href="secure.html#infrastructure" class="dropdown-item">Infrastructure Security</a>
+                  <a href="secure.html#data-endpoint" class="dropdown-item">Data & Endpoint Protection</a>
+                  <a href="secure.html#microsoft-365" class="dropdown-item">Microsoft 365 Security</a>
+                </div>
+                <div class="dropdown-column">
+                  <a href="monitor.html" class="dropdown-heading">Monitor</a>
+                  <a href="monitor.html#siem-soc" class="dropdown-item">Security Monitoring (SIEM/SOC)</a>
+                  <a href="monitor.html#threat-detection" class="dropdown-item">Threat Detection</a>
+                  <a href="monitor.html#vulnerability-management" class="dropdown-item">Vulnerability Management</a>
+                  <a href="monitor.html#security-reporting" class="dropdown-item">Security Reporting</a>
+                </div>
+                <div class="dropdown-column">
+                  <a href="respond.html" class="dropdown-heading">Respond</a>
+                  <a href="respond.html#incident-response" class="dropdown-item">Incident Response</a>
+                  <a href="respond.html#backup-disaster-recovery" class="dropdown-item">Backup & Disaster Recovery</a>
+                  <a href="respond.html#business-continuity" class="dropdown-item">Business Continuity</a>
+                  <a href="respond.html#emergency-response" class="dropdown-item">Emergency Response Planning</a>
+                </div>
+                <div class="dropdown-column">
+                  <a href="advise.html" class="dropdown-heading">Advise</a>
+                  <a href="advise.html#security-assessments" class="dropdown-item">Security Assessments</a>
+                  <a href="advise.html#compliance" class="dropdown-item">Compliance Services</a>
+                  <a href="advise.html#vciso" class="dropdown-item">Security Strategy / vCISO</a>
+                  <a href="advise.html#awareness-training" class="dropdown-item">Security Awareness & Training</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <a href="solutions.html" class="nav-link dropdown-trigger">
+              Solutions
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-small">
+              <div class="dropdown-simple">
+                <a href="solutions.html" class="dropdown-item dropdown-item-highlight">Solutions Overview</a>
+                <div class="dropdown-divider"></div>
+                <a href="solutions.html#approach" class="dropdown-item">The Predator Method™</a>
+                <a href="solutions.html#tiers" class="dropdown-item">Security Tiers</a>
+                <a href="solutions.html#industries" class="dropdown-item">Industry Solutions</a>
+              </div>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <a href="insights.html" class="nav-link dropdown-trigger">
+              Insights
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-small">
+              <div class="dropdown-simple">
+                <a href="insights.html" class="dropdown-item dropdown-item-highlight">All Articles</a>
+                <div class="dropdown-divider"></div>
+                <span class="dropdown-label">Latest Posts</span>
+                <a href="blog/ransomware-landscape-2026.html" class="dropdown-item">Ransomware Landscape 2026</a>
+                <a href="blog/zero-trust-implementation.html" class="dropdown-item">Zero Trust Implementation</a>
+                <a href="blog/incident-response-playbook.html" class="dropdown-item">Incident Response Playbook</a>
+                <a href="blog/multi-cloud-security.html" class="dropdown-item">Multi-Cloud Security</a>
+                <a href="blog/pipeda-compliance-2026.html" class="dropdown-item">PIPEDA Compliance 2026</a>
+                <a href="blog/security-first-culture.html" class="dropdown-item">Security-First Culture</a>
+              </div>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <a href="about.html" class="nav-link dropdown-trigger">
+              About
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-small">
+              <div class="dropdown-simple">
+                <a href="about.html#mission" class="dropdown-item">Our Mission</a>
+                <a href="about.html#story" class="dropdown-item">Our Story</a>
+                <a href="about.html#results" class="dropdown-item">Proven Results</a>
+                <a href="about.html#values" class="dropdown-item">Our Values</a>
+                <a href="about.html#commitment" class="dropdown-item">Our Commitment</a>
+                <a href="about.html#partners" class="dropdown-item">Partners & Standards</a>
+              </div>
+            </div>
+          </div>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+        
+        <a href="contact.html" class="nav-cta">
+          <span>Get Protected</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          Services
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </button>
+                <div class="mobile-dropdown-content">
+          <a href="secure.html" class="mobile-dropdown-item">Secure</a>
+          <a href="monitor.html" class="mobile-dropdown-item">Monitor</a>
+          <a href="respond.html" class="mobile-dropdown-item">Respond</a>
+          <a href="advise.html" class="mobile-dropdown-item">Advise</a>
+        </div>
+      </div>
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          Solutions
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="solutions.html" class="mobile-dropdown-item">Solutions Overview</a>
+          <a href="solutions.html#approach" class="mobile-dropdown-item">The Predator Method™</a>
+          <a href="solutions.html#tiers" class="mobile-dropdown-item">Security Tiers</a>
+          <a href="solutions.html#industries" class="mobile-dropdown-item">Industry Solutions</a>
+        </div>
+      </div>
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          Insights
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="insights.html" class="mobile-dropdown-item">All Articles</a>
+          <span class="mobile-dropdown-heading">Latest Posts</span>
+          <a href="blog/ransomware-landscape-2026.html" class="mobile-dropdown-item">Ransomware Landscape 2026</a>
+          <a href="blog/zero-trust-implementation.html" class="mobile-dropdown-item">Zero Trust Implementation</a>
+          <a href="blog/incident-response-playbook.html" class="mobile-dropdown-item">Incident Response Playbook</a>
+          <a href="blog/multi-cloud-security.html" class="mobile-dropdown-item">Multi-Cloud Security</a>
+          <a href="blog/pipeda-compliance-2026.html" class="mobile-dropdown-item">PIPEDA Compliance 2026</a>
+          <a href="blog/security-first-culture.html" class="mobile-dropdown-item">Security-First Culture</a>
+        </div>
+      </div>
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          About
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="about.html" class="mobile-dropdown-item">About Us Overview</a>
+          <a href="about.html#mission" class="mobile-dropdown-item">Our Mission</a>
+          <a href="about.html#story" class="mobile-dropdown-item">Our Story</a>
+          <a href="about.html#results" class="mobile-dropdown-item">Proven Results</a>
+          <a href="about.html#values" class="mobile-dropdown-item">Our Values</a>
+          <a href="about.html#commitment" class="mobile-dropdown-item">Our Commitment</a>
+          <a href="about.html#partners" class="mobile-dropdown-item">Partners & Standards</a>
+        </div>
+      </div>
+      <a href="contact.html" class="mobile-link">Contact</a>
+      <a href="contact.html" class="mobile-cta">Get Protected</a>
+    </div>
+
+    <!-- About Hero -->
+    <section class="about-hero">
+      <div class="container">
+        <div class="about-hero-content">
+          <span class="section-tag">About PANTHRA</span>
+          <h1 class="about-hero-title">Silent Protection.<br>Absolute Security.</h1>
+          <div class="about-hero-visual">
+            <div class="panther-container">
+              <div class="panther-glow"></div>
+              <img src="panthra_logo.png" alt="Panthra" class="panther-logo" />
+              <div class="panther-pulse"></div>
+            </div>
+          </div>
+          <p class="about-hero-desc">
+            We're a team of cybersecurity experts dedicated to protecting businesses from the 
+            ever-evolving landscape of digital threats. Our mission is simple: keep you safe 
+            so you can focus on what matters most, growing your business.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="about-mission" id="mission">
+      <div class="container">
+        <div class="mission-grid">
+          <div class="mission-content">
+            <span class="section-tag">Our Mission</span>
+            <h2 class="section-title">Securing the Future of Business</h2>
+            <p class="mission-statement">
+              To provide proactive, 24/7 defense against ever-evolving digital threats, 
+              empowering businesses of all sizes to operate with confidence in an increasingly 
+              connected world.
+            </p>
+            <div class="mission-problem">
+              <h3>The Problem We Solve</h3>
+              <p>
+                Small to mid-sized businesses often lack the resources for enterprise-level security, 
+                leaving them vulnerable to sophisticated cyber attacks. We bridge that gap by delivering 
+                world-class protection at accessible prices, with the personalized attention that 
+                larger firms can't provide.
+              </p>
+            </div>
+          </div>
+          <div class="mission-visual">
+            <div class="mission-icon-grid">
+              <div class="mission-icon-card">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <path d="M9 12l2 2 4-4"/>
+                </svg>
+                <span>Protected</span>
+              </div>
+              <div class="mission-icon-card">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                <span>24/7</span>
+              </div>
+              <div class="mission-icon-card">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+                <span>Vigilant</span>
+              </div>
+              <div class="mission-icon-card">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+                <span>Trusted</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="about-story" id="story">
+      <div class="container">
+        <div class="story-content">
+          <div class="story-text">
+            <span class="section-tag">Our Story</span>
+            <h2 class="section-title">Built by Security Experts,<br>For Security-Conscious Businesses</h2>
+            <div class="story-narrative">
+              <p class="story-intro">
+                PANTHRA was founded by a team of cybersecurity experts who witnessed first-hand how small and mid-sized businesses were being left behind. While Fortune 500 companies had dedicated security teams, smaller organizations were forced to choose between protection and affordability, and that choice shouldn't exist.
+              </p>
+              <div class="story-highlights">
+                <div class="story-highlight">
+                  <h3>Our Foundation</h3>
+                  <p>We built PANTHRA on a simple principle: practical cybersecurity should be accessible to every business, regardless of size. Our team brings hands-on experience from leading security firms and enterprise environments, focused on clear communication and protection that fits your needs.</p>
+                </div>
+                <div class="story-highlight">
+                  <h3>How We Work</h3>
+                  <p>Our clients get enterprise-grade security without enterprise-level complexity or pricing. We focus on continuous monitoring, practical guidance, and fast support when incidents need attention, helping organizations reduce risk over time.</p>
+                </div>
+                <div class="story-highlight">
+                  <h3>Our Commitment</h3>
+                  <p>Today, PANTHRA protects businesses across North America. But our mission remains unchanged: make world-class cybersecurity accessible to every organization. We're the team that never sleeps, the experts who answer your calls, and the partner that treats your security like our own.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="about-values" id="values">
+      <div class="container">
+        <div class="section-header centered">
+          <span class="section-tag">What Guides Us</span>
+          <h2 class="section-title">Our Core Values</h2>
+        </div>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+            </div>
+            <h3>Integrity</h3>
+            <p>Absolute honesty and transparency in reporting threats and delivering services. We tell you what you need to hear, not what you want to hear.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+            <h3>Vigilance</h3>
+            <p>Unwavering dedication to continuous monitoring and staying ahead of emerging threats. We never sleep so you can rest easy.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="8" r="7"/>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+              </svg>
+            </div>
+            <h3>Expertise</h3>
+            <p>Hands-on experience across security operations, assessments, and incident response, with ongoing training to stay current on emerging threats.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+              </svg>
+            </div>
+            <h3>Client-Centricity</h3>
+            <p>We focus on your business outcomes, not just technical fixes. Your success is our success, and we measure ourselves by your peace of mind.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="about-results" id="results">
+      <div class="container">
+        <div class="section-header centered">
+          <span class="section-tag">Proven Results</span>
+          <h2 class="section-title">The Numbers That Matter</h2>
+          <p class="section-desc">What our clients can expect when they work with PANTHRA.</p>
+        </div>
+        <div class="results-grid">
+          <div class="result-stat">
+            <div class="result-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+            </div>
+            <div class="result-number">0</div>
+            <div class="result-label">Successful Breaches</div>
+          </div>
+          <div class="result-stat">
+            <div class="result-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div class="result-number">&lt;5 min</div>
+            <div class="result-label">Response Time</div>
+          </div>
+          <div class="result-stat">
+            <div class="result-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <div class="result-number">99.9%</div>
+            <div class="result-label">Threat Detection</div>
+          </div>
+          <div class="result-stat">
+            <div class="result-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+                <path d="M16 3.13a4 4 0 010 7.75"/>
+              </svg>
+            </div>
+            <div class="result-number">24/7</div>
+            <div class="result-label">Active Monitoring</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="about-testimonials" id="testimonials">
+      <div class="container">
+        <div class="section-header centered">
+          <span class="section-tag">Client Success</span>
+          <h2 class="section-title">Trusted by Businesses That Can't Afford Downtime</h2>
+          <p class="section-desc">Don't just take our word for it. Here's what our clients say about working with PANTHRA.</p>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-quote">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/>
+                <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/>
+              </svg>
+            </div>
+            <p class="testimonial-text">"PANTHRA caught a phishing campaign targeting our field supervisors before it spread. They didn't just stop it. They traced it back and walked our team through exactly how to spot the next one. For a Calgary energy services company, that kind of proactive support is worth every penny."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-author-info">
+                <div class="testimonial-author-name">Dave Thompson</div>
+                <div class="testimonial-author-role">IT Manager, Bow Valley Energy Services, Calgary, AB</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-quote">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/>
+                <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/>
+              </svg>
+            </div>
+            <p class="testimonial-text">"As a growing clinic, Alberta's health privacy rules and PIPEDA kept me up at night. PANTHRA's compliance review was thorough and, more importantly, practical. They helped us fix the gaps instead of just handing us a report. Our patients' information has never been more secure."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-author-info">
+                <div class="testimonial-author-name">Dr. Amanda Nguyen</div>
+                <div class="testimonial-author-role">Clinic Director, Elbow River Medical, Calgary, AB</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-quote">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/>
+                <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/>
+              </svg>
+            </div>
+            <p class="testimonial-text">"We handle sensitive financial data for clients across Alberta, so security isn't optional, it's our reputation. PANTHRA's vCISO guidance and assessment work tightened our controls and helped us meet the standards our clients and auditors expect. For a firm our size, having that expertise on call is invaluable."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-author-info">
+                <div class="testimonial-author-name">Ryan MacKenzie</div>
+                <div class="testimonial-author-role">Partner, Stampede Ridge Accounting &amp; Advisory, Edmonton, AB</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Commitment Section -->
+    <section class="about-commitment" id="commitment">
+      <div class="container">
+        <div class="section-header centered">
+          <span class="section-tag">Our Commitment</span>
+          <h2 class="section-title">What You Can Expect When You Work With Us</h2>
+          <p class="section-desc">Security isn't just our business, it's our promise. Here's what that means for you.</p>
+        </div>
+        <div class="commitment-grid">
+          <div class="commitment-card">
+            <div class="commitment-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+            </div>
+            <h3>Transparency in Everything</h3>
+            <p>No jargon, no confusion. We'll explain threats in plain language, show you exactly what we're doing, and keep you informed every step of the way. You'll always know where you stand.</p>
+          </div>
+          <div class="commitment-card">
+            <div class="commitment-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <h3>Responsiveness That Matters</h3>
+            <p>When you need us, we're there. No ticket queues, no runarounds. Direct access to real people who understand your business and respond like it's their own on the line.</p>
+          </div>
+          <div class="commitment-card">
+            <div class="commitment-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+              </svg>
+            </div>
+            <h3>We're Invested in Your Success</h3>
+            <p>Your growth is our growth. We don't just protect what you have, we secure the path for where you're going. As your business evolves, your security evolves with you.</p>
+          </div>
+          <div class="commitment-card">
+            <div class="commitment-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <h3>Our Commitment to Your Security</h3>
+            <p>We take our responsibility seriously. While no provider can guarantee absolute security, we commit to transparent communication, continuous improvement, and responsive support when something needs attention.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="about-partners" id="partners">
+      <div class="container">
+        <div class="section-header centered">
+          <span class="section-tag">Trusted Expertise</span>
+          <h2 class="section-title">Partners & Standards</h2>
+          <p class="section-desc">We align with recognized security frameworks and partner with leading technology providers.</p>
+        </div>
+        <div class="partners-grid">
+          <div class="partner-category">
+            <h3>Compliance Frameworks</h3>
+            <div class="partner-logos">
+              <div class="partner-item">SOC 2</div>
+              <div class="partner-item">ISO 27001</div>
+              <div class="partner-item">PIPEDA</div>
+              <div class="partner-item">PHIPA</div>
+              <div class="partner-item">CyberSecure Canada</div>
+              <div class="partner-item">PCI DSS</div>
+            </div>
+          </div>
+          <div class="partner-category">
+            <h3>Technology Partners</h3>
+            <div class="partner-logos">
+              <div class="partner-item">Microsoft</div>
+              <div class="partner-item">Sophos</div>
+              <div class="partner-item">Huntress</div>
+              <div class="partner-item">Tenable</div>
+              <div class="partner-item">Veeam</div>
+              <div class="partner-item">SentinelOne</div>
+            </div>
+          </div>
+          <div class="partner-category">
+            <h3>Team Certifications</h3>
+            <div class="partner-logos">
+              <div class="partner-item">CISSP</div>
+              <div class="partner-item">CISM</div>
+              <div class="partner-item">CEH</div>
+              <div class="partner-item">CompTIA Security+</div>
+              <div class="partner-item">GCIH</div>
+              <div class="partner-item">OSCP</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="about-cta">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Ready to Secure Your Business?</h2>
+          <p>Let's discuss how PANTHRA can protect your organization from cyber threats.</p>
+          <a href="contact.html" class="btn-primary">
+            <span>Get in Touch</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="footer-logo">
+              <span class="logo-text">PANTHRA</span>
+            </a>
+            <p class="footer-tagline">Silent protection. Absolute security.</p>
+            <div class="footer-contact">
+              <a href="mailto:contact@panthra.ca" class="footer-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                <span>contact@panthra.ca</span>
+              </a>
+              <a href="tel:+15878160621" class="footer-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                <span>+1 587-816-0621</span>
+              </a>
+              <div class="footer-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>421 7 Ave SW, Calgary, AB T2P 4K9</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="footer-links">
+            <h4>Services</h4>
+            <a href="services.html">All Services</a>
+            <a href="secure.html">Secure</a>
+            <a href="monitor.html">Monitor</a>
+            <a href="respond.html">Respond</a>
+            <a href="advise.html">Advise</a>
+          </div>
+          
+          <div class="footer-links">
+            <h4>Solutions</h4>
+            <a href="solutions.html">Solutions Overview</a>
+            <a href="solutions.html#tiers">Security Tiers</a>
+            <a href="solutions.html#industries">Industry Solutions</a>
+            <a href="solutions.html#approach">The Predator Method™</a>
+          </div>
+          
+          <div class="footer-links">
+            <h4>About</h4>
+            <a href="about.html">About Us</a>
+            <a href="about.html#story">Our Story</a>
+            <a href="about.html#values">Our Values</a>
+            <a href="about.html#commitment">Our Commitment</a>
+          </div>
+          
+          <div class="footer-links">
+            <h4>Resources</h4>
+            <a href="insights.html">Insights</a>
+            <a href="contact.html">Contact</a>
+            <a href="about.html#partners">Partners</a>
+            <a href="solutions.html#tiers">Plans</a>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>&copy; 2026 PANTHRA Cybersecurity. All rights reserved.</p>
+          <div class="footer-legal">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="security.html">Security</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js?v=4"></script>
+    <script src="chatbot.js"></script>
+  </body>
+</html>
+

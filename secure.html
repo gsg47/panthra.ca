@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Secure | PANTHRA</title>
+    <link rel="canonical" href="https://panthra.ca/secure.html" />
+    <meta name="description" content="The Secure service from PANTHRA: Identity & Access Security, Infrastructure Security, Data & Endpoint Protection, and Microsoft 365 Security: the controls that reduce your risk." />
+    <meta name="theme-color" content="#050507" />
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=30" />
+  </head>
+  <body>
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="grid-overlay"></div>
+    <div class="scan-line"></div>
+
+    <!-- Navigation -->
+    <header class="header" id="header">
+      <nav class="nav">
+        <a href="index.html" class="nav-logo">
+          <img src="panthra_logo.png" alt="Panthra" class="logo-icon" />
+          <span class="logo-text">PANTHRA</span>
+        </a>
+        
+        <div class="nav-links">
+          <div class="nav-dropdown">
+            <a href="services.html" class="nav-link dropdown-trigger">
+              Services
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <div class="dropdown-grid">
+                <div class="dropdown-column">
+                  <a href="secure.html" class="dropdown-heading">Secure</a>
+                  <a href="secure.html#identity-access" class="dropdown-item">Identity & Access Security</a>
+                  <a href="secure.html#infrastructure" class="dropdown-item">Infrastructure Security</a>
+                  <a href="secure.html#data-endpoint" class="dropdown-item">Data & Endpoint Protection</a>
+                  <a href="secure.html#microsoft-365" class="dropdown-item">Microsoft 365 Security</a>
+                </div>
+                <div class="dropdown-column">
+                  <a href="monitor.html" class="dropdown-heading">Monitor</a>
+                  <a href="monitor.html#siem-soc" class="dropdown-item">Security Monitoring (SIEM/SOC)</a>
+                  <a href="monitor.html#threat-detection" class="dropdown-item">Threat Detection</a>
+                  <a href="monitor.html#vulnerability-management" class="dropdown-item">Vulnerability Management</a>
+                  <a href="monitor.html#security-reporting" class="dropdown-item">Security Reporting</a>
+                </div>
+                <div class="dropdown-column">
+                  <a href="respond.html" class="dropdown-heading">Respond</a>
+                  <a href="respond.html#incident-response" class="dropdown-item">Incident Response</a>
+                  <a href="respond.html#backup-disaster-recovery" class="dropdown-item">Backup & Disaster Recovery</a>
+                  <a href="respond.html#business-continuity" class="dropdown-item">Business Continuity</a>
+                  <a href="respond.html#emergency-response" class="dropdown-item">Emergency Response Planning</a>
+                </div>
+                <div class="dropdown-column">
+                  <a href="advise.html" class="dropdown-heading">Advise</a>
+                  <a href="advise.html#security-assessments" class="dropdown-item">Security Assessments</a>
+                  <a href="advise.html#compliance" class="dropdown-item">Compliance Services</a>
+                  <a href="advise.html#vciso" class="dropdown-item">Security Strategy / vCISO</a>
+                  <a href="advise.html#awareness-training" class="dropdown-item">Security Awareness & Training</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <a href="solutions.html" class="nav-link dropdown-trigger">
+              Solutions
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-small">
+              <div class="dropdown-simple">
+                <a href="solutions.html" class="dropdown-item dropdown-item-highlight">Solutions Overview</a>
+                <div class="dropdown-divider"></div>
+                <a href="solutions.html#approach" class="dropdown-item">The Predator Method™</a>
+                <a href="solutions.html#tiers" class="dropdown-item">Security Tiers</a>
+                <a href="solutions.html#industries" class="dropdown-item">Industry Solutions</a>
+              </div>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <a href="insights.html" class="nav-link dropdown-trigger">
+              Insights
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-small">
+              <div class="dropdown-simple">
+                <a href="insights.html" class="dropdown-item dropdown-item-highlight">All Articles</a>
+                <div class="dropdown-divider"></div>
+                <span class="dropdown-label">Latest Posts</span>
+                <a href="blog/ransomware-landscape-2026.html" class="dropdown-item">Ransomware Landscape 2026</a>
+                <a href="blog/zero-trust-implementation.html" class="dropdown-item">Zero Trust Implementation</a>
+                <a href="blog/incident-response-playbook.html" class="dropdown-item">Incident Response Playbook</a>
+                <a href="blog/multi-cloud-security.html" class="dropdown-item">Multi-Cloud Security</a>
+                <a href="blog/pipeda-compliance-2026.html" class="dropdown-item">PIPEDA Compliance 2026</a>
+                <a href="blog/security-first-culture.html" class="dropdown-item">Security-First Culture</a>
+              </div>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <a href="about.html" class="nav-link dropdown-trigger">
+              About
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-small">
+              <div class="dropdown-simple">
+                <a href="about.html#mission" class="dropdown-item">Our Mission</a>
+                <a href="about.html#story" class="dropdown-item">Our Story</a>
+                <a href="about.html#results" class="dropdown-item">Proven Results</a>
+                <a href="about.html#values" class="dropdown-item">Our Values</a>
+                <a href="about.html#commitment" class="dropdown-item">Our Commitment</a>
+                <a href="about.html#partners" class="dropdown-item">Partners & Standards</a>
+              </div>
+            </div>
+          </div>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+        
+        <a href="contact.html" class="nav-cta">
+          <span>Get Protected</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          Services
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </button>
+                <div class="mobile-dropdown-content">
+          <a href="secure.html" class="mobile-dropdown-item">Secure</a>
+          <a href="monitor.html" class="mobile-dropdown-item">Monitor</a>
+          <a href="respond.html" class="mobile-dropdown-item">Respond</a>
+          <a href="advise.html" class="mobile-dropdown-item">Advise</a>
+        </div>
+      </div>
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          Solutions
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="solutions.html" class="mobile-dropdown-item">Solutions Overview</a>
+          <a href="solutions.html#approach" class="mobile-dropdown-item">The Predator Method™</a>
+          <a href="solutions.html#tiers" class="mobile-dropdown-item">Security Tiers</a>
+          <a href="solutions.html#industries" class="mobile-dropdown-item">Industry Solutions</a>
+        </div>
+      </div>
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          Insights
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="insights.html" class="mobile-dropdown-item">All Articles</a>
+          <span class="mobile-dropdown-heading">Latest Posts</span>
+          <a href="blog/ransomware-landscape-2026.html" class="mobile-dropdown-item">Ransomware Landscape 2026</a>
+          <a href="blog/zero-trust-implementation.html" class="mobile-dropdown-item">Zero Trust Implementation</a>
+          <a href="blog/incident-response-playbook.html" class="mobile-dropdown-item">Incident Response Playbook</a>
+          <a href="blog/multi-cloud-security.html" class="mobile-dropdown-item">Multi-Cloud Security</a>
+          <a href="blog/pipeda-compliance-2026.html" class="mobile-dropdown-item">PIPEDA Compliance 2026</a>
+          <a href="blog/security-first-culture.html" class="mobile-dropdown-item">Security-First Culture</a>
+        </div>
+      </div>
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          About
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="about.html" class="mobile-dropdown-item">About Us Overview</a>
+          <a href="about.html#mission" class="mobile-dropdown-item">Our Mission</a>
+          <a href="about.html#story" class="mobile-dropdown-item">Our Story</a>
+          <a href="about.html#results" class="mobile-dropdown-item">Proven Results</a>
+          <a href="about.html#values" class="mobile-dropdown-item">Our Values</a>
+          <a href="about.html#commitment" class="mobile-dropdown-item">Our Commitment</a>
+          <a href="about.html#partners" class="mobile-dropdown-item">Partners & Standards</a>
+        </div>
+      </div>
+      <a href="contact.html" class="mobile-link">Contact</a>
+      <a href="contact.html" class="mobile-cta">Get Protected</a>
+    </div>
+
+    <!-- Pillar Hero -->
+    <section class="pillar-hero">
+      <div class="container">
+        <span class="pillar-hero-badge">Secure</span>
+        <h1>Reduce Risk With<br><span class="text-gradient">Strong Controls</span></h1>
+        <p>
+          Secure is where protection begins. These are the controls we put in place to reduce your risk, 
+          hardening your identities, infrastructure, data, and cloud so attackers have far fewer ways in.
+        </p>
+        <div class="pillar-hero-actions">
+          <a href="contact.html" class="btn-primary">
+            <span>Book a Security Consultation</span>
+          </a>
+          <a href="services.html" class="btn-secondary"><span>Explore All Services</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="pillar-intro">
+      <div class="container">
+        <h2>A Hardened Foundation for Your Business</h2>
+        <p>
+          Most breaches exploit a control that was never put in place. The Secure service closes those gaps
+          across the four areas attackers target most: who can access your systems, the infrastructure that
+          runs them, the data and devices that hold your information, and the cloud platforms your team uses every day.
+        </p>
+        <div class="pillar-jump">
+          <a href="#identity-access">Identity & Access Security</a>
+          <a href="#infrastructure">Infrastructure Security</a>
+          <a href="#data-endpoint">Data & Endpoint Protection</a>
+          <a href="#microsoft-365">Microsoft 365 Security</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Sections -->
+    <section class="pillar-services">
+      <div class="container">
+
+        <!-- Identity & Access Security -->
+        <div class="pillar-service" id="identity-access">
+          <div class="pillar-service-media">
+            <div class="pillar-media-card">
+              <div class="pillar-media-glow"></div>
+              <span class="pillar-media-index">01</span>
+              <svg class="pillar-media-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+                <rect x="3" y="11" width="18" height="11" rx="2"/>
+                <path d="M7 11V7a5 5 0 0110 0v4"/>
+                <circle cx="12" cy="16" r="1.5"/>
+              </svg>
+            </div>
+          </div>
+          <div class="pillar-service-body">
+            <h2>Identity &amp; Access Security</h2>
+            <p class="pillar-service-overview">
+              Identity is the new perimeter. We make sure the right people have the right access to the right
+              systems, and that everyone else is kept out, using multi-factor authentication, least-privilege
+              access, and modern identity governance.
+            </p>
+            <div class="pillar-cols">
+              <div class="pillar-block">
+                <h4>What it includes</h4>
+                <ul class="pillar-list">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Multi-factor authentication (MFA) rollout</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Single sign-on &amp; conditional access</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Least-privilege &amp; role-based access reviews</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Privileged account &amp; admin protection</span></li>
+                </ul>
+              </div>
+              <div class="pillar-block">
+                <h4>The benefits</h4>
+                <ul class="pillar-list">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Stops the vast majority of account takeovers</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Limits the damage a single compromise can cause</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Cleaner audits and easier compliance</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="pillar-why">
+              <h4>Why businesses need it</h4>
+              <p>
+                Stolen or weak credentials are behind the majority of breaches. Without MFA and access controls,
+                one phished password can hand an attacker the keys to your entire business. Strong identity
+                security is the single highest-impact control most organizations can put in place.
+              </p>
+            </div>
+            <a href="contact.html" class="pillar-service-cta">
+              <span>Strengthen your access controls</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Infrastructure Security -->
+        <div class="pillar-service reverse" id="infrastructure">
+          <div class="pillar-service-media">
+            <div class="pillar-media-card">
+              <div class="pillar-media-glow"></div>
+              <span class="pillar-media-index">02</span>
+              <svg class="pillar-media-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+                <rect x="2" y="2" width="20" height="8" rx="2"/>
+                <rect x="2" y="14" width="20" height="8" rx="2"/>
+                <line x1="6" y1="6" x2="6.01" y2="6"/>
+                <line x1="6" y1="18" x2="6.01" y2="18"/>
+              </svg>
+            </div>
+          </div>
+          <div class="pillar-service-body">
+            <h2>Infrastructure Security</h2>
+            <p class="pillar-service-overview">
+              Your devices, servers, firewalls, and networks are the machinery that keeps your business running.
+              We harden that machinery with layered, defense-in-depth controls so a single weak point can't bring
+              everything down.
+            </p>
+            <div class="pillar-cols">
+              <div class="pillar-block">
+                <h4>What it includes</h4>
+                <ul class="pillar-list">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Firewall &amp; network segmentation</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Server &amp; system hardening</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Secure configuration &amp; patch management</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Remote access &amp; VPN protection</span></li>
+                </ul>
+              </div>
+              <div class="pillar-block">
+                <h4>The benefits</h4>
+                <ul class="pillar-list">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Fewer exploitable entry points</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Attacks are contained instead of spreading</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>More reliable, resilient operations</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="pillar-why">
+              <h4>Why businesses need it</h4>
+              <p>
+                Unpatched servers, flat networks, and default configurations are exactly what attackers scan for.
+                Hardened infrastructure means that even if one device is compromised, the attacker can't move
+                freely across your environment, turning a potential disaster into a contained incident.
+              </p>
+            </div>
+            <a href="contact.html" class="pillar-service-cta">
+              <span>Harden your infrastructure</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Data & Endpoint Protection -->
+        <div class="pillar-service" id="data-endpoint">
+          <div class="pillar-service-media">
+            <div class="pillar-media-card">
+              <div class="pillar-media-glow"></div>
+              <span class="pillar-media-index">03</span>
+              <svg class="pillar-media-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+            </div>
+          </div>
+          <div class="pillar-service-body">
+            <h2>Data &amp; Endpoint Protection</h2>
+            <p class="pillar-service-overview">
+              Your data is your most valuable asset, and every laptop and phone is a doorway to it. We protect
+              both, encrypting sensitive information and defending every endpoint with modern detection and
+              data-loss prevention.
+            </p>
+            <div class="pillar-cols">
+              <div class="pillar-block">
+                <h4>What it includes</h4>
+                <ul class="pillar-list">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Endpoint detection &amp; response (EDR)</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Device &amp; disk encryption</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Data-loss prevention (DLP)</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Mobile device &amp; USB controls</span></li>
+                </ul>
+              </div>
+              <div class="pillar-block">
+                <h4>The benefits</h4>
+                <ul class="pillar-list">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Sensitive data stays protected, even if a device is lost</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Malware is stopped at the device level</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Confidential information can't quietly walk out the door</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="pillar-why">
+              <h4>Why businesses need it</h4>
+              <p>
+                Remote and hybrid work means company data now lives on dozens of devices outside the office.
+                A single lost laptop or infected endpoint can expose customer records and trade secrets.
+                Protecting data and endpoints keeps your information safe wherever your people work.
+              </p>
+            </div>
+            <a href="contact.html" class="pillar-service-cta">
+              <span>Protect your data &amp; devices</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Microsoft 365 Security -->
+        <div class="pillar-service reverse" id="microsoft-365">
+          <div class="pillar-service-media">
+            <div class="pillar-media-card">
+              <div class="pillar-media-glow"></div>
+              <span class="pillar-media-index">04</span>
+              <svg class="pillar-media-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+                <path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="pillar-service-body">
+            <h2>Microsoft 365 Security</h2>
+            <p class="pillar-service-overview">
+              Microsoft 365 runs your email, files, and collaboration, which makes it a top target. We secure it
+              properly, hardening identities, email, and cloud apps so day-to-day work stays productive and safe.
+            </p>
+            <div class="pillar-cols">
+              <div class="pillar-block">
+                <h4>What it includes</h4>
+                <ul class="pillar-list">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Email security &amp; anti-phishing hardening</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Secure identity &amp; conditional access setup</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>SharePoint, Teams &amp; OneDrive protection</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Secure Score review &amp; best-practice tuning</span></li>
+                </ul>
+              </div>
+              <div class="pillar-block">
+                <h4>The benefits</h4>
+                <ul class="pillar-list">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Far fewer phishing and account-takeover incidents</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Safe collaboration for remote and hybrid teams</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>You get full value from the security you already pay for</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="pillar-why">
+              <h4>Why businesses need it</h4>
+              <p>
+                Most organizations run Microsoft 365 with default settings that leave the door open to phishing and
+                business email compromise. Proper configuration turns the platform you already own into a genuinely
+                secure workplace, without buying anything new.
+              </p>
+            </div>
+            <a href="contact.html" class="pillar-service-cta">
+              <span>Secure your Microsoft 365</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="solutions-cta">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Ready to Secure Your Foundation?</h2>
+          <p>Let's review your current controls and build a plan to close the gaps that put your business at risk.</p>
+          <div class="cta-actions">
+            <a href="contact.html" class="btn-primary">
+              <span>Book a Security Consultation</span>
+            </a>
+            <a href="monitor.html" class="btn-secondary"><span>Next: Monitor</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="footer-logo">
+              <span class="logo-text">PANTHRA</span>
+            </a>
+            <p class="footer-tagline">Silent protection. Absolute security.</p>
+            <div class="footer-contact">
+              <a href="mailto:contact@panthra.ca" class="footer-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                <span>contact@panthra.ca</span>
+              </a>
+              <a href="tel:+15878160621" class="footer-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                <span>+1 587-816-0621</span>
+              </a>
+              <div class="footer-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>421 7 Ave SW, Calgary, AB T2P 4K9</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="footer-links">
+            <h4>Services</h4>
+            <a href="services.html">All Services</a>
+            <a href="secure.html">Secure</a>
+            <a href="monitor.html">Monitor</a>
+            <a href="respond.html">Respond</a>
+            <a href="advise.html">Advise</a>
+          </div>
+          
+          <div class="footer-links">
+            <h4>Solutions</h4>
+            <a href="solutions.html">Solutions Overview</a>
+            <a href="solutions.html#tiers">Security Tiers</a>
+            <a href="solutions.html#industries">Industry Solutions</a>
+            <a href="solutions.html#approach">The Predator Method™</a>
+          </div>
+          
+          <div class="footer-links">
+            <h4>About</h4>
+            <a href="about.html">About Us</a>
+            <a href="about.html#story">Our Story</a>
+            <a href="about.html#values">Our Values</a>
+            <a href="about.html#commitment">Our Commitment</a>
+          </div>
+          
+          <div class="footer-links">
+            <h4>Resources</h4>
+            <a href="insights.html">Insights</a>
+            <a href="contact.html">Contact</a>
+            <a href="about.html#partners">Partners</a>
+            <a href="solutions.html#tiers">Plans</a>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>&copy; 2026 PANTHRA Cybersecurity. All rights reserved.</p>
+          <div class="footer-legal">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="security.html">Security</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js?v=4"></script>
+    <script src="chatbot.js"></script>
+  </body>
+</html>

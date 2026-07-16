@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PANTHRA | Elite Cybersecurity</title>
+    <link rel="canonical" href="https://panthra.ca/" />
+    <meta name="description" content="PANTHRA delivers elite cybersecurity solutions. Silent protection. Absolute security." />
+    <meta name="theme-color" content="#050507" />
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="PANTHRA | Elite Cybersecurity" />
+    <meta property="og:description" content="Silent protection. Absolute security. Enterprise-grade cybersecurity solutions." />
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css?v=30" />
+  </head>
+  <body>
+    <!-- Cursor glow effect -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+    
+    <!-- Grid overlay -->
+    <div class="grid-overlay"></div>
+    
+    <!-- Scan line effect -->
+    <div class="scan-line"></div>
+
+    <!-- Navigation -->
+    <header class="header" id="header">
+      <nav class="nav">
+        <a href="index.html" class="nav-logo">
+          <img src="panthra_logo.png" alt="Panthra" class="logo-icon" />
+          <span class="logo-text">PANTHRA</span>
+        </a>
+        
+        <div class="nav-links">
+          <div class="nav-dropdown">
+            <a href="services.html" class="nav-link dropdown-trigger">
+              Services
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <div class="dropdown-grid">
+                <div class="dropdown-column">
+                  <a href="secure.html" class="dropdown-heading">Secure</a>
+                  <a href="secure.html#identity-access" class="dropdown-item">Identity & Access Security</a>
+                  <a href="secure.html#infrastructure" class="dropdown-item">Infrastructure Security</a>
+                  <a href="secure.html#data-endpoint" class="dropdown-item">Data & Endpoint Protection</a>
+                  <a href="secure.html#microsoft-365" class="dropdown-item">Microsoft 365 Security</a>
+                </div>
+                <div class="dropdown-column">
+                  <a href="monitor.html" class="dropdown-heading">Monitor</a>
+                  <a href="monitor.html#siem-soc" class="dropdown-item">Security Monitoring (SIEM/SOC)</a>
+                  <a href="monitor.html#threat-detection" class="dropdown-item">Threat Detection</a>
+                  <a href="monitor.html#vulnerability-management" class="dropdown-item">Vulnerability Management</a>
+                  <a href="monitor.html#security-reporting" class="dropdown-item">Security Reporting</a>
+                </div>
+                <div class="dropdown-column">
+                  <a href="respond.html" class="dropdown-heading">Respond</a>
+                  <a href="respond.html#incident-response" class="dropdown-item">Incident Response</a>
+                  <a href="respond.html#backup-disaster-recovery" class="dropdown-item">Backup & Disaster Recovery</a>
+                  <a href="respond.html#business-continuity" class="dropdown-item">Business Continuity</a>
+                  <a href="respond.html#emergency-response" class="dropdown-item">Emergency Response Planning</a>
+                </div>
+                <div class="dropdown-column">
+                  <a href="advise.html" class="dropdown-heading">Advise</a>
+                  <a href="advise.html#security-assessments" class="dropdown-item">Security Assessments</a>
+                  <a href="advise.html#compliance" class="dropdown-item">Compliance Services</a>
+                  <a href="advise.html#vciso" class="dropdown-item">Security Strategy / vCISO</a>
+                  <a href="advise.html#awareness-training" class="dropdown-item">Security Awareness & Training</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <a href="solutions.html" class="nav-link dropdown-trigger">
+              Solutions
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-small">
+              <div class="dropdown-simple">
+                <a href="solutions.html" class="dropdown-item dropdown-item-highlight">Solutions Overview</a>
+                <div class="dropdown-divider"></div>
+                <a href="solutions.html#approach" class="dropdown-item">The Predator Method™</a>
+                <a href="solutions.html#tiers" class="dropdown-item">Security Tiers</a>
+                <a href="solutions.html#industries" class="dropdown-item">Industry Solutions</a>
+              </div>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <a href="insights.html" class="nav-link dropdown-trigger">
+              Insights
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-small">
+              <div class="dropdown-simple">
+                <a href="insights.html" class="dropdown-item dropdown-item-highlight">All Articles</a>
+                <div class="dropdown-divider"></div>
+                <span class="dropdown-label">Latest Posts</span>
+                <a href="blog/ransomware-landscape-2026.html" class="dropdown-item">Ransomware Landscape 2026</a>
+                <a href="blog/zero-trust-implementation.html" class="dropdown-item">Zero Trust Implementation</a>
+                <a href="blog/incident-response-playbook.html" class="dropdown-item">Incident Response Playbook</a>
+                <a href="blog/multi-cloud-security.html" class="dropdown-item">Multi-Cloud Security</a>
+                <a href="blog/pipeda-compliance-2026.html" class="dropdown-item">PIPEDA Compliance 2026</a>
+                <a href="blog/security-first-culture.html" class="dropdown-item">Security-First Culture</a>
+              </div>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <a href="about.html" class="nav-link dropdown-trigger">
+              About
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-small">
+              <div class="dropdown-simple">
+                <a href="about.html#mission" class="dropdown-item">Our Mission</a>
+                <a href="about.html#story" class="dropdown-item">Our Story</a>
+                <a href="about.html#results" class="dropdown-item">Proven Results</a>
+                <a href="about.html#values" class="dropdown-item">Our Values</a>
+                <a href="about.html#commitment" class="dropdown-item">Our Commitment</a>
+                <a href="about.html#partners" class="dropdown-item">Partners & Standards</a>
+              </div>
+            </div>
+          </div>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+        
+        <a href="contact.html" class="nav-cta">
+          <span>Get Protected</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          Services
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="secure.html" class="mobile-dropdown-item">Secure</a>
+          <a href="monitor.html" class="mobile-dropdown-item">Monitor</a>
+          <a href="respond.html" class="mobile-dropdown-item">Respond</a>
+          <a href="advise.html" class="mobile-dropdown-item">Advise</a>
+        </div>
+      </div>
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          Solutions
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="solutions.html" class="mobile-dropdown-item">Solutions Overview</a>
+          <a href="solutions.html#approach" class="mobile-dropdown-item">The Predator Method™</a>
+          <a href="solutions.html#tiers" class="mobile-dropdown-item">Security Tiers</a>
+          <a href="solutions.html#industries" class="mobile-dropdown-item">Industry Solutions</a>
+        </div>
+      </div>
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          Insights
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="insights.html" class="mobile-dropdown-item">All Articles</a>
+          <span class="mobile-dropdown-heading">Latest Posts</span>
+          <a href="blog/ransomware-landscape-2026.html" class="mobile-dropdown-item">Ransomware Landscape 2026</a>
+          <a href="blog/zero-trust-implementation.html" class="mobile-dropdown-item">Zero Trust Implementation</a>
+          <a href="blog/incident-response-playbook.html" class="mobile-dropdown-item">Incident Response Playbook</a>
+          <a href="blog/multi-cloud-security.html" class="mobile-dropdown-item">Multi-Cloud Security</a>
+          <a href="blog/pipeda-compliance-2026.html" class="mobile-dropdown-item">PIPEDA Compliance 2026</a>
+          <a href="blog/security-first-culture.html" class="mobile-dropdown-item">Security-First Culture</a>
+        </div>
+      </div>
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          About
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="about.html" class="mobile-dropdown-item">About Us Overview</a>
+          <a href="about.html#mission" class="mobile-dropdown-item">Our Mission</a>
+          <a href="about.html#story" class="mobile-dropdown-item">Our Story</a>
+          <a href="about.html#results" class="mobile-dropdown-item">Proven Results</a>
+          <a href="about.html#values" class="mobile-dropdown-item">Our Values</a>
+          <a href="about.html#commitment" class="mobile-dropdown-item">Our Commitment</a>
+          <a href="about.html#partners" class="mobile-dropdown-item">Partners & Standards</a>
+        </div>
+      </div>
+      <a href="contact.html" class="mobile-link">Contact</a>
+      <a href="contact.html" class="mobile-cta">Get Protected</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-bg">
+        <div class="hero-gradient"></div>
+        <div class="hero-particles" id="heroParticles"></div>
+        <div class="hero-lines"></div>
+      </div>
+      
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>Elite Cybersecurity Solutions</span>
+        </div>
+        
+        <h1 class="hero-title">
+          <span class="title-line">
+            <span class="title-word">Silent</span>
+          </span>
+          <span class="title-line">
+            <span class="title-word">Protection.</span>
+          </span>
+          <span class="title-line accent">
+            <span class="title-word">Absolute</span>
+            <span class="title-word">Security.</span>
+          </span>
+        </h1>
+        
+        <p class="hero-subtitle">
+          We hunt threats before they strike. PANTHRA provides enterprise-grade 
+          cybersecurity with the stealth and precision of a predator.
+        </p>
+        
+        <div class="hero-actions">
+          <a href="contact.html" class="btn-primary">
+            <span>Start Your Defense</span>
+            <div class="btn-glow"></div>
+          </a>
+          <a href="services.html" class="btn-secondary">
+            <span>Explore Services</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </a>
+        </div>
+        
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="stat-value">
+              <span class="stat-number" data-target="99.9">99.0</span>
+              <span class="stat-suffix">%</span>
+            </div>
+            <span class="stat-label">Threat Detection</span>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <div class="stat-value">
+              <span class="stat-number" data-target="24" data-static>24</span>
+              <span class="stat-suffix">/7</span>
+            </div>
+            <span class="stat-label">Active Monitoring</span>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <div class="stat-value">
+              <span class="stat-number-group"><span class="stat-less-than">&lt;&nbsp;</span><span class="stat-number" data-target="5" data-static>5</span></span>
+              <span class="stat-suffix">&nbsp;min</span>
+            </div>
+            <span class="stat-label">Incident Response</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hero-visual">
+        <div class="panther-container">
+          <div class="panther-glow"></div>
+          <img src="panthra_logo.png" alt="Panthra" class="panther-logo" />
+          <div class="panther-pulse"></div>
+        </div>
+      </div>
+      
+      <div class="scroll-indicator">
+        <span>Scroll to explore</span>
+        <div class="scroll-line">
+          <div class="scroll-dot"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section class="industries">
+      <div class="container">
+        <p class="industries-label">Industries We Protect</p>
+      </div>
+      <div class="marquee-wrapper">
+        <div class="marquee">
+          <div class="marquee-content">
+            <span class="marquee-item">Healthcare</span>
+            <span class="marquee-divider">◆</span>
+            <span class="marquee-item">Financial Services & Banking</span>
+            <span class="marquee-divider">◆</span>
+            <span class="marquee-item">Legal / Law Firms</span>
+            <span class="marquee-divider">◆</span>
+            <span class="marquee-item">State & Local Government</span>
+            <span class="marquee-divider">◆</span>
+            <span class="marquee-item">Manufacturing</span>
+            <span class="marquee-divider">◆</span>
+            <span class="marquee-item">Education</span>
+            <span class="marquee-divider">◆</span>
+            <span class="marquee-item">Retail & E-Commerce</span>
+            <span class="marquee-divider">◆</span>
+            <span class="marquee-item">Transportation & Logistics</span>
+            <span class="marquee-divider">◆</span>
+            <span class="marquee-item">Energy / Oil & Gas</span>
+            <span class="marquee-divider">◆</span>
+            <span class="marquee-item">Aviation</span>
+            <span class="marquee-divider">◆</span>
+            <span class="marquee-item">Real Estate</span>
+            <span class="marquee-divider">◆</span>
+            <span class="marquee-item">Sports & Entertainment</span>
+            <span class="marquee-divider">◆</span>
+          </div>
+          <div class="marquee-content" aria-hidden="true">
+            <span class="marquee-item">Healthcare</span>
+            <span class="marquee-divider">◆</span>
+            <span class="marquee-item">Financial Services & Banking</span>
+            <span class="marquee-divider">◆</span>
+            <span class="marquee-item">Legal / Law Firms</span>
+            <span class="marquee-divider">◆</span>
+            <span class="marquee-item">State & Local Government</span>
+            <span class="marquee-divider">◆</span>
+            <span class="marquee-item">Manufacturing</span>
+            <span class="marquee-divider">◆</span>
+            <span class="marquee-item">Education</span>
+            <span class="marquee-divider">◆</span>
+            <span class="marquee-item">Retail & E-Commerce</span>
+            <span class="marquee-divider">◆</span>
+            <span class="marquee-item">Transportation & Logistics</span>
+            <span class="marquee-divider">◆</span>
+            <span class="marquee-item">Energy / Oil & Gas</span>
+            <span class="marquee-divider">◆</span>
+            <span class="marquee-item">Aviation</span>
+            <span class="marquee-divider">◆</span>
+            <span class="marquee-item">Real Estate</span>
+            <span class="marquee-divider">◆</span>
+            <span class="marquee-item">Sports & Entertainment</span>
+            <span class="marquee-divider">◆</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Our Services</span>
+          <h2 class="section-title">Comprehensive Protection</h2>
+          <p class="section-desc">
+            From threat detection to incident response, we provide end-to-end 
+            cybersecurity solutions tailored to your organization.
+          </p>
+        </div>
+        
+        <div class="services-grid">
+          <a href="monitor.html" class="service-card featured">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+            <h3>Security Monitoring & Threat Detection</h3>
+            <p>Continuously monitor your environment for suspicious activity and respond before threats become incidents.</p>
+            <div class="service-tag">Most Popular</div>
+          </a>
+          
+          <a href="secure.html#infrastructure" class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="2" width="20" height="8" rx="2"/>
+                <rect x="2" y="14" width="20" height="8" rx="2"/>
+                <line x1="6" y1="6" x2="6.01" y2="6"/>
+                <line x1="6" y1="18" x2="6.01" y2="18"/>
+              </svg>
+            </div>
+            <h3>Infrastructure Security</h3>
+            <p>Protect your business's devices, servers, firewalls, and network from cyber threats.</p>
+          </a>
+          
+          <a href="secure.html#microsoft-365" class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/>
+              </svg>
+            </div>
+            <h3>Cloud & Microsoft 365 Security</h3>
+            <p>Secure Microsoft 365, email, identities, cloud applications, and remote work.</p>
+          </a>
+          
+          <a href="advise.html#compliance" class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
+              </svg>
+            </div>
+            <h3>Compliance & Risk Management</h3>
+            <p>Help your business meet regulatory requirements, reduce cyber risk, and strengthen security policies.</p>
+          </a>
+          
+          <a href="respond.html#backup-disaster-recovery" class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M23 4v6h-6"/>
+                <path d="M1 20v-6h6"/>
+                <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+              </svg>
+            </div>
+            <h3>Backup & Disaster Recovery</h3>
+            <p>Ensure your critical data can be recovered quickly after ransomware, hardware failures, or accidental deletion.</p>
+          </a>
+          
+          <a href="advise.html#security-assessments" class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="6"/>
+                <circle cx="12" cy="12" r="2"/>
+              </svg>
+            </div>
+            <h3>Security Testing & Assessments</h3>
+            <p>Identify vulnerabilities and validate your defenses through assessments and penetration testing.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-content">
+            <span class="section-tag">Why Panthra</span>
+            <h2 class="section-title">The Predator Advantage</h2>
+            <p class="about-text">
+              Like our namesake, we operate with silent precision. While other security 
+              firms react to threats, we anticipate them with practical protection, clear 
+              communication, and support when incidents need attention.
+            </p>
+            <div class="about-features">
+              <div class="about-feature">
+                <div class="feature-check">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4>Proactive Defense</h4>
+                  <p>Threats identified and addressed before they escalate</p>
+                </div>
+              </div>
+              <div class="about-feature">
+                <div class="feature-check">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4>Zero Trust Architecture</h4>
+                  <p>Never trust, always verify, at every layer</p>
+                </div>
+              </div>
+              <div class="about-feature">
+                <div class="feature-check">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4>Dedicated Response Team</h4>
+                  <p>Security specialists available when incidents need attention</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="about-visual">
+            <div class="terminal">
+              <div class="terminal-header">
+                <span class="terminal-dot red"></span>
+                <span class="terminal-dot yellow"></span>
+                <span class="terminal-dot green"></span>
+                <span class="terminal-title">panthra_shield.sh</span>
+              </div>
+              <div class="terminal-body">
+                <div class="terminal-line">
+                  <span class="terminal-prompt">$</span>
+                  <span class="terminal-command">panthra --init-shield</span>
+                </div>
+                <div class="terminal-line output">
+                  <span class="text-purple">[PANTHRA]</span> Initializing defense matrix...
+                </div>
+                <div class="terminal-line output">
+                  <span class="text-green">✓</span> Network perimeter secured
+                </div>
+                <div class="terminal-line output">
+                  <span class="text-green">✓</span> Endpoint protection active
+                </div>
+                <div class="terminal-line output">
+                  <span class="text-green">✓</span> Threat intelligence synced
+                </div>
+                <div class="terminal-line output">
+                  <span class="text-green">✓</span> AI anomaly detection online
+                </div>
+                <div class="terminal-line output">
+                  <span class="text-purple">[PANTHRA]</span> <span class="text-green">System protected.</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="terminal-prompt">$</span>
+                  <span class="terminal-cursor"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats" id="stats">
+      <div class="stats-bg"></div>
+      <div class="container">
+        <div class="section-header centered">
+          <span class="section-tag">Why Protection Matters</span>
+          <h2 class="section-title">The Cost of Being Unprotected</h2>
+        </div>
+        
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value">
+              <span>$</span>
+              <span class="stat-counter" data-target="6.32">0</span>
+              <span class="stat-unit">M</span>
+            </div>
+            <div class="stat-desc">Average cost per data breach in Canada</div>
+            <div class="stat-source">IBM Cost of a Data Breach Report, 2025</div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-value">
+              <span class="stat-counter" data-target="88">0</span>
+              <span class="stat-unit">%</span>
+            </div>
+            <div class="stat-desc">Of SMB breaches involved ransomware</div>
+            <div class="stat-source">Verizon DBIR, 2025</div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-value">
+              <span class="stat-counter" data-target="20">0</span>
+              <span class="stat-unit">%</span>
+            </div>
+            <div class="stat-desc">Of SMBs would close after a successful cyberattack</div>
+            <div class="stat-source">VikingCloud SMB Threat Landscape, 2025</div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-value">
+              <span class="stat-counter" data-target="258">0</span>
+              <span class="stat-unit"> days</span>
+            </div>
+            <div class="stat-desc">Average time to identify and contain a breach</div>
+            <div class="stat-source">IBM Cost of a Data Breach Report, 2024</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonials">
+      <div class="container">
+        <div class="testimonial-card">
+          <div class="quote-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+            </svg>
+          </div>
+          <blockquote>
+            "As a growing Calgary clinic, Alberta's health privacy rules and PIPEDA kept me 
+            up at night. PANTHRA's compliance review was thorough and, more importantly, 
+            practical. They helped us fix the gaps instead of just handing us a report. Our 
+            patients' information has never been more secure."
+          </blockquote>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <strong>Dr. Amanda Nguyen</strong>
+              <span>Clinic Director, Elbow River Medical, Calgary, AB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <span class="section-tag">Get In Touch</span>
+            <h2 class="section-title">Ready to Hunt Threats?</h2>
+            <p class="contact-desc">
+              Schedule a consultation with our security experts. We'll analyze your 
+              current posture and design a custom protection strategy.
+            </p>
+            
+            <div class="contact-details">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                </div>
+                <div>
+                  <span class="contact-label">Email</span>
+                  <a href="mailto:contact@panthra.ca">contact@panthra.ca</a>
+                </div>
+              </div>
+              
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                  </svg>
+                </div>
+                <div>
+                  <span class="contact-label">Phone</span>
+                  <a href="tel:+15878160621">+1 587-816-0621</a>
+                </div>
+              </div>
+              
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </div>
+                <div>
+                  <span class="contact-label">Headquarters</span>
+                  <span>421 7 Ave SW, Calgary, AB T2P 4K9</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required placeholder="John Smith" />
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Work Email</label>
+              <input type="email" id="email" name="email" required placeholder="john@company.com" />
+            </div>
+            
+            <div class="form-group full-width">
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" placeholder="Your Company" />
+            </div>
+            
+            <div class="form-group full-width">
+              <span class="form-label">Service Interest</span>
+              <p class="form-hint">Select all that apply</p>
+              <div class="service-interest">
+                <div class="service-interest-group">
+                  <span class="service-interest-heading">Secure</span>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="services[]" value="Identity &amp; Access Security" />
+                    <span>Identity &amp; Access Security</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="services[]" value="Infrastructure Security" />
+                    <span>Infrastructure Security</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="services[]" value="Data &amp; Endpoint Protection" />
+                    <span>Data &amp; Endpoint Protection</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="services[]" value="Microsoft 365 Security" />
+                    <span>Microsoft 365 Security</span>
+                  </label>
+                </div>
+                <div class="service-interest-group">
+                  <span class="service-interest-heading">Monitor</span>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="services[]" value="Security Monitoring (SIEM/SOC)" />
+                    <span>Security Monitoring (SIEM/SOC)</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="services[]" value="Threat Detection" />
+                    <span>Threat Detection</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="services[]" value="Vulnerability Management" />
+                    <span>Vulnerability Management</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="services[]" value="Security Reporting" />
+                    <span>Security Reporting</span>
+                  </label>
+                </div>
+                <div class="service-interest-group">
+                  <span class="service-interest-heading">Respond</span>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="services[]" value="Incident Response" />
+                    <span>Incident Response</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="services[]" value="Backup &amp; Disaster Recovery" />
+                    <span>Backup &amp; Disaster Recovery</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="services[]" value="Business Continuity" />
+                    <span>Business Continuity</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="services[]" value="Emergency Response Planning" />
+                    <span>Emergency Response Planning</span>
+                  </label>
+                </div>
+                <div class="service-interest-group">
+                  <span class="service-interest-heading">Advise</span>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="services[]" value="Security Assessments" />
+                    <span>Security Assessments</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="services[]" value="Compliance Services" />
+                    <span>Compliance Services</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="services[]" value="Security Strategy / vCISO" />
+                    <span>Security Strategy / vCISO</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="services[]" value="Security Awareness &amp; Training" />
+                    <span>Security Awareness &amp; Training</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group full-width">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" placeholder="Tell us about your security needs..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn-submit">
+              <span>Send Message</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+              </svg>
+            </button>
+            
+            <p class="form-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <rect x="3" y="11" width="18" height="11" rx="2"/>
+                <path d="M7 11V7a5 5 0 0110 0v4"/>
+              </svg>
+              Your information is encrypted and secure
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="footer-logo">
+              <span class="logo-text">PANTHRA</span>
+            </a>
+            <p class="footer-tagline">Silent protection. Absolute security.</p>
+            <div class="footer-contact">
+              <a href="mailto:contact@panthra.ca" class="footer-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                <span>contact@panthra.ca</span>
+              </a>
+              <a href="tel:+15878160621" class="footer-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                <span>+1 587-816-0621</span>
+              </a>
+              <div class="footer-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>421 7 Ave SW, Calgary, AB T2P 4K9</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="footer-links">
+            <h4>Services</h4>
+            <a href="services.html">All Services</a>
+            <a href="secure.html">Secure</a>
+            <a href="monitor.html">Monitor</a>
+            <a href="respond.html">Respond</a>
+            <a href="advise.html">Advise</a>
+          </div>
+          
+          <div class="footer-links">
+            <h4>Solutions</h4>
+            <a href="solutions.html">Solutions Overview</a>
+            <a href="solutions.html#tiers">Security Tiers</a>
+            <a href="solutions.html#industries">Industry Solutions</a>
+            <a href="solutions.html#approach">The Predator Method™</a>
+          </div>
+          
+          <div class="footer-links">
+            <h4>About</h4>
+            <a href="about.html">About Us</a>
+            <a href="about.html#story">Our Story</a>
+            <a href="about.html#values">Our Values</a>
+            <a href="about.html#commitment">Our Commitment</a>
+          </div>
+          
+          <div class="footer-links">
+            <h4>Resources</h4>
+            <a href="insights.html">Insights</a>
+            <a href="contact.html">Contact</a>
+            <a href="about.html#partners">Partners</a>
+            <a href="solutions.html#tiers">Plans</a>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>&copy; 2026 PANTHRA Cybersecurity. All rights reserved.</p>
+          <div class="footer-legal">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="security.html">Security</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+      <div class="modal-content">
+        <div class="modal-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+            <path d="M22 4L12 14.01l-3-3"/>
+          </svg>
+        </div>
+        <h3>Message Sent</h3>
+        <p>Thank you for reaching out. Our team will contact you within 24 hours.</p>
+        <button class="btn-modal-close" id="closeModal">Close</button>
+      </div>
+    </div>
+
+    <script src="script.js?v=4"></script>
+    <script src="chatbot.js"></script>
+  </body>
+</html>

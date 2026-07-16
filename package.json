@@ -1,0 +1,21 @@
+{
+  "name": "finalpanthra.ca",
+  "version": "1.0.0",
+  "description": "PANTHRA - Elite Cybersecurity Solutions. Silent protection. Absolute security.",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve"
+  },
+  "keywords": [
+    "cybersecurity",
+    "panthra",
+    "security",
+    "enterprise",
+    "threat-detection"
+  ],
+  "author": "PANTHRA",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "11.2.0"
+  }
+}

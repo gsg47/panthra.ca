@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insights & News | PANTHRA</title>
+    <link rel="canonical" href="https://panthra.ca/insights.html" />
+    <meta name="description" content="Stay informed with the latest cybersecurity news, threat reports, and expert insights from PANTHRA." />
+    <meta name="theme-color" content="#050507" />
+    
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=30" />
+  </head>
+  <body>
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="grid-overlay"></div>
+    <div class="scan-line"></div>
+
+    <!-- Navigation -->
+    <header class="header" id="header">
+      <nav class="nav">
+        <a href="index.html" class="nav-logo">
+          <img src="panthra_logo.png" alt="Panthra" class="logo-icon" />
+          <span class="logo-text">PANTHRA</span>
+        </a>
+        
+        <div class="nav-links">
+          <div class="nav-dropdown">
+            <a href="services.html" class="nav-link dropdown-trigger">
+              Services
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <div class="dropdown-grid">
+                <div class="dropdown-column">
+                  <a href="secure.html" class="dropdown-heading">Secure</a>
+                  <a href="secure.html#identity-access" class="dropdown-item">Identity & Access Security</a>
+                  <a href="secure.html#infrastructure" class="dropdown-item">Infrastructure Security</a>
+                  <a href="secure.html#data-endpoint" class="dropdown-item">Data & Endpoint Protection</a>
+                  <a href="secure.html#microsoft-365" class="dropdown-item">Microsoft 365 Security</a>
+                </div>
+                <div class="dropdown-column">
+                  <a href="monitor.html" class="dropdown-heading">Monitor</a>
+                  <a href="monitor.html#siem-soc" class="dropdown-item">Security Monitoring (SIEM/SOC)</a>
+                  <a href="monitor.html#threat-detection" class="dropdown-item">Threat Detection</a>
+                  <a href="monitor.html#vulnerability-management" class="dropdown-item">Vulnerability Management</a>
+                  <a href="monitor.html#security-reporting" class="dropdown-item">Security Reporting</a>
+                </div>
+                <div class="dropdown-column">
+                  <a href="respond.html" class="dropdown-heading">Respond</a>
+                  <a href="respond.html#incident-response" class="dropdown-item">Incident Response</a>
+                  <a href="respond.html#backup-disaster-recovery" class="dropdown-item">Backup & Disaster Recovery</a>
+                  <a href="respond.html#business-continuity" class="dropdown-item">Business Continuity</a>
+                  <a href="respond.html#emergency-response" class="dropdown-item">Emergency Response Planning</a>
+                </div>
+                <div class="dropdown-column">
+                  <a href="advise.html" class="dropdown-heading">Advise</a>
+                  <a href="advise.html#security-assessments" class="dropdown-item">Security Assessments</a>
+                  <a href="advise.html#compliance" class="dropdown-item">Compliance Services</a>
+                  <a href="advise.html#vciso" class="dropdown-item">Security Strategy / vCISO</a>
+                  <a href="advise.html#awareness-training" class="dropdown-item">Security Awareness & Training</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <a href="solutions.html" class="nav-link dropdown-trigger">
+              Solutions
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-small">
+              <div class="dropdown-simple">
+                <a href="solutions.html" class="dropdown-item dropdown-item-highlight">Solutions Overview</a>
+                <div class="dropdown-divider"></div>
+                <a href="solutions.html#approach" class="dropdown-item">The Predator Method™</a>
+                <a href="solutions.html#tiers" class="dropdown-item">Security Tiers</a>
+                <a href="solutions.html#industries" class="dropdown-item">Industry Solutions</a>
+              </div>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <a href="insights.html" class="nav-link dropdown-trigger">
+              Insights
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-small">
+              <div class="dropdown-simple">
+                <a href="insights.html" class="dropdown-item dropdown-item-highlight">All Articles</a>
+                <div class="dropdown-divider"></div>
+                <span class="dropdown-label">Latest Posts</span>
+                <a href="blog/ransomware-landscape-2026.html" class="dropdown-item">Ransomware Landscape 2026</a>
+                <a href="blog/zero-trust-implementation.html" class="dropdown-item">Zero Trust Implementation</a>
+                <a href="blog/incident-response-playbook.html" class="dropdown-item">Incident Response Playbook</a>
+                <a href="blog/multi-cloud-security.html" class="dropdown-item">Multi-Cloud Security</a>
+                <a href="blog/pipeda-compliance-2026.html" class="dropdown-item">PIPEDA Compliance 2026</a>
+                <a href="blog/security-first-culture.html" class="dropdown-item">Security-First Culture</a>
+              </div>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <a href="about.html" class="nav-link dropdown-trigger">
+              About
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-small">
+              <div class="dropdown-simple">
+                <a href="about.html#mission" class="dropdown-item">Our Mission</a>
+                <a href="about.html#story" class="dropdown-item">Our Story</a>
+                <a href="about.html#results" class="dropdown-item">Proven Results</a>
+                <a href="about.html#values" class="dropdown-item">Our Values</a>
+                <a href="about.html#commitment" class="dropdown-item">Our Commitment</a>
+                <a href="about.html#partners" class="dropdown-item">Partners & Standards</a>
+              </div>
+            </div>
+          </div>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+        
+        <a href="contact.html" class="nav-cta">
+          <span>Get Protected</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          Services
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </button>
+                <div class="mobile-dropdown-content">
+          <a href="secure.html" class="mobile-dropdown-item">Secure</a>
+          <a href="monitor.html" class="mobile-dropdown-item">Monitor</a>
+          <a href="respond.html" class="mobile-dropdown-item">Respond</a>
+          <a href="advise.html" class="mobile-dropdown-item">Advise</a>
+        </div>
+      </div>
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          Solutions
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="solutions.html" class="mobile-dropdown-item">Solutions Overview</a>
+          <a href="solutions.html#approach" class="mobile-dropdown-item">The Predator Method™</a>
+          <a href="solutions.html#tiers" class="mobile-dropdown-item">Security Tiers</a>
+          <a href="solutions.html#industries" class="mobile-dropdown-item">Industry Solutions</a>
+        </div>
+      </div>
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          Insights
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="insights.html" class="mobile-dropdown-item">All Articles</a>
+          <span class="mobile-dropdown-heading">Latest Posts</span>
+          <a href="blog/ransomware-landscape-2026.html" class="mobile-dropdown-item">Ransomware Landscape 2026</a>
+          <a href="blog/zero-trust-implementation.html" class="mobile-dropdown-item">Zero Trust Implementation</a>
+          <a href="blog/incident-response-playbook.html" class="mobile-dropdown-item">Incident Response Playbook</a>
+          <a href="blog/multi-cloud-security.html" class="mobile-dropdown-item">Multi-Cloud Security</a>
+          <a href="blog/pipeda-compliance-2026.html" class="mobile-dropdown-item">PIPEDA Compliance 2026</a>
+          <a href="blog/security-first-culture.html" class="mobile-dropdown-item">Security-First Culture</a>
+        </div>
+      </div>
+      <div class="mobile-dropdown">
+        <button class="mobile-link mobile-dropdown-trigger">
+          About
+          <svg class="mobile-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="about.html" class="mobile-dropdown-item">About Us Overview</a>
+          <a href="about.html#mission" class="mobile-dropdown-item">Our Mission</a>
+          <a href="about.html#story" class="mobile-dropdown-item">Our Story</a>
+          <a href="about.html#results" class="mobile-dropdown-item">Proven Results</a>
+          <a href="about.html#values" class="mobile-dropdown-item">Our Values</a>
+          <a href="about.html#commitment" class="mobile-dropdown-item">Our Commitment</a>
+          <a href="about.html#partners" class="mobile-dropdown-item">Partners & Standards</a>
+        </div>
+      </div>
+      <a href="contact.html" class="mobile-link">Contact</a>
+      <a href="contact.html" class="mobile-cta">Get Protected</a>
+    </div>
+
+    <!-- Insights Hero -->
+    <section class="insights-hero">
+      <div class="container">
+        <span class="section-tag">Knowledge Center</span>
+        <h1 class="insights-hero-title">Insights & News</h1>
+        <p class="insights-hero-desc">
+          Stay ahead of cyber threats with the latest news, research, and expert analysis from our security team.
+        </p>
+      </div>
+    </section>
+
+    <!-- Featured Stats -->
+    <section class="insights-stats">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">The Threat Landscape</span>
+          <h2 class="section-title">Cybercrime By The Numbers</h2>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value">
+              <span>$</span>
+              <span class="stat-counter" data-target="6.32">0</span>
+              <span class="stat-unit">M</span>
+            </div>
+            <div class="stat-desc">Average cost per data breach in Canada</div>
+            <div class="stat-source">IBM Cost of a Data Breach Report, 2025</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">
+              <span class="stat-counter" data-target="88">0</span>
+              <span class="stat-unit">%</span>
+            </div>
+            <div class="stat-desc">Of SMB breaches involved ransomware</div>
+            <div class="stat-source">Verizon DBIR, 2025</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">
+              <span class="stat-counter" data-target="20">0</span>
+              <span class="stat-unit">%</span>
+            </div>
+            <div class="stat-desc">Of SMBs would close after a successful cyberattack</div>
+            <div class="stat-source">VikingCloud SMB Threat Landscape, 2025</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">
+              <span class="stat-counter" data-target="258">0</span>
+              <span class="stat-unit"> days</span>
+            </div>
+            <div class="stat-desc">Average time to identify and contain a breach</div>
+            <div class="stat-source">IBM Cost of a Data Breach Report, 2024</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Posts -->
+    <section class="insights-blog">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Latest Articles</span>
+          <h2 class="section-title">From Our Security Experts</h2>
+        </div>
+        <div class="blog-grid">
+          <!-- Featured: Ransomware Landscape - Complex Scene -->
+          <a href="blog/ransomware-landscape-2026.html" class="blog-card featured">
+            <div class="blog-image">
+              <div class="blog-illustration">
+                <div class="blog-scene">
+                  <div class="hex-grid"></div>
+                  <div class="orbit orbit-1"></div>
+                  <div class="orbit orbit-2"></div>
+                  <div class="particle particle-1"></div>
+                  <div class="particle particle-2"></div>
+                  <div class="particle particle-3"></div>
+                  <div class="particle particle-4"></div>
+                  <div class="particle particle-5"></div>
+                  <div class="particle particle-6"></div>
+                  <div class="glow-accent glow-accent-1"></div>
+                  <div class="glow-accent glow-accent-2"></div>
+                  <!-- Ransomware Scene: Locked servers with attack vectors -->
+                  <svg class="main-illustration" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Server rack -->
+                    <rect x="70" y="40" width="60" height="80" rx="4" fill="rgba(139,92,246,0.1)" stroke="#8b5cf6" stroke-width="1.5"/>
+                    <rect x="75" y="48" width="50" height="12" rx="2" fill="rgba(139,92,246,0.2)" stroke="#a78bfa" stroke-width="1"/>
+                    <circle cx="82" cy="54" r="2" fill="#22c55e"/>
+                    <circle cx="89" cy="54" r="2" fill="#22c55e"/>
+                    <rect x="75" y="65" width="50" height="12" rx="2" fill="rgba(139,92,246,0.2)" stroke="#a78bfa" stroke-width="1"/>
+                    <circle cx="82" cy="71" r="2" fill="#ef4444"/>
+                    <circle cx="89" cy="71" r="2" fill="#ef4444"/>
+                    <rect x="75" y="82" width="50" height="12" rx="2" fill="rgba(139,92,246,0.2)" stroke="#a78bfa" stroke-width="1"/>
+                    <circle cx="82" cy="88" r="2" fill="#eab308"/>
+                    <circle cx="89" cy="88" r="2" fill="#22c55e"/>
+                    <!-- Lock overlay -->
+                    <rect x="85" y="98" width="30" height="24" rx="3" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="1.5"/>
+                    <path d="M93 98V93a7 7 0 0 1 14 0v5" stroke="#ef4444" stroke-width="1.5" fill="none"/>
+                    <circle cx="100" cy="110" r="3" fill="#ef4444"/>
+                    <!-- Attack arrows -->
+                    <path d="M30 50 L65 65" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4 2">
+                      <animate attributeName="stroke-dashoffset" values="0;-12" dur="1s" repeatCount="indefinite"/>
+                    </path>
+                    <path d="M25 90 L65 80" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4 2">
+                      <animate attributeName="stroke-dashoffset" values="0;-12" dur="1.2s" repeatCount="indefinite"/>
+                    </path>
+                    <path d="M170 55 L135 65" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4 2">
+                      <animate attributeName="stroke-dashoffset" values="0;-12" dur="0.8s" repeatCount="indefinite"/>
+                    </path>
+                    <!-- Threat nodes -->
+                    <circle cx="22" cy="48" r="10" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="1"/>
+                    <text x="22" y="52" text-anchor="middle" fill="#ef4444" font-size="10">!</text>
+                    <circle cx="18" cy="92" r="8" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="1"/>
+                    <text x="18" y="95" text-anchor="middle" fill="#ef4444" font-size="8">!</text>
+                    <circle cx="175" cy="52" r="10" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="1"/>
+                    <path d="M171 48 L179 56 M179 48 L171 56" stroke="#ef4444" stroke-width="1.5"/>
+                    <!-- Data flow lines -->
+                    <path d="M100 30 L100 35" stroke="#8b5cf6" stroke-width="1" opacity="0.5"/>
+                    <path d="M100 125 L100 135" stroke="#8b5cf6" stroke-width="1" opacity="0.5"/>
+                    <!-- Binary decoration -->
+                    <text x="45" y="130" fill="#8b5cf6" font-size="6" opacity="0.4" font-family="monospace">01001</text>
+                    <text x="140" y="35" fill="#8b5cf6" font-size="6" opacity="0.4" font-family="monospace">10110</text>
+                  </svg>
+                </div>
+              </div>
+              <span class="blog-category">Threat Intelligence</span>
+            </div>
+            <div class="blog-content">
+              <span class="blog-date">January 8, 2026</span>
+              <h3>Understanding the 2026 Ransomware Landscape</h3>
+              <p>An in-depth analysis of evolving ransomware tactics and how businesses can protect themselves against increasingly sophisticated attacks.</p>
+              <span class="blog-link">Read Article →</span>
+            </div>
+          </a>
+          
+          <!-- Multi-Cloud Security - Cloud Network Scene -->
+          <a href="blog/multi-cloud-security.html" class="blog-card">
+            <div class="blog-image">
+              <div class="blog-illustration">
+                <div class="blog-scene">
+                  <div class="hex-grid"></div>
+                  <div class="particle particle-1"></div>
+                  <div class="particle particle-2"></div>
+                  <div class="particle particle-3"></div>
+                  <div class="particle particle-4"></div>
+                  <div class="glow-accent glow-accent-1"></div>
+                  <!-- Multi-Cloud Scene: Connected cloud platforms -->
+                  <svg class="main-illustration" viewBox="0 0 180 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Central shield -->
+                    <path d="M90 45 L90 85 C90 95 75 105 75 105 L90 115 L105 105 C105 105 90 95 90 85" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="1.5"/>
+                    <path d="M90 50 L90 80" stroke="#22c55e" stroke-width="1.5"/>
+                    <path d="M82 65 L90 73 L102 58" stroke="#22c55e" stroke-width="2" stroke-linecap="round"/>
+                    <!-- AWS Cloud (left) -->
+                    <path d="M25 55 C15 55 10 65 15 72 C10 75 15 85 25 85 L50 85 C60 85 65 75 60 68 C65 60 55 50 45 55 C40 45 25 45 25 55Z" fill="rgba(255,153,0,0.15)" stroke="#ff9900" stroke-width="1.2"/>
+                    <text x="37" y="73" text-anchor="middle" fill="#ff9900" font-size="10" font-weight="bold">AWS</text>
+                    <!-- Azure Cloud (right) -->
+                    <path d="M130 55 C120 55 115 65 120 72 C115 75 120 85 130 85 L155 85 C165 85 170 75 165 68 C170 60 160 50 150 55 C145 45 130 45 130 55Z" fill="rgba(0,120,212,0.15)" stroke="#0078d4" stroke-width="1.2"/>
+                    <text x="142" y="73" text-anchor="middle" fill="#0078d4" font-size="9" font-weight="bold">Azure</text>
+                    <!-- GCP Cloud (bottom) -->
+                    <path d="M65 100 C55 100 50 108 55 113 C50 116 55 124 65 124 L115 124 C125 124 130 116 125 110 C130 103 120 95 110 100 C105 92 70 92 65 100Z" fill="rgba(66,133,244,0.15)" stroke="#4285f4" stroke-width="1.2"/>
+                    <text x="90" y="115" text-anchor="middle" fill="#4285f4" font-size="9" font-weight="bold">GCP</text>
+                    <!-- Connection lines -->
+                    <path d="M55 70 L75 75" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="3 2">
+                      <animate attributeName="stroke-dashoffset" values="0;-10" dur="1.5s" repeatCount="indefinite"/>
+                    </path>
+                    <path d="M125 70 L105 75" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="3 2">
+                      <animate attributeName="stroke-dashoffset" values="0;-10" dur="1.5s" repeatCount="indefinite"/>
+                    </path>
+                    <path d="M90 95 L90 100" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="3 2">
+                      <animate attributeName="stroke-dashoffset" values="0;-10" dur="1.5s" repeatCount="indefinite"/>
+                    </path>
+                    <!-- Lock icons on each cloud -->
+                    <rect x="33" y="78" width="8" height="6" rx="1" fill="none" stroke="#ff9900" stroke-width="0.8"/>
+                    <path d="M35 78 V76 a2 2 0 0 1 4 0 V78" stroke="#ff9900" stroke-width="0.8" fill="none"/>
+                    <rect x="138" y="78" width="8" height="6" rx="1" fill="none" stroke="#0078d4" stroke-width="0.8"/>
+                    <path d="M140 78 V76 a2 2 0 0 1 4 0 V78" stroke="#0078d4" stroke-width="0.8" fill="none"/>
+                  </svg>
+                </div>
+              </div>
+              <span class="blog-category">Cloud Security</span>
+            </div>
+            <div class="blog-content">
+              <span class="blog-date">January 3, 2026</span>
+              <h3>Securing Multi-Cloud Environments</h3>
+              <p>Best practices for maintaining security across AWS, Azure, and GCP deployments.</p>
+              <span class="blog-link">Read Article →</span>
+            </div>
+          </a>
+          
+          <!-- Security-First Culture - Team & Shield Scene -->
+          <a href="blog/security-first-culture.html" class="blog-card">
+            <div class="blog-image">
+              <div class="blog-illustration">
+                <div class="blog-scene">
+                  <div class="hex-grid"></div>
+                  <div class="particle particle-1"></div>
+                  <div class="particle particle-2"></div>
+                  <div class="particle particle-3"></div>
+                  <div class="glow-accent glow-accent-2"></div>
+                  <!-- Security Culture Scene: Team under protective shield -->
+                  <svg class="main-illustration" viewBox="0 0 180 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Large protective shield -->
+                    <path d="M90 20 L130 35 L130 70 C130 95 90 115 90 115 C90 115 50 95 50 70 L50 35 Z" fill="rgba(139,92,246,0.1)" stroke="#8b5cf6" stroke-width="1.5"/>
+                    <path d="M90 30 L120 42 L120 68 C120 88 90 103 90 103 C90 103 60 88 60 68 L60 42 Z" fill="rgba(139,92,246,0.05)" stroke="#a78bfa" stroke-width="1" stroke-dasharray="4 2"/>
+                    <!-- Checkmark on shield -->
+                    <path d="M78 60 L87 70 L105 48" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <!-- Person 1 (left) -->
+                    <circle cx="55" cy="95" r="8" fill="rgba(139,92,246,0.2)" stroke="#a78bfa" stroke-width="1.2"/>
+                    <path d="M55 87 L55 82" stroke="#a78bfa" stroke-width="1"/>
+                    <rect x="45" y="105" width="20" height="18" rx="3" fill="rgba(139,92,246,0.15)" stroke="#a78bfa" stroke-width="1"/>
+                    <!-- Person 2 (center) -->
+                    <circle cx="90" cy="88" r="10" fill="rgba(139,92,246,0.25)" stroke="#8b5cf6" stroke-width="1.5"/>
+                    <path d="M90 78 L90 72" stroke="#8b5cf6" stroke-width="1.2"/>
+                    <rect x="77" y="100" width="26" height="22" rx="4" fill="rgba(139,92,246,0.2)" stroke="#8b5cf6" stroke-width="1.2"/>
+                    <!-- Person 3 (right) -->
+                    <circle cx="125" cy="95" r="8" fill="rgba(139,92,246,0.2)" stroke="#a78bfa" stroke-width="1.2"/>
+                    <path d="M125 87 L125 82" stroke="#a78bfa" stroke-width="1"/>
+                    <rect x="115" y="105" width="20" height="18" rx="3" fill="rgba(139,92,246,0.15)" stroke="#a78bfa" stroke-width="1"/>
+                    <!-- Connection dots -->
+                    <circle cx="72" cy="100" r="2" fill="#8b5cf6"/>
+                    <circle cx="108" cy="100" r="2" fill="#8b5cf6"/>
+                    <path d="M65 105 L77 105" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="2 2"/>
+                    <path d="M103 105 L115 105" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="2 2"/>
+                    <!-- Training indicator -->
+                    <rect x="140" y="30" width="30" height="20" rx="3" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="1"/>
+                    <text x="155" y="42" text-anchor="middle" fill="#22c55e" font-size="6">95%</text>
+                    <text x="155" y="48" text-anchor="middle" fill="#22c55e" font-size="4">trained</text>
+                  </svg>
+                </div>
+              </div>
+              <span class="blog-category">Security Training</span>
+            </div>
+            <div class="blog-content">
+              <span class="blog-date">December 18, 2025</span>
+              <h3>Building a Security-First Culture</h3>
+              <p>How to transform your employees from vulnerabilities into your strongest defense.</p>
+              <span class="blog-link">Read Article →</span>
+            </div>
+          </a>
+          
+          <!-- PIPEDA Compliance - Canadian Privacy Data Protection Scene -->
+          <a href="blog/pipeda-compliance-2026.html" class="blog-card">
+            <div class="blog-image">
+              <div class="blog-illustration">
+                <div class="blog-scene">
+                  <div class="hex-grid"></div>
+                  <div class="particle particle-1"></div>
+                  <div class="particle particle-2"></div>
+                  <div class="particle particle-4"></div>
+                  <div class="glow-accent glow-accent-1"></div>
+                  <!-- PIPEDA Scene: Canadian privacy documents with maple leaf -->
+                  <svg class="main-illustration" viewBox="0 0 180 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Maple leaf background (subtle) -->
+                    <path d="M90 20 L93 30 L100 28 L97 35 L105 40 L98 42 L100 50 L90 45 L80 50 L82 42 L75 40 L83 35 L80 28 L87 30 Z" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="0.5"/>
+                    <!-- Document/folder stack -->
+                    <rect x="55" y="45" width="50" height="65" rx="4" fill="rgba(139,92,246,0.1)" stroke="#8b5cf6" stroke-width="1.2"/>
+                    <rect x="60" y="40" width="50" height="65" rx="4" fill="rgba(139,92,246,0.15)" stroke="#a78bfa" stroke-width="1.2"/>
+                    <rect x="65" y="35" width="50" height="65" rx="4" fill="rgba(139,92,246,0.2)" stroke="#8b5cf6" stroke-width="1.5"/>
+                    <!-- Document lines -->
+                    <line x1="72" y1="48" x2="108" y2="48" stroke="#a78bfa" stroke-width="1"/>
+                    <line x1="72" y1="56" x2="100" y2="56" stroke="#a78bfa" stroke-width="1"/>
+                    <line x1="72" y1="64" x2="105" y2="64" stroke="#a78bfa" stroke-width="1"/>
+                    <line x1="72" y1="72" x2="95" y2="72" stroke="#a78bfa" stroke-width="1"/>
+                    <!-- Privacy icon on document -->
+                    <circle cx="90" cy="85" r="8" fill="rgba(139,92,246,0.3)" stroke="#8b5cf6" stroke-width="1"/>
+                    <circle cx="90" cy="83" r="3" fill="#8b5cf6"/>
+                    <path d="M84 90 Q90 96 96 90" stroke="#8b5cf6" stroke-width="1.5" fill="none"/>
+                    <!-- Shield overlay -->
+                    <path d="M125 50 L150 60 L150 85 C150 100 125 110 125 110 C125 110 100 100 100 85 L100 60 Z" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="1.5"/>
+                    <path d="M117 75 L123 82 L137 65" stroke="#22c55e" stroke-width="2" stroke-linecap="round"/>
+                    <!-- Lock on documents -->
+                    <rect x="35" y="80" width="18" height="14" rx="2" fill="rgba(139,92,246,0.2)" stroke="#8b5cf6" stroke-width="1"/>
+                    <path d="M39 80 V76 a5 5 0 0 1 10 0 V80" stroke="#8b5cf6" stroke-width="1" fill="none"/>
+                    <circle cx="44" cy="87" r="2" fill="#8b5cf6"/>
+                    <!-- Compliance checkmarks -->
+                    <circle cx="155" cy="35" r="8" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="1"/>
+                    <path d="M152 35 L154 38 L159 32" stroke="#22c55e" stroke-width="1.5"/>
+                    <circle cx="30" cy="55" r="6" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="1"/>
+                    <path d="M28 55 L29 57 L33 53" stroke="#22c55e" stroke-width="1"/>
+                    <!-- PIPEDA label -->
+                    <rect x="65" y="115" width="50" height="14" rx="2" fill="rgba(139,92,246,0.2)" stroke="#8b5cf6" stroke-width="1"/>
+                    <text x="90" y="125" text-anchor="middle" fill="#a78bfa" font-size="6" font-weight="bold">PIPEDA</text>
+                  </svg>
+                </div>
+              </div>
+              <span class="blog-category">Compliance</span>
+            </div>
+            <div class="blog-content">
+              <span class="blog-date">December 12, 2025</span>
+              <h3>PIPEDA Compliance in 2026: What Canadian Businesses Need to Know</h3>
+              <p>New requirements and best practices for Canadian organizations navigating PIPEDA and provincial privacy laws.</p>
+              <span class="blog-link">Read Article →</span>
+            </div>
+          </a>
+          
+          <!-- Incident Response - Alert & Timeline Scene -->
+          <a href="blog/incident-response-playbook.html" class="blog-card">
+            <div class="blog-image">
+              <div class="blog-illustration">
+                <div class="blog-scene">
+                  <div class="hex-grid"></div>
+                  <div class="particle particle-1"></div>
+                  <div class="particle particle-2"></div>
+                  <div class="particle particle-5"></div>
+                  <div class="glow-accent glow-accent-1"></div>
+                  <!-- Incident Response Scene: Alert with timeline phases -->
+                  <svg class="main-illustration" viewBox="0 0 180 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Central alert -->
+                    <path d="M90 25 L115 70 L65 70 Z" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="2"/>
+                    <text x="90" y="55" text-anchor="middle" fill="#ef4444" font-size="20" font-weight="bold">!</text>
+                    <circle cx="90" cy="47" r="25" fill="none" stroke="#ef4444" stroke-width="1" stroke-dasharray="4 2">
+                      <animate attributeName="r" values="25;30;25" dur="2s" repeatCount="indefinite"/>
+                      <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <!-- Timeline bar -->
+                    <rect x="25" y="85" width="130" height="4" rx="2" fill="rgba(139,92,246,0.2)"/>
+                    <!-- Phase markers -->
+                    <circle cx="35" cy="87" r="8" fill="rgba(139,92,246,0.3)" stroke="#8b5cf6" stroke-width="1.5"/>
+                    <text x="35" y="90" text-anchor="middle" fill="#8b5cf6" font-size="8" font-weight="bold">1</text>
+                    <text x="35" y="105" text-anchor="middle" fill="#a78bfa" font-size="5">Detect</text>
+                    <circle cx="65" cy="87" r="8" fill="rgba(139,92,246,0.3)" stroke="#8b5cf6" stroke-width="1.5"/>
+                    <text x="65" y="90" text-anchor="middle" fill="#8b5cf6" font-size="8" font-weight="bold">2</text>
+                    <text x="65" y="105" text-anchor="middle" fill="#a78bfa" font-size="5">Contain</text>
+                    <circle cx="95" cy="87" r="8" fill="rgba(139,92,246,0.3)" stroke="#8b5cf6" stroke-width="1.5"/>
+                    <text x="95" y="90" text-anchor="middle" fill="#8b5cf6" font-size="8" font-weight="bold">3</text>
+                    <text x="95" y="105" text-anchor="middle" fill="#a78bfa" font-size="5">Eradicate</text>
+                    <circle cx="125" cy="87" r="8" fill="rgba(34,197,94,0.3)" stroke="#22c55e" stroke-width="1.5"/>
+                    <text x="125" y="90" text-anchor="middle" fill="#22c55e" font-size="8" font-weight="bold">4</text>
+                    <text x="125" y="105" text-anchor="middle" fill="#22c55e" font-size="5">Recover</text>
+                    <circle cx="150" cy="87" r="8" fill="rgba(34,197,94,0.3)" stroke="#22c55e" stroke-width="1.5"/>
+                    <path d="M147 87 L149 90 L154 84" stroke="#22c55e" stroke-width="1.5"/>
+                    <text x="150" y="105" text-anchor="middle" fill="#22c55e" font-size="5">Review</text>
+                    <!-- Timer -->
+                    <circle cx="155" cy="35" r="12" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="1"/>
+                    <path d="M155 28 L155 35 L160 38" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round"/>
+                    <text x="155" y="52" text-anchor="middle" fill="#ef4444" font-size="5">&lt;5 min</text>
+                    <!-- Activity indicators -->
+                    <rect x="25" y="115" width="45" height="15" rx="2" fill="rgba(139,92,246,0.15)" stroke="#8b5cf6" stroke-width="1"/>
+                    <text x="47" y="125" text-anchor="middle" fill="#a78bfa" font-size="6">24/7 SOC</text>
+                  </svg>
+                </div>
+              </div>
+              <span class="blog-category">Incident Response</span>
+            </div>
+            <div class="blog-content">
+              <span class="blog-date">December 5, 2025</span>
+              <h3>The Complete Incident Response Playbook</h3>
+              <p>Step-by-step guide for handling security incidents effectively and minimizing damage.</p>
+              <span class="blog-link">Read Article →</span>
+            </div>
+          </a>
+          
+          <!-- Zero Trust - Verification Architecture Scene -->
+          <a href="blog/zero-trust-implementation.html" class="blog-card">
+            <div class="blog-image">
+              <div class="blog-illustration">
+                <div class="blog-scene">
+                  <div class="hex-grid"></div>
+                  <div class="particle particle-2"></div>
+                  <div class="particle particle-3"></div>
+                  <div class="particle particle-4"></div>
+                  <div class="particle particle-6"></div>
+                  <div class="glow-accent glow-accent-2"></div>
+                  <!-- Zero Trust Scene: Verification gates and access control -->
+                  <svg class="main-illustration" viewBox="0 0 180 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Central protected resource -->
+                    <rect x="70" y="50" width="40" height="40" rx="6" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="2"/>
+                    <rect x="78" y="58" width="24" height="24" rx="3" fill="rgba(34,197,94,0.1)" stroke="#22c55e" stroke-width="1"/>
+                    <path d="M90 62 L90 78" stroke="#22c55e" stroke-width="1.5"/>
+                    <path d="M82 70 L98 70" stroke="#22c55e" stroke-width="1.5"/>
+                    <!-- Verification gate 1 (left) -->
+                    <rect x="20" y="55" width="30" height="30" rx="4" fill="rgba(139,92,246,0.2)" stroke="#8b5cf6" stroke-width="1.5"/>
+                    <circle cx="35" cy="65" r="6" fill="none" stroke="#a78bfa" stroke-width="1"/>
+                    <circle cx="35" cy="63" r="2" fill="#a78bfa"/>
+                    <path d="M30 72 Q35 78 40 72" stroke="#a78bfa" stroke-width="1" fill="none"/>
+                    <text x="35" y="82" text-anchor="middle" fill="#8b5cf6" font-size="5">Identity</text>
+                    <!-- Verification gate 2 (right) -->
+                    <rect x="130" y="55" width="30" height="30" rx="4" fill="rgba(139,92,246,0.2)" stroke="#8b5cf6" stroke-width="1.5"/>
+                    <rect x="138" y="62" width="14" height="10" rx="2" fill="none" stroke="#a78bfa" stroke-width="1"/>
+                    <circle cx="142" cy="67" r="1.5" fill="#22c55e"/>
+                    <circle cx="148" cy="67" r="1.5" fill="#22c55e"/>
+                    <text x="145" y="82" text-anchor="middle" fill="#8b5cf6" font-size="5">Device</text>
+                    <!-- Verification gate 3 (top) -->
+                    <rect x="75" y="15" width="30" height="25" rx="4" fill="rgba(139,92,246,0.2)" stroke="#8b5cf6" stroke-width="1.5"/>
+                    <circle cx="90" cy="25" r="7" fill="none" stroke="#a78bfa" stroke-width="1"/>
+                    <text x="90" y="28" text-anchor="middle" fill="#a78bfa" font-size="8">?</text>
+                    <text x="90" y="45" text-anchor="middle" fill="#8b5cf6" font-size="5">Context</text>
+                    <!-- Verification gate 4 (bottom) -->
+                    <rect x="75" y="100" width="30" height="25" rx="4" fill="rgba(139,92,246,0.2)" stroke="#8b5cf6" stroke-width="1.5"/>
+                    <rect x="82" y="107" width="16" height="12" rx="2" fill="none" stroke="#a78bfa" stroke-width="1"/>
+                    <path d="M85 113 L88 116 L95 108" stroke="#22c55e" stroke-width="1.5"/>
+                    <text x="90" y="135" text-anchor="middle" fill="#8b5cf6" font-size="5">Policy</text>
+                    <!-- Connection arrows with checkpoints -->
+                    <path d="M50 70 L68 70" stroke="#8b5cf6" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                    <circle cx="59" cy="70" r="3" fill="#22c55e"/>
+                    <path d="M112 70 L130 70" stroke="#8b5cf6" stroke-width="1.5"/>
+                    <circle cx="121" cy="70" r="3" fill="#22c55e"/>
+                    <path d="M90 40 L90 50" stroke="#8b5cf6" stroke-width="1.5"/>
+                    <circle cx="90" cy="45" r="3" fill="#22c55e"/>
+                    <path d="M90 90 L90 100" stroke="#8b5cf6" stroke-width="1.5"/>
+                    <circle cx="90" cy="95" r="3" fill="#22c55e"/>
+                    <!-- "Never Trust" label -->
+                    <rect x="15" y="110" width="50" height="16" rx="3" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="1"/>
+                    <text x="40" y="121" text-anchor="middle" fill="#ef4444" font-size="6">Never Trust</text>
+                    <!-- "Always Verify" label -->
+                    <rect x="115" y="110" width="50" height="16" rx="3" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="1"/>
+                    <text x="140" y="121" text-anchor="middle" fill="#22c55e" font-size="6">Always Verify</text>
+                  </svg>
+                </div>
+              </div>
+              <span class="blog-category">Best Practices</span>
+            </div>
+            <div class="blog-content">
+              <span class="blog-date">November 22, 2025</span>
+              <h3>Zero Trust Implementation Guide</h3>
+              <p>A practical guide to implementing Zero Trust architecture for organizations of any size.</p>
+              <span class="blog-link">Read Article →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="insights-newsletter">
+      <div class="container">
+        <div class="newsletter-content">
+          <h2>Stay Informed</h2>
+          <p>Subscribe to our newsletter for the latest cybersecurity insights, threat alerts, and industry news.</p>
+          <form class="newsletter-form" id="newsletterForm" novalidate>
+            <input type="email" name="email" placeholder="Enter your email" aria-label="Email address" required />
+            <button type="submit" class="btn-primary">
+              <span>Subscribe</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </form>
+          <p class="newsletter-status" id="newsletterStatus" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="footer-logo">
+              <span class="logo-text">PANTHRA</span>
+            </a>
+            <p class="footer-tagline">Silent protection. Absolute security.</p>
+            <div class="footer-contact">
+              <a href="mailto:contact@panthra.ca" class="footer-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                <span>contact@panthra.ca</span>
+              </a>
+              <a href="tel:+15878160621" class="footer-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                <span>+1 587-816-0621</span>
+              </a>
+              <div class="footer-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>421 7 Ave SW, Calgary, AB T2P 4K9</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="footer-links">
+            <h4>Services</h4>
+            <a href="services.html">All Services</a>
+            <a href="secure.html">Secure</a>
+            <a href="monitor.html">Monitor</a>
+            <a href="respond.html">Respond</a>
+            <a href="advise.html">Advise</a>
+          </div>
+          
+          <div class="footer-links">
+            <h4>Solutions</h4>
+            <a href="solutions.html">Solutions Overview</a>
+            <a href="solutions.html#tiers">Security Tiers</a>
+            <a href="solutions.html#industries">Industry Solutions</a>
+            <a href="solutions.html#approach">The Predator Method™</a>
+          </div>
+          
+          <div class="footer-links">
+            <h4>About</h4>
+            <a href="about.html">About Us</a>
+            <a href="about.html#story">Our Story</a>
+            <a href="about.html#values">Our Values</a>
+            <a href="about.html#commitment">Our Commitment</a>
+          </div>
+          
+          <div class="footer-links">
+            <h4>Resources</h4>
+            <a href="insights.html">Insights</a>
+            <a href="contact.html">Contact</a>
+            <a href="about.html#partners">Partners</a>
+            <a href="solutions.html#tiers">Plans</a>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>&copy; 2026 PANTHRA Cybersecurity. All rights reserved.</p>
+          <div class="footer-legal">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="security.html">Security</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js?v=4"></script>
+    <script src="chatbot.js"></script>
+  </body>
+</html>
+
