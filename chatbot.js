@@ -6,6 +6,7 @@ class PanthraChatbot {
   constructor() {
     this.isOpen = false;
     this.isExpanded = false;
+    this.originalViewport = null;
     this.conversationHistory = [];
     this.init();
   }
@@ -108,6 +109,37 @@ class PanthraChatbot {
   isMobileSheet() {
     const dragZone = document.getElementById('chatbotSheetDragZone');
     return dragZone && getComputedStyle(dragZone).display !== 'none';
+  }
+
+  isMobileViewport() {
+    return window.matchMedia('(max-width: 768px)').matches;
+  }
+
+  lockMobileViewport() {
+    if (!this.isMobileViewport()) return;
+
+    const meta = document.querySelector('meta[name="viewport"]');
+    if (!meta) return;
+
+    if (this.originalViewport == null) {
+      this.originalViewport = meta.getAttribute('content') || '';
+    }
+
+    meta.setAttribute(
+      'content',
+      'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover'
+    );
+  }
+
+  unlockMobileViewport() {
+    if (this.originalViewport == null) return;
+
+    const meta = document.querySelector('meta[name="viewport"]');
+    if (meta) {
+      meta.setAttribute('content', this.originalViewport);
+    }
+
+    this.originalViewport = null;
   }
 
   getPointerY(event) {
@@ -311,10 +343,13 @@ class PanthraChatbot {
     container?.classList.add('chatbot-open');
     this.isOpen = true;
     this.setSheetExpanded(false);
+    this.lockMobileViewport();
     
     setTimeout(() => {
       window?.classList.add('chatbot-window-visible');
-      input?.focus();
+      if (!this.isMobileViewport()) {
+        input?.focus();
+      }
     }, 10);
   }
 
@@ -325,6 +360,7 @@ class PanthraChatbot {
     window?.classList.remove('chatbot-window-visible');
     this.resetSheetStyles();
     this.setSheetExpanded(false);
+    this.unlockMobileViewport();
     setTimeout(() => {
       container?.classList.remove('chatbot-open');
       this.isOpen = false;

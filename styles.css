@@ -8963,10 +8963,12 @@ a.footer-contact-item:hover {
   border: 1px solid var(--border-color);
   border-radius: 12px;
   color: var(--text-primary);
-  font-size: 14px;
+  font-size: 16px;
   font-family: var(--font-main);
   outline: none;
   transition: all var(--transition-base);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 .chatbot-input:focus {
@@ -9050,11 +9052,15 @@ a.footer-contact-item:hover {
     height: 52dvh;
     max-height: 52dvh;
     border-radius: 20px 20px 0 0;
+    transform: none;
     transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
       max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
       opacity var(--transition-base),
-      transform var(--transition-base),
       visibility var(--transition-base);
+  }
+
+  .chatbot-window.chatbot-window-visible {
+    transform: none;
   }
 
   .chatbot-window.chatbot-window-expanded {
@@ -9103,10 +9109,6 @@ a.footer-contact-item:hover {
   .chatbot-input-container {
     padding: 16px;
     padding-bottom: max(16px, env(safe-area-inset-bottom, 0px));
-  }
-
-  .chatbot-input {
-    font-size: 16px;
   }
 
   .chatbot-message-user .message-content,
