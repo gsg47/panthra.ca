@@ -104,64 +104,133 @@ class PanthraChatbot {
   }
 
   isMobileSheet() {
-    return window.matchMedia('(max-width: 480px)').matches;
+    return window.matchMedia('(max-width: 768px)').matches;
+  }
+
+  getSheetViewportHeight() {
+    return window.visualViewport?.height || window.innerHeight;
+  }
+
+  getSheetCompactHeight() {
+    return this.getSheetViewportHeight() * 0.52;
+  }
+
+  getSheetExpandedHeight() {
+    const viewport = this.getSheetViewportHeight();
+    const safeBottom = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('env(safe-area-inset-bottom)')) || 0;
+    return viewport - safeBottom;
+  }
+
+  resetSheetStyles() {
+    const chatWindow = document.getElementById('chatbotWindow');
+    if (!chatWindow) return;
+
+    chatWindow.classList.remove('chatbot-window-dragging');
+    chatWindow.style.height = '';
+    chatWindow.style.maxHeight = '';
   }
 
   setSheetExpanded(expanded) {
     const chatWindow = document.getElementById('chatbotWindow');
     if (!chatWindow) return;
 
+    this.resetSheetStyles();
     this.isExpanded = expanded;
     chatWindow.classList.toggle('chatbot-window-expanded', expanded);
+  }
+
+  applySheetHeight(height) {
+    const chatWindow = document.getElementById('chatbotWindow');
+    if (!chatWindow) return;
+
+    chatWindow.classList.add('chatbot-window-dragging');
+    chatWindow.classList.remove('chatbot-window-expanded');
+    chatWindow.style.height = `${height}px`;
+    chatWindow.style.maxHeight = `${height}px`;
   }
 
   attachSheetGestures() {
     const chatWindow = document.getElementById('chatbotWindow');
     const handle = document.getElementById('chatbotSheetHandle');
+    const header = chatWindow?.querySelector('.chatbot-header');
     if (!chatWindow || !handle) return;
 
-    let startY = 0;
-    let dragging = false;
-    let didDrag = false;
+    this.sheetDrag = {
+      active: false,
+      moved: false,
+      startY: 0,
+      startHeight: 0,
+      currentHeight: 0,
+    };
+
+    const dragZone = [handle, header].filter(Boolean);
 
     const onStart = (event) => {
       if (!this.isMobileSheet() || !this.isOpen) return;
-      dragging = true;
-      didDrag = false;
-      startY = event.touches[0].clientY;
+      if (event.target.closest('.chatbot-close')) return;
+
+      const touch = event.touches[0];
+      this.sheetDrag.active = true;
+      this.sheetDrag.moved = false;
+      this.sheetDrag.startY = touch.clientY;
+      this.sheetDrag.startHeight = chatWindow.getBoundingClientRect().height;
+      this.sheetDrag.currentHeight = this.sheetDrag.startHeight;
+      chatWindow.classList.add('chatbot-window-dragging');
     };
 
     const onMove = (event) => {
-      if (!dragging) return;
-      if (Math.abs(event.touches[0].clientY - startY) > 10) {
-        didDrag = true;
+      if (!this.sheetDrag.active) return;
+
+      const touch = event.touches[0];
+      const deltaY = touch.clientY - this.sheetDrag.startY;
+      if (Math.abs(deltaY) > 6) {
+        this.sheetDrag.moved = true;
       }
+      const minHeight = this.getSheetCompactHeight() * 0.55;
+      const maxHeight = this.getSheetExpandedHeight();
+      const nextHeight = Math.min(maxHeight, Math.max(minHeight, this.sheetDrag.startHeight - deltaY));
+
+      this.sheetDrag.currentHeight = nextHeight;
+      this.applySheetHeight(nextHeight);
       event.preventDefault();
     };
 
-    const onEnd = (event) => {
-      if (!dragging) return;
-      dragging = false;
+    const onEnd = () => {
+      if (!this.sheetDrag.active) return;
+      this.sheetDrag.active = false;
 
-      const delta = startY - event.changedTouches[0].clientY;
+      const compactHeight = this.getSheetCompactHeight();
+      const expandedHeight = this.getSheetExpandedHeight();
+      const currentHeight = this.sheetDrag.currentHeight;
+      const closeThreshold = compactHeight * 0.72;
+      const expandThreshold = (compactHeight + expandedHeight) / 2;
 
-      if (delta > 50) {
-        this.setSheetExpanded(true);
-      } else if (delta < -50) {
-        if (this.isExpanded) {
-          this.setSheetExpanded(false);
-        } else {
-          this.close();
-        }
+      if (currentHeight < closeThreshold) {
+        this.resetSheetStyles();
+        this.close();
+        return;
       }
+
+      if (currentHeight >= expandThreshold) {
+        this.setSheetExpanded(true);
+      } else {
+        this.setSheetExpanded(false);
+      }
+
+      setTimeout(() => {
+        this.sheetDrag.moved = false;
+      }, 80);
     };
 
-    handle.addEventListener('touchstart', onStart, { passive: true });
-    handle.addEventListener('touchmove', onMove, { passive: false });
-    handle.addEventListener('touchend', onEnd);
+    dragZone.forEach((element) => {
+      element.addEventListener('touchstart', onStart, { passive: true });
+      element.addEventListener('touchmove', onMove, { passive: false });
+      element.addEventListener('touchend', onEnd);
+      element.addEventListener('touchcancel', onEnd);
+    });
 
     handle.addEventListener('click', (event) => {
-      if (didDrag) {
+      if (this.sheetDrag.moved) {
         event.preventDefault();
         return;
       }
@@ -194,6 +263,7 @@ class PanthraChatbot {
     const window = document.getElementById('chatbotWindow');
     
     window?.classList.remove('chatbot-window-visible');
+    this.resetSheetStyles();
     this.setSheetExpanded(false);
     setTimeout(() => {
       container?.classList.remove('chatbot-open');
