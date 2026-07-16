@@ -27,6 +27,45 @@ async function sendViaCloudflareEmail(env, message) {
   return env.EMAIL.send(message);
 }
 
+async function sendViaCloudflareApi(env, message) {
+  const token = env.CLOUDFLARE_API_TOKEN;
+  const accountId = env.CLOUDFLARE_ACCOUNT_ID;
+
+  if (!token || !accountId) {
+    throw new Error('Cloudflare Email API is not configured.');
+  }
+
+  const response = await fetch(
+    `https://api.cloudflare.com/client/v4/accounts/${accountId}/email/sending/send`,
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        to: message.to,
+        from: message.from,
+        subject: message.subject,
+        text: message.text,
+        reply_to: message.replyTo,
+      }),
+    }
+  );
+
+  let result = null;
+  try {
+    result = await response.json();
+  } catch (_) {
+    result = null;
+  }
+
+  if (!response.ok || !result?.success) {
+    const details = result?.errors?.[0]?.message || response.statusText;
+    throw new Error(`Cloudflare Email API error: ${details}`);
+  }
+}
+
 async function sendViaResend(env, message) {
   if (!env.RESEND_API_KEY) {
     throw new Error('RESEND_API_KEY is not configured.');
@@ -107,14 +146,14 @@ export async function onRequestPost({ request, env }) {
   };
 
   try {
-    try {
+    if (env.EMAIL?.send) {
       await sendViaCloudflareEmail(env, emailMessage);
-    } catch (cloudflareError) {
-      if (!env.RESEND_API_KEY) {
-        throw cloudflareError;
-      }
-
+    } else if (env.CLOUDFLARE_API_TOKEN && env.CLOUDFLARE_ACCOUNT_ID) {
+      await sendViaCloudflareApi(env, emailMessage);
+    } else if (env.RESEND_API_KEY) {
       await sendViaResend(env, emailMessage);
+    } else {
+      throw new Error('No email provider configured.');
     }
 
     return json({
