@@ -16,7 +16,6 @@ OUT_DIR = ROOT / "assets"
 WIDTH = 1920
 HEIGHT = 1080
 BG = (5, 5, 7)  # #050507
-EYE = (0, 0, 0)
 
 
 def load_logo_with_eye(size: int) -> Image.Image:
@@ -26,17 +25,17 @@ def load_logo_with_eye(size: int) -> Image.Image:
     alpha = arr[:, :, 3]
 
     visible = alpha > 20
-    purple = visible & (rgb[:, :, 0] > 80) & (rgb[:, :, 2] > 120) & (rgb[:, :, 1] < 80)
+    # Original logo marks the eye in purple — cut it out so background shows through.
+    eye = visible & (rgb[:, :, 0] > 80) & (rgb[:, :, 2] > 120) & (rgb[:, :, 1] < 80)
 
     out = np.zeros_like(arr)
-    out[:, :, 3] = np.where(visible, alpha, 0)
-    body = visible & ~purple
+    body = visible & ~eye
     out[body, 0] = 255
     out[body, 1] = 255
     out[body, 2] = 255
-    out[purple, 0] = EYE[0]
-    out[purple, 1] = EYE[1]
-    out[purple, 2] = EYE[2]
+    out[body, 3] = alpha[body]
+    # Eye: fully transparent cutout
+    out[eye, 3] = 0
 
     processed = Image.fromarray(out, "RGBA")
     processed.thumbnail((size, size), Image.Resampling.LANCZOS)
