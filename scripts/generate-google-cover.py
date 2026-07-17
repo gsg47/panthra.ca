@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -19,13 +20,30 @@ BG = (5, 5, 7)  # #050507
 PURPLE = (147, 51, 234)  # #9333ea
 
 
-def load_white_logo(size: int) -> Image.Image:
+def load_logo_with_black_eye(size: int) -> Image.Image:
     logo = Image.open(LOGO_PATH).convert("RGBA")
-    alpha = logo.split()[3]
-    white = Image.new("RGBA", logo.size, (255, 255, 255, 255))
-    white.putalpha(alpha)
-    white.thumbnail((size, size), Image.Resampling.LANCZOS)
-    return white
+    arr = np.array(logo, dtype=np.uint8)
+    rgb = arr[:, :, :3]
+    alpha = arr[:, :, 3]
+
+    visible = alpha > 20
+    r, g, b = rgb[:, :, 0], rgb[:, :, 1], rgb[:, :, 2]
+    eye = visible & (r > 80) & (b > 120) & (g < 80)
+
+    out = np.zeros_like(arr)
+    body = visible & ~eye
+    out[body, 0] = 255
+    out[body, 1] = 255
+    out[body, 2] = 255
+    out[body, 3] = alpha[body]
+    out[eye, 0] = 0
+    out[eye, 1] = 0
+    out[eye, 2] = 0
+    out[eye, 3] = alpha[eye]
+
+    processed = Image.fromarray(out, "RGBA")
+    processed.thumbnail((size, size), Image.Resampling.LANCZOS)
+    return processed
 
 
 def make_glow(size: int) -> Image.Image:
@@ -52,7 +70,7 @@ def build_cover(width: int, height: int) -> Image.Image:
     overlay = Image.new("RGBA", (width, height), (0, 0, 0, 0))
 
     logo_size = int(height * 0.62)
-    logo = load_white_logo(logo_size)
+    logo = load_logo_with_black_eye(logo_size)
     glow = make_glow(int(logo_size * 1.15))
 
     font_size = int(height * 0.19)
