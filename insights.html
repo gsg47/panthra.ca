@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=37" />
+    <link rel="stylesheet" href="styles.css?v=38" />
   </head>
   <body>
     <div class="cursor-glow" id="cursorGlow"></div>
@@ -630,6 +630,7 @@
           <h2>Stay Informed</h2>
           <p>Subscribe to our newsletter for the latest cybersecurity insights, threat alerts, and industry news.</p>
           <form class="newsletter-form" id="newsletterForm" novalidate>
+            <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
             <input type="email" name="email" placeholder="Enter your email" aria-label="Email address" required />
             <button type="submit" class="btn-primary">
               <span>Subscribe</span>
@@ -638,6 +639,7 @@
               </svg>
             </button>
           </form>
+          <div id="newsletterTurnstile" class="contact-turnstile turnstile-wrap"></div>
           <p class="newsletter-status" id="newsletterStatus" role="status" aria-live="polite"></p>
         </div>
       </div>
@@ -713,7 +715,7 @@
       </div>
     </footer>
 
-    <script src="script.js?v=9"></script>
+    <script src="script.js?v=10"></script>
     <script src="chatbot.js?v=3"></script>
   </body>
 </html>

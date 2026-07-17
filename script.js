@@ -313,6 +313,7 @@ function initScrollAnimations() {
    ============================================ */
 const PANTHRA_CONTACT_EMAIL = 'contact@panthra.ca';
 const PANTHRA_CONTACT_API = '/api/contact';
+const PANTHRA_NEWSLETTER_API = '/api/newsletter';
 const PANTHRA_FORM_SUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${PANTHRA_CONTACT_EMAIL}`;
 
 function loadTurnstileScript() {
@@ -343,6 +344,39 @@ async function getTurnstileSiteKey() {
     return config.turnstileSiteKey || '';
   } catch (_) {
     return '';
+  }
+}
+
+async function setupTurnstileWidget(containerId) {
+  const siteKey = await getTurnstileSiteKey();
+  const container = document.getElementById(containerId);
+  if (!siteKey || !container) {
+    return { enabled: false, widgetId: null };
+  }
+
+  try {
+    await loadTurnstileScript();
+    const widgetId = window.turnstile.render(container, {
+      sitekey: siteKey,
+      theme: 'dark',
+    });
+    return { enabled: true, widgetId };
+  } catch (error) {
+    console.error('Turnstile failed to load:', error);
+    return { enabled: false, widgetId: null };
+  }
+}
+
+function getTurnstileToken(turnstileState) {
+  if (!turnstileState.enabled || turnstileState.widgetId == null) {
+    return '';
+  }
+  return window.turnstile.getResponse(turnstileState.widgetId) || '';
+}
+
+function resetTurnstileWidget(turnstileState) {
+  if (turnstileState.enabled && turnstileState.widgetId != null) {
+    window.turnstile.reset(turnstileState.widgetId);
   }
 }
 
@@ -454,23 +488,10 @@ function initContactForm() {
   form.setAttribute('action', PANTHRA_FORM_SUBMIT_ENDPOINT);
   form.setAttribute('method', 'POST');
 
-  let turnstileWidgetId = null;
-  let turnstileEnabled = false;
+  let turnstileState = { enabled: false, widgetId: null };
 
-  getTurnstileSiteKey().then(async (siteKey) => {
-    const container = document.getElementById('contactTurnstile');
-    if (!siteKey || !container) return;
-
-    try {
-      await loadTurnstileScript();
-      turnstileWidgetId = window.turnstile.render(container, {
-        sitekey: siteKey,
-        theme: 'dark',
-      });
-      turnstileEnabled = true;
-    } catch (error) {
-      console.error('Turnstile failed to load:', error);
-    }
+  setupTurnstileWidget('contactTurnstile').then((state) => {
+    turnstileState = state;
   });
   
   form.addEventListener('submit', async (e) => {
@@ -479,13 +500,10 @@ function initContactForm() {
     const submitBtn = form.querySelector('.btn-submit');
     const originalText = submitBtn.innerHTML;
 
-    let turnstileToken = '';
-    if (turnstileEnabled && turnstileWidgetId != null) {
-      turnstileToken = window.turnstile.getResponse(turnstileWidgetId) || '';
-      if (!turnstileToken) {
-        alert('Please complete the security verification.');
-        return;
-      }
+    let turnstileToken = getTurnstileToken(turnstileState);
+    if (turnstileState.enabled && !turnstileToken) {
+      alert('Please complete the security verification.');
+      return;
     }
     
     submitBtn.innerHTML = `
@@ -506,9 +524,7 @@ function initContactForm() {
       const result = await submitContactForm(form, turnstileToken);
       form.reset();
 
-      if (turnstileEnabled && turnstileWidgetId != null) {
-        window.turnstile.reset(turnstileWidgetId);
-      }
+      resetTurnstileWidget(turnstileState);
 
       if (modal) {
         modal.classList.add('active');
@@ -516,9 +532,7 @@ function initContactForm() {
         alert(result?.message || 'Thank you, your message has been sent.');
       }
     } catch (error) {
-      if (turnstileEnabled && turnstileWidgetId != null) {
-        window.turnstile.reset(turnstileWidgetId);
-      }
+      resetTurnstileWidget(turnstileState);
 
       alert(
         `${error.message || 'Unable to send your message right now.'} Please email ${PANTHRA_CONTACT_EMAIL} or call +1 587-816-0621.`
@@ -562,6 +576,12 @@ function initNewsletterForm() {
   const submitBtn = form.querySelector('button[type="submit"]');
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+  let turnstileState = { enabled: false, widgetId: null };
+
+  setupTurnstileWidget('newsletterTurnstile').then((state) => {
+    turnstileState = state;
+  });
+
   const setStatus = (message, type) => {
     if (!status) return;
     status.textContent = message;
@@ -579,42 +599,77 @@ function initNewsletterForm() {
       return;
     }
 
-    // A subscribe backend can be wired in by setting window.PANTHRA_NEWSLETTER_ENDPOINT.
-    // Without it, we fall back to a mailto so the intent still reaches the team.
-    const endpoint = window.PANTHRA_NEWSLETTER_ENDPOINT;
-
-    if (endpoint) {
-      const originalText = submitBtn ? submitBtn.innerHTML : '';
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span>Subscribing...</span>';
-      }
-      try {
-        const response = await fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ email })
-        });
-        if (!response.ok) throw new Error();
-        form.reset();
-        setStatus("You're subscribed. Watch your inbox for our next update.", 'success');
-      } catch (_) {
-        setStatus('Something went wrong. Please email contact@panthra.ca to subscribe.', 'error');
-      } finally {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalText;
-        }
-      }
+    const turnstileToken = getTurnstileToken(turnstileState);
+    if (turnstileState.enabled && !turnstileToken) {
+      setStatus('Please complete the security verification.', 'error');
       return;
     }
 
-    // Fallback: open the visitor's email client pre-addressed to us.
-    const subject = encodeURIComponent('Newsletter signup');
-    const body = encodeURIComponent(`Please add ${email} to the PANTHRA newsletter.`);
-    window.location.href = `mailto:contact@panthra.ca?subject=${subject}&body=${body}`;
-    form.reset();
-    setStatus("Thanks! We've opened your email app to confirm your subscription.", 'success');
+    const honey = String(new FormData(form).get('_honey') || '').trim();
+    const verifyEndpoint = window.PANTHRA_NEWSLETTER_ENDPOINT || PANTHRA_NEWSLETTER_API;
+    const formSubmitEndpoint = window.PANTHRA_FORM_SUBMIT_ENDPOINT || PANTHRA_FORM_SUBMIT_ENDPOINT;
+
+    const originalText = submitBtn ? submitBtn.innerHTML : '';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Subscribing...</span>';
+    }
+
+    try {
+      const verifyResponse = await fetch(verifyEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ email, turnstileToken, _honey: honey }),
+      });
+
+      let verifyResult = null;
+      try {
+        verifyResult = await verifyResponse.json();
+      } catch (_) {
+        verifyResult = null;
+      }
+
+      if (!verifyResponse.ok || !verifyResult?.success) {
+        throw new Error(verifyResult?.message || 'Security verification failed. Please try again.');
+      }
+
+      const sendResponse = await fetch(formSubmitEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          email,
+          _subject: 'Newsletter signup — PANTHRA website',
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      });
+
+      let sendResult = null;
+      try {
+        sendResult = await sendResponse.json();
+      } catch (_) {
+        sendResult = null;
+      }
+
+      if (!sendResponse.ok || !isFormSubmitSuccess(sendResult)) {
+        throw new Error(sendResult?.message || 'Unable to subscribe right now.');
+      }
+
+      form.reset();
+      resetTurnstileWidget(turnstileState);
+      setStatus("You're subscribed. Watch your inbox for our next update.", 'success');
+    } catch (error) {
+      resetTurnstileWidget(turnstileState);
+      setStatus(
+        `${error.message || 'Something went wrong.'} Please email ${PANTHRA_CONTACT_EMAIL} to subscribe.`,
+        'error'
+      );
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
+    }
   });
 }
 
