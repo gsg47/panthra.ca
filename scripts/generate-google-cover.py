@@ -5,49 +5,42 @@ from __future__ import annotations
 
 from pathlib import Path
 
-import numpy as np
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 LOGO_PATH = ROOT / "panthra_logo.png"
 FONT_PATH = Path("/usr/share/fonts/truetype/macos/Inter-Bold.ttf")
 OUT_DIR = ROOT / "assets"
 
+# Google Business cover: 16:9 recommended (1024x575 min, 1920x1080 ideal)
 WIDTH = 1920
 HEIGHT = 1080
 BG = (5, 5, 7)  # #050507
+PURPLE = (147, 51, 234)  # #9333ea
 
 
-def load_logo_with_eye(size: int) -> Image.Image:
+def load_white_logo(size: int) -> Image.Image:
     logo = Image.open(LOGO_PATH).convert("RGBA")
-    arr = np.array(logo, dtype=np.uint8)
-    rgb = arr[:, :, :3]
-    alpha = arr[:, :, 3]
+    alpha = logo.split()[3]
+    white = Image.new("RGBA", logo.size, (255, 255, 255, 255))
+    white.putalpha(alpha)
+    white.thumbnail((size, size), Image.Resampling.LANCZOS)
+    return white
 
-    visible = alpha > 20
-    r, g, b = rgb[:, :, 0], rgb[:, :, 1], rgb[:, :, 2]
 
-    # Only cut out the purple eye pixels from the source logo.
-    eye = visible & (r > 80) & (b > 120) & (g < 80)
-
-    out = np.zeros_like(arr)
-    body = visible & ~eye
-    out[body, 0] = 255
-    out[body, 1] = 255
-    out[body, 2] = 255
-    out[body, 3] = alpha[body]
-    out[eye, 3] = 0
-
-    processed = Image.fromarray(out, "RGBA")
-    processed.thumbnail((size, size), Image.Resampling.LANCZOS)
-    return processed
+def make_glow(size: int) -> Image.Image:
+    glow = Image.new("RGBA", (size, size), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(glow)
+    draw.ellipse((size * 0.08, size * 0.08, size * 0.92, size * 0.92), fill=(*PURPLE, 90))
+    return glow.filter(ImageFilter.GaussianBlur(radius=size * 0.09))
 
 
 def draw_brand_text(draw: ImageDraw.ImageDraw, x: int, y: int, font: ImageFont.FreeTypeFont) -> None:
+    text = "PANTHRA"
     letter_spacing = int(font.size * 0.08)
     cursor_x = x
 
-    for char in "PANTHRA":
+    for i, char in enumerate(text):
         draw.text((cursor_x + 3, y + 3), char, font=font, fill=(0, 0, 0, 160))
         draw.text((cursor_x, y), char, font=font, fill=(255, 255, 255, 245))
         bbox = draw.textbbox((0, 0), char, font=font)
@@ -59,7 +52,8 @@ def build_cover(width: int, height: int) -> Image.Image:
     overlay = Image.new("RGBA", (width, height), (0, 0, 0, 0))
 
     logo_size = int(height * 0.62)
-    logo = load_logo_with_eye(logo_size)
+    logo = load_white_logo(logo_size)
+    glow = make_glow(int(logo_size * 1.15))
 
     font_size = int(height * 0.19)
     font = ImageFont.truetype(str(FONT_PATH), font_size)
@@ -81,6 +75,9 @@ def build_cover(width: int, height: int) -> Image.Image:
     text_x = logo_x + logo_size + gap
     text_y = (height - text_h) // 2 - int(font_size * 0.08)
 
+    glow_x = logo_x - (glow.width - logo_size) // 2
+    glow_y = logo_y - (glow.height - logo_size) // 2
+    overlay.alpha_composite(glow, (glow_x, glow_y))
     overlay.alpha_composite(logo, (logo_x, logo_y))
 
     draw = ImageDraw.Draw(overlay)
@@ -93,10 +90,10 @@ def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     cover = build_cover(WIDTH, HEIGHT)
-    cover.save(OUT_DIR / "google-business-cover-1920x1080.png", "PNG")
-    cover.resize((1024, 576), Image.Resampling.LANCZOS).save(
-        OUT_DIR / "google-business-cover-1024x576.png", "PNG"
-    )
+    cover.save(OUT_DIR / "google-business-cover-1920x1080.png", "PNG", optimize=True)
+
+    cover_1024 = cover.resize((1024, 576), Image.Resampling.LANCZOS)
+    cover_1024.save(OUT_DIR / "google-business-cover-1024x576.png", "PNG", optimize=True)
 
     print("Created:")
     print(f"  {OUT_DIR / 'google-business-cover-1920x1080.png'}")
