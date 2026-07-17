@@ -6,7 +6,7 @@ from __future__ import annotations
 from pathlib import Path
 
 import numpy as np
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 LOGO_PATH = ROOT / "panthra_logo.png"
@@ -18,17 +18,6 @@ HEIGHT = 1080
 BG = (5, 5, 7)  # #050507
 
 
-def build_eye_mask(rgb: np.ndarray, visible: np.ndarray) -> np.ndarray:
-    r, g, b = rgb[:, :, 0], rgb[:, :, 1], rgb[:, :, 2]
-
-    # Catch the full purple eye from the source logo, including soft edges.
-    eye = visible & (b > 90) & (r > 50) & (g < 110) & ((b - g) > 25)
-
-    mask = Image.fromarray((eye.astype(np.uint8) * 255), mode="L")
-    mask = mask.filter(ImageFilter.MaxFilter(11))
-    return np.array(mask) > 127
-
-
 def load_logo_with_eye(size: int) -> Image.Image:
     logo = Image.open(LOGO_PATH).convert("RGBA")
     arr = np.array(logo, dtype=np.uint8)
@@ -36,7 +25,10 @@ def load_logo_with_eye(size: int) -> Image.Image:
     alpha = arr[:, :, 3]
 
     visible = alpha > 20
-    eye = build_eye_mask(rgb, visible)
+    r, g, b = rgb[:, :, 0], rgb[:, :, 1], rgb[:, :, 2]
+
+    # Only cut out the purple eye pixels from the source logo.
+    eye = visible & (r > 80) & (b > 120) & (g < 80)
 
     out = np.zeros_like(arr)
     body = visible & ~eye
@@ -44,20 +36,11 @@ def load_logo_with_eye(size: int) -> Image.Image:
     out[body, 1] = 255
     out[body, 2] = 255
     out[body, 3] = alpha[body]
-    # Transparent cutout — background shows through as black.
     out[eye, 3] = 0
 
     processed = Image.fromarray(out, "RGBA")
     processed.thumbnail((size, size), Image.Resampling.LANCZOS)
-
-    # Remove purple fringe introduced by downsampling.
-    pa = np.array(processed, dtype=np.uint8)
-    pr, pg, pb, pa_a = pa[:, :, 0], pa[:, :, 1], pa[:, :, 2], pa[:, :, 3]
-    fringe = (pa_a > 0) & (pb > pr + 10) & (pb > pg + 10)
-    pa[fringe, 3] = 0
-    pa[fringe, 0:3] = 0
-
-    return Image.fromarray(pa, "RGBA")
+    return processed
 
 
 def draw_brand_text(draw: ImageDraw.ImageDraw, x: int, y: int, font: ImageFont.FreeTypeFont) -> None:
