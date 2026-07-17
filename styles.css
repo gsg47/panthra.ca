@@ -3483,7 +3483,15 @@ a.footer-contact-item:hover {
 
 .newsletter-form {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.insights-newsletter .contact-turnstile {
+  justify-content: center;
+  margin-top: 16px;
 }
 
 .newsletter-form input {

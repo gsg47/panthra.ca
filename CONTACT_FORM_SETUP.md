@@ -43,6 +43,15 @@ After Turnstile passes server-side verification, the browser sends the submissio
 
 The first FormSubmit delivery triggers a one-time activation email to `contact@panthra.ca` — click the link to start receiving submissions.
 
+## Newsletter signup
+
+The newsletter form on **Insights** uses the same flow:
+
+1. Browser → `/api/newsletter` (Turnstile + email validation)
+2. Browser → FormSubmit (sends signup notification to `contact@panthra.ca`)
+
+Add the subscriber to your mailing list manually, or connect a service like Mailchimp/Brevo later via `window.PANTHRA_NEWSLETTER_ENDPOINT`.
+
 ## 2. Redeploy
 
 After adding environment variables, trigger a new deployment so the functions pick them up.
