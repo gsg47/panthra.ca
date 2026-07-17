@@ -20,7 +20,7 @@ BG = (5, 5, 7)  # #050507
 PURPLE = (147, 51, 234)  # #9333ea
 
 
-def load_logo_with_black_eye(size: int) -> Image.Image:
+def load_logo_with_black_eye(size: int) -> tuple[Image.Image, Image.Image]:
     logo = Image.open(LOGO_PATH).convert("RGBA")
     arr = np.array(logo, dtype=np.uint8)
     rgb = arr[:, :, :3]
@@ -30,20 +30,21 @@ def load_logo_with_black_eye(size: int) -> Image.Image:
     r, g, b = rgb[:, :, 0], rgb[:, :, 1], rgb[:, :, 2]
     eye = visible & (r > 80) & (b > 120) & (g < 80)
 
-    out = np.zeros_like(arr)
+    white_logo = np.zeros_like(arr)
     body = visible & ~eye
-    out[body, 0] = 255
-    out[body, 1] = 255
-    out[body, 2] = 255
-    out[body, 3] = alpha[body]
-    out[eye, 0] = 0
-    out[eye, 1] = 0
-    out[eye, 2] = 0
-    out[eye, 3] = alpha[eye]
+    white_logo[body, 0] = 255
+    white_logo[body, 1] = 255
+    white_logo[body, 2] = 255
+    white_logo[body, 3] = alpha[body]
 
-    processed = Image.fromarray(out, "RGBA")
+    processed = Image.fromarray(white_logo, "RGBA")
     processed.thumbnail((size, size), Image.Resampling.LANCZOS)
-    return processed
+
+    eye_mask = Image.fromarray((eye.astype(np.uint8) * 255), mode="L")
+    eye_mask = eye_mask.filter(ImageFilter.MaxFilter(9))
+    eye_mask = eye_mask.resize(processed.size, Image.Resampling.NEAREST)
+
+    return processed, eye_mask
 
 
 def make_glow(size: int) -> Image.Image:
@@ -70,7 +71,7 @@ def build_cover(width: int, height: int) -> Image.Image:
     overlay = Image.new("RGBA", (width, height), (0, 0, 0, 0))
 
     logo_size = int(height * 0.62)
-    logo = load_logo_with_black_eye(logo_size)
+    logo, eye_mask = load_logo_with_black_eye(logo_size)
     glow = make_glow(int(logo_size * 1.15))
 
     font_size = int(height * 0.19)
@@ -97,6 +98,15 @@ def build_cover(width: int, height: int) -> Image.Image:
     glow_y = logo_y - (glow.height - logo_size) // 2
     overlay.alpha_composite(glow, (glow_x, glow_y))
     overlay.alpha_composite(logo, (logo_x, logo_y))
+
+    # Paint the eye last so glow cannot wash it out.
+    overlay_arr = np.array(overlay, dtype=np.uint8)
+    mask = np.array(eye_mask) > 127
+    lh, lw = mask.shape
+    region = overlay_arr[logo_y : logo_y + lh, logo_x : logo_x + lw]
+    region[mask] = (0, 0, 0, 255)
+    overlay_arr[logo_y : logo_y + lh, logo_x : logo_x + lw] = region
+    overlay = Image.fromarray(overlay_arr, "RGBA")
 
     draw = ImageDraw.Draw(overlay)
     draw_brand_text(draw, text_x, text_y, font)
