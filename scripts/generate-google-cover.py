@@ -16,7 +16,7 @@ OUT_DIR = ROOT / "assets"
 WIDTH = 1920
 HEIGHT = 1080
 BG = (5, 5, 7)  # #050507
-PURPLE = (147, 51, 234)  # #9333ea
+EYE = (0, 0, 0)
 
 
 def load_logo_with_eye(size: int) -> Image.Image:
@@ -34,9 +34,9 @@ def load_logo_with_eye(size: int) -> Image.Image:
     out[body, 0] = 255
     out[body, 1] = 255
     out[body, 2] = 255
-    out[purple, 0] = PURPLE[0]
-    out[purple, 1] = PURPLE[1]
-    out[purple, 2] = PURPLE[2]
+    out[purple, 0] = EYE[0]
+    out[purple, 1] = EYE[1]
+    out[purple, 2] = EYE[2]
 
     processed = Image.fromarray(out, "RGBA")
     processed.thumbnail((size, size), Image.Resampling.LANCZOS)
