@@ -2,116 +2,97 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://panthra.ca/</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-15</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://panthra.ca/services.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-15</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://panthra.ca/solutions.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-15</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://panthra.ca/secure.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-15</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://panthra.ca/monitor.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-15</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://panthra.ca/respond.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-15</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://panthra.ca/advise.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-15</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://panthra.ca/about.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-15</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://panthra.ca/insights.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-15</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://panthra.ca/contact.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-15</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://panthra.ca/blog/incident-response-playbook.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://panthra.ca/blog/multi-cloud-security.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://panthra.ca/blog/pipeda-compliance-2026.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://panthra.ca/blog/ransomware-landscape-2026.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://panthra.ca/blog/security-first-culture.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://panthra.ca/blog/zero-trust-implementation.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://panthra.ca/security.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-15</lastmod>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://panthra.ca/privacy.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-15</lastmod>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://panthra.ca/terms.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-15</lastmod>
     <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://panthra.ca/blog/incident-response-playbook.html</loc>
+    <lastmod>2026-07-15</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://panthra.ca/blog/multi-cloud-security.html</loc>
+    <lastmod>2026-07-15</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://panthra.ca/blog/pipeda-compliance-2026.html</loc>
+    <lastmod>2026-07-15</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://panthra.ca/blog/ransomware-landscape-2026.html</loc>
+    <lastmod>2026-07-15</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://panthra.ca/blog/security-first-culture.html</loc>
+    <lastmod>2026-07-15</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://panthra.ca/blog/zero-trust-implementation.html</loc>
+    <lastmod>2026-07-15</lastmod>
+    <priority>0.6</priority>
   </url>
 </urlset>
