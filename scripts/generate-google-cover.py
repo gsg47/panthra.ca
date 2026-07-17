@@ -6,7 +6,7 @@ from __future__ import annotations
 from pathlib import Path
 
 import numpy as np
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 LOGO_PATH = ROOT / "panthra_logo.png"
@@ -19,7 +19,16 @@ HEIGHT = 1080
 BG = (5, 5, 7)  # #050507
 
 
-def load_logo_with_black_eye(size: int) -> tuple[Image.Image, Image.Image]:
+# Aggressive eye slit — normalized to the 1024x1024 source logo.
+EYE_POLYGON = (
+    (0.655, 0.378),  # left tip
+    (0.720, 0.358),  # top edge
+    (0.772, 0.392),  # right tip
+    (0.718, 0.412),  # bottom edge
+)
+
+
+def load_white_logo(size: int) -> Image.Image:
     logo = Image.open(LOGO_PATH).convert("RGBA")
     arr = np.array(logo, dtype=np.uint8)
     rgb = arr[:, :, :3]
@@ -38,12 +47,20 @@ def load_logo_with_black_eye(size: int) -> tuple[Image.Image, Image.Image]:
 
     processed = Image.fromarray(white_logo, "RGBA")
     processed.thumbnail((size, size), Image.Resampling.LANCZOS)
+    return processed
 
-    eye_mask = Image.fromarray((eye.astype(np.uint8) * 255), mode="L")
-    eye_mask = eye_mask.filter(ImageFilter.MaxFilter(9))
-    eye_mask = eye_mask.resize(processed.size, Image.Resampling.NEAREST)
 
-    return processed, eye_mask
+def draw_aggressive_eye(
+    draw: ImageDraw.ImageDraw,
+    logo_x: int,
+    logo_y: int,
+    logo_size: int,
+) -> None:
+    points = [
+        (logo_x + int(x * logo_size), logo_y + int(y * logo_size))
+        for x, y in EYE_POLYGON
+    ]
+    draw.polygon(points, fill=(0, 0, 0, 255))
 
 
 def draw_brand_text(draw: ImageDraw.ImageDraw, x: int, y: int, font: ImageFont.FreeTypeFont) -> None:
@@ -63,7 +80,7 @@ def build_cover(width: int, height: int) -> Image.Image:
     overlay = Image.new("RGBA", (width, height), (0, 0, 0, 0))
 
     logo_size = int(height * 0.62)
-    logo, eye_mask = load_logo_with_black_eye(logo_size)
+    logo = load_white_logo(logo_size)
 
     font_size = int(height * 0.19)
     font = ImageFont.truetype(str(FONT_PATH), font_size)
@@ -87,16 +104,8 @@ def build_cover(width: int, height: int) -> Image.Image:
 
     overlay.alpha_composite(logo, (logo_x, logo_y))
 
-    # Paint the eye last so it stays sharp and visible.
-    overlay_arr = np.array(overlay, dtype=np.uint8)
-    mask = np.array(eye_mask) > 127
-    lh, lw = mask.shape
-    region = overlay_arr[logo_y : logo_y + lh, logo_x : logo_x + lw]
-    region[mask] = (0, 0, 0, 255)
-    overlay_arr[logo_y : logo_y + lh, logo_x : logo_x + lw] = region
-    overlay = Image.fromarray(overlay_arr, "RGBA")
-
     draw = ImageDraw.Draw(overlay)
+    draw_aggressive_eye(draw, logo_x, logo_y, logo_size)
     draw_brand_text(draw, text_x, text_y, font)
 
     return Image.alpha_composite(canvas.convert("RGBA"), overlay).convert("RGB")
@@ -105,15 +114,18 @@ def build_cover(width: int, height: int) -> Image.Image:
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    cover = build_cover(WIDTH, HEIGHT)
-    cover.save(OUT_DIR / "google-business-cover-1920x1080.png", "PNG", optimize=True)
+    sizes = {
+        "google-business-cover-1920x1080.png": (1920, 1080),
+        "google-business-cover-1024x576.png": (1024, 576),
+    }
 
-    cover_1024 = cover.resize((1024, 576), Image.Resampling.LANCZOS)
-    cover_1024.save(OUT_DIR / "google-business-cover-1024x576.png", "PNG", optimize=True)
+    for filename, (width, height) in sizes.items():
+        cover = build_cover(width, height)
+        cover.save(OUT_DIR / filename, "PNG")
 
     print("Created:")
-    print(f"  {OUT_DIR / 'google-business-cover-1920x1080.png'}")
-    print(f"  {OUT_DIR / 'google-business-cover-1024x576.png'}")
+    for filename in sizes:
+        print(f"  {OUT_DIR / filename}")
 
 
 if __name__ == "__main__":
