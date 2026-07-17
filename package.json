@@ -5,7 +5,8 @@
   "main": "index.html",
   "scripts": {
     "start": "serve",
-    "build": "node -e \"console.log('Static site — no build step required')\""
+    "seo": "node scripts/apply-seo.mjs",
+    "build": "node scripts/apply-seo.mjs && node -e \"console.log('Static site — SEO applied, no build step required')\""
   },
   "engines": {
     "node": ">=18"
