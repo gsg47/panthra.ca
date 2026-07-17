@@ -17,7 +17,6 @@ OUT_DIR = ROOT / "assets"
 WIDTH = 1920
 HEIGHT = 1080
 BG = (5, 5, 7)  # #050507
-PURPLE = (147, 51, 234)  # #9333ea
 
 
 def load_logo_with_black_eye(size: int) -> tuple[Image.Image, Image.Image]:
@@ -47,13 +46,6 @@ def load_logo_with_black_eye(size: int) -> tuple[Image.Image, Image.Image]:
     return processed, eye_mask
 
 
-def make_glow(size: int) -> Image.Image:
-    glow = Image.new("RGBA", (size, size), (0, 0, 0, 0))
-    draw = ImageDraw.Draw(glow)
-    draw.ellipse((size * 0.08, size * 0.08, size * 0.92, size * 0.92), fill=(*PURPLE, 90))
-    return glow.filter(ImageFilter.GaussianBlur(radius=size * 0.09))
-
-
 def draw_brand_text(draw: ImageDraw.ImageDraw, x: int, y: int, font: ImageFont.FreeTypeFont) -> None:
     text = "PANTHRA"
     letter_spacing = int(font.size * 0.08)
@@ -72,7 +64,6 @@ def build_cover(width: int, height: int) -> Image.Image:
 
     logo_size = int(height * 0.62)
     logo, eye_mask = load_logo_with_black_eye(logo_size)
-    glow = make_glow(int(logo_size * 1.15))
 
     font_size = int(height * 0.19)
     font = ImageFont.truetype(str(FONT_PATH), font_size)
@@ -94,12 +85,9 @@ def build_cover(width: int, height: int) -> Image.Image:
     text_x = logo_x + logo_size + gap
     text_y = (height - text_h) // 2 - int(font_size * 0.08)
 
-    glow_x = logo_x - (glow.width - logo_size) // 2
-    glow_y = logo_y - (glow.height - logo_size) // 2
-    overlay.alpha_composite(glow, (glow_x, glow_y))
     overlay.alpha_composite(logo, (logo_x, logo_y))
 
-    # Paint the eye last so glow cannot wash it out.
+    # Paint the eye last so it stays sharp and visible.
     overlay_arr = np.array(overlay, dtype=np.uint8)
     mask = np.array(eye_mask) > 127
     lh, lw = mask.shape
