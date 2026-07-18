@@ -17,7 +17,7 @@ BG = (5, 5, 7)  # #050507
 
 
 def load_og_logo(size: int) -> Image.Image:
-    """White panther with original purple eye — matches the OG logo mark."""
+    """White panther with original eye shape filled black."""
     logo = Image.open(LOGO_PATH).convert("RGBA")
     arr = np.array(logo, dtype=np.uint8)
     rgb = arr[:, :, :3]
@@ -38,12 +38,12 @@ def load_og_logo(size: int) -> Image.Image:
     processed = Image.fromarray(white_logo, "RGBA")
     processed.thumbnail((size, size), Image.Resampling.LANCZOS)
 
-    # Composite the original purple eye with NEAREST so it stays sharp.
+    # Same OG eye shape, filled solid black (not purple).
     eye_layer = np.zeros_like(arr)
-    eye_layer[eye, 0] = rgb[eye, 0]
-    eye_layer[eye, 1] = rgb[eye, 1]
-    eye_layer[eye, 2] = rgb[eye, 2]
-    eye_layer[eye, 3] = alpha[eye]
+    eye_layer[eye, 0] = 0
+    eye_layer[eye, 1] = 0
+    eye_layer[eye, 2] = 0
+    eye_layer[eye, 3] = 255
     eye_img = Image.fromarray(eye_layer, "RGBA").resize(processed.size, Image.Resampling.NEAREST)
 
     result = Image.new("RGBA", processed.size, (0, 0, 0, 0))
