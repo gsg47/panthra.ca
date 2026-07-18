@@ -17,7 +17,7 @@ BG = (0, 0, 0)
 
 
 def load_og_white_logo(size: int) -> Image.Image:
-    """OG mark: white panther, black eye cutout (no watermark)."""
+    """OG mark: crisp white panther, solid black eye — no grey fringe."""
     logo = Image.open(LOGO_PATH).convert("RGBA")
     arr = np.array(logo, dtype=np.uint8)
     rgb = arr[:, :, :3]
@@ -25,28 +25,31 @@ def load_og_white_logo(size: int) -> Image.Image:
 
     visible = alpha > 20
     r, g, b = rgb[:, :, 0], rgb[:, :, 1], rgb[:, :, 2]
-    # Purple eye in source → cut out so background shows black
     eye = visible & (r > 80) & (b > 120) & (g < 80)
 
+    # Full-res: white body + solid black eye
     out = np.zeros_like(arr)
     body = visible & ~eye
-    out[body, 0] = 255
-    out[body, 1] = 255
-    out[body, 2] = 255
-    out[body, 3] = alpha[body]
+    out[body] = (255, 255, 255, 255)
+    out[eye] = (0, 0, 0, 255)
 
     processed = Image.fromarray(out, "RGBA")
     processed.thumbnail((size, size), Image.Resampling.LANCZOS)
+    pa = np.array(processed, dtype=np.uint8)
 
-    # Paint original eye shape solid black so it stays clean after resize.
+    # Kill grey anti-alias: every opaque pixel becomes pure white or pure black.
+    opaque = pa[:, :, 3] > 127
+    bright = pa[:, :, 0] >= 128
+    pa[opaque & bright] = (255, 255, 255, 255)
+    pa[opaque & ~bright] = (0, 0, 0, 255)
+    pa[~opaque] = (0, 0, 0, 0)
+
+    # Re-stamp the original eye shape in solid black (nearest = no grey).
     eye_mask = Image.fromarray((eye.astype(np.uint8) * 255), mode="L")
     eye_mask = eye_mask.resize(processed.size, Image.Resampling.NEAREST)
-    pa = np.array(processed, dtype=np.uint8)
     eye_pixels = np.array(eye_mask) > 127
-    pa[eye_pixels, 0] = 0
-    pa[eye_pixels, 1] = 0
-    pa[eye_pixels, 2] = 0
-    pa[eye_pixels, 3] = 255
+    pa[eye_pixels] = (0, 0, 0, 255)
+
     return Image.fromarray(pa, "RGBA")
 
 
@@ -91,7 +94,13 @@ def build_cover(width: int, height: int) -> Image.Image:
     draw = ImageDraw.Draw(overlay)
     draw_brand_text(draw, text_x, text_y, font)
 
-    return Image.alpha_composite(canvas.convert("RGBA"), overlay).convert("RGB")
+    result = Image.alpha_composite(canvas.convert("RGBA"), overlay).convert("RGB")
+    # Full hard B/W — no grey eye, no grey fringe (matches crisp OG look).
+    ra = np.array(result, dtype=np.uint8)
+    bright = ra.max(axis=2) >= 128
+    ra[bright] = (255, 255, 255)
+    ra[~bright] = (0, 0, 0)
+    return Image.fromarray(ra, "RGB")
 
 
 def main() -> None:
