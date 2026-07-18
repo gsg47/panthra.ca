@@ -13,22 +13,11 @@ LOGO_PATH = ROOT / "panthra_logo.png"
 FONT_PATH = Path("/usr/share/fonts/truetype/macos/Inter-Bold.ttf")
 OUT_DIR = ROOT / "assets"
 
-# Google Business cover: 16:9 recommended (1024x575 min, 1920x1080 ideal)
-WIDTH = 1920
-HEIGHT = 1080
 BG = (5, 5, 7)  # #050507
 
 
-# Aggressive eye slit — normalized to the 1024x1024 source logo.
-EYE_POLYGON = (
-    (0.655, 0.378),  # left tip
-    (0.720, 0.358),  # top edge
-    (0.772, 0.392),  # right tip
-    (0.718, 0.412),  # bottom edge
-)
-
-
-def load_white_logo(size: int) -> Image.Image:
+def load_og_logo(size: int) -> Image.Image:
+    """White panther with original purple eye — matches the OG logo mark."""
     logo = Image.open(LOGO_PATH).convert("RGBA")
     arr = np.array(logo, dtype=np.uint8)
     rgb = arr[:, :, :3]
@@ -45,30 +34,29 @@ def load_white_logo(size: int) -> Image.Image:
     white_logo[body, 2] = 255
     white_logo[body, 3] = alpha[body]
 
+    # Smooth resize for the white body only.
     processed = Image.fromarray(white_logo, "RGBA")
     processed.thumbnail((size, size), Image.Resampling.LANCZOS)
-    return processed
 
+    # Composite the original purple eye with NEAREST so it stays sharp.
+    eye_layer = np.zeros_like(arr)
+    eye_layer[eye, 0] = rgb[eye, 0]
+    eye_layer[eye, 1] = rgb[eye, 1]
+    eye_layer[eye, 2] = rgb[eye, 2]
+    eye_layer[eye, 3] = alpha[eye]
+    eye_img = Image.fromarray(eye_layer, "RGBA").resize(processed.size, Image.Resampling.NEAREST)
 
-def draw_aggressive_eye(
-    draw: ImageDraw.ImageDraw,
-    logo_x: int,
-    logo_y: int,
-    logo_size: int,
-) -> None:
-    points = [
-        (logo_x + int(x * logo_size), logo_y + int(y * logo_size))
-        for x, y in EYE_POLYGON
-    ]
-    draw.polygon(points, fill=(0, 0, 0, 255))
+    result = Image.new("RGBA", processed.size, (0, 0, 0, 0))
+    result.alpha_composite(processed)
+    result.alpha_composite(eye_img)
+    return result
 
 
 def draw_brand_text(draw: ImageDraw.ImageDraw, x: int, y: int, font: ImageFont.FreeTypeFont) -> None:
-    text = "PANTHRA"
     letter_spacing = int(font.size * 0.08)
     cursor_x = x
 
-    for i, char in enumerate(text):
+    for char in "PANTHRA":
         draw.text((cursor_x + 3, y + 3), char, font=font, fill=(0, 0, 0, 160))
         draw.text((cursor_x, y), char, font=font, fill=(255, 255, 255, 245))
         bbox = draw.textbbox((0, 0), char, font=font)
@@ -80,7 +68,7 @@ def build_cover(width: int, height: int) -> Image.Image:
     overlay = Image.new("RGBA", (width, height), (0, 0, 0, 0))
 
     logo_size = int(height * 0.62)
-    logo = load_white_logo(logo_size)
+    logo = load_og_logo(logo_size)
 
     font_size = int(height * 0.19)
     font = ImageFont.truetype(str(FONT_PATH), font_size)
@@ -105,7 +93,6 @@ def build_cover(width: int, height: int) -> Image.Image:
     overlay.alpha_composite(logo, (logo_x, logo_y))
 
     draw = ImageDraw.Draw(overlay)
-    draw_aggressive_eye(draw, logo_x, logo_y, logo_size)
     draw_brand_text(draw, text_x, text_y, font)
 
     return Image.alpha_composite(canvas.convert("RGBA"), overlay).convert("RGB")
