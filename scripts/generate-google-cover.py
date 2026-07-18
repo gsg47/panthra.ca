@@ -45,10 +45,14 @@ def build_cover(width: int, height: int) -> Image.Image:
     canvas = Image.new("RGB", (width, height), BG)
     overlay = Image.new("RGBA", (width, height), (0, 0, 0, 0))
 
-    logo_size = int(height * 0.72)
+    # Wide black margins so GBP cropping doesn't clip the "A".
+    side_margin = int(width * 0.18)
+    max_content_w = width - side_margin * 2
+
+    logo_size = int(height * 0.48)
     logo = load_inverted_mark(logo_size)
 
-    font_size = int(height * 0.19)
+    font_size = int(height * 0.13)
     font = ImageFont.truetype(str(FONT_PATH), font_size)
 
     tmp_draw = ImageDraw.Draw(Image.new("RGBA", (1, 1)))
@@ -59,8 +63,25 @@ def build_cover(width: int, height: int) -> Image.Image:
     ) + letter_spacing * 6
     text_h = tmp_draw.textbbox((0, 0), "P", font=font)[3] - tmp_draw.textbbox((0, 0), "P", font=font)[1]
 
-    gap = int(width * 0.02)
+    gap = int(width * 0.025)
     group_w = logo.width + gap + text_w
+
+    # Shrink if still too wide for safe margins.
+    if group_w > max_content_w:
+        scale = max_content_w / group_w
+        new_logo_size = max(1, int(logo_size * scale))
+        logo = load_inverted_mark(new_logo_size)
+        font_size = max(12, int(font_size * scale))
+        font = ImageFont.truetype(str(FONT_PATH), font_size)
+        letter_spacing = int(font_size * 0.08)
+        text_w = sum(
+            tmp_draw.textbbox((0, 0), ch, font=font)[2] - tmp_draw.textbbox((0, 0), ch, font=font)[0]
+            for ch in "PANTHRA"
+        ) + letter_spacing * 6
+        text_h = tmp_draw.textbbox((0, 0), "P", font=font)[3] - tmp_draw.textbbox((0, 0), "P", font=font)[1]
+        gap = int(gap * scale)
+        group_w = logo.width + gap + text_w
+
     start_x = (width - group_w) // 2
     logo_x = start_x
     logo_y = (height - logo.height) // 2
