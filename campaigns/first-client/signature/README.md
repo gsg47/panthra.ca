@@ -10,7 +10,10 @@ Themed signature block for outreach and client mail.
 | `signature-full.html` | Copy-paste HTML for Gmail / Outlook |
 | `signature-compact.html` | Shorter variant |
 | `signature-plain.txt` | Plain-text fallback |
-| `panthra-sig-48.png` / `72.png` / `96.png` | Logo assets for email |
+| `panthra-sig-80.png` / `112.png` / `144.png` | Retina logo assets (2× display size) |
+| `panthra-sig-48.png` / `72.png` / `96.png` | Same assets (legacy filenames) |
+
+Full signature displays at **56px** from a **112px** file; compact at **40px** from **80px**. That keeps logos sharp on Retina screens.
 
 ## Install
 
@@ -18,7 +21,7 @@ Themed signature block for outreach and client mail.
 
 Email clients need a public image URL. Logos live in `assets/email-signature/` and resolve to:
 
-`https://panthra.ca/assets/email-signature/panthra-sig-72.png`
+`https://panthra.ca/assets/email-signature/panthra-sig-112.png`
 
 (Merge/deploy this branch first, or the image won’t load in sent mail.)
 
