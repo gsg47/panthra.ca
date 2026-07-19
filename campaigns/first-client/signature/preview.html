@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANTHRA email signature preview</title>
+  <style>
+    :root {
+      --bg: #f4f4f5;
+      --card: #ffffff;
+      --ink: #0a0a0f;
+      --muted: #52525b;
+      --purple: #9333ea;
+      --purple-deep: #7c3aed;
+      --border: #e4e4e7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(900px 400px at 10% -10%, rgba(147, 51, 234, 0.12), transparent 55%),
+        radial-gradient(700px 360px at 100% 0%, rgba(124, 58, 237, 0.08), transparent 50%),
+        var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+    .wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 40px 20px 64px;
+    }
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 1.5rem;
+      letter-spacing: 0.04em;
+    }
+    header p {
+      margin: 0 0 28px;
+      color: var(--muted);
+      max-width: 52ch;
+      line-height: 1.5;
+    }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 30px rgba(10, 10, 15, 0.04);
+    }
+    .panel h2 {
+      margin: 0 0 16px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    button {
+      appearance: none;
+      border: 0;
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--purple);
+      color: #fff;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    button:hover { background: var(--purple-deep); }
+    button:active { transform: translateY(1px); }
+    button.secondary {
+      background: #fff;
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }
+    button.secondary:hover { background: #fafafa; }
+    .status {
+      min-height: 1.25rem;
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: var(--purple-deep);
+    }
+    .mail-frame {
+      background: #fafafa;
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .mail-meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .mail-body {
+      color: #27272a;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      margin-bottom: 22px;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.85em;
+      background: #f4f4f5;
+      padding: 0.1em 0.35em;
+      border-radius: 4px;
+    }
+    a.back {
+      color: var(--purple-deep);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    a.back:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <p style="margin-bottom: 12px;"><a class="back" href="/">← panthra.ca</a></p>
+      <h1>Email signature preview</h1>
+      <p>
+        Preview uses local <code>/assets/email-signature/</code> image paths.
+        Use <strong>Copy for email</strong> to get HTML with absolute
+        <code>https://panthra.ca/assets/email-signature/...</code> URLs for Gmail / Outlook.
+      </p>
+    </header>
+
+    <section class="panel">
+      <h2>Full signature</h2>
+      <div class="mail-frame">
+        <div class="mail-meta">Sample reply · how it will look under your message</div>
+        <div class="mail-body">
+          Thanks — Tuesday at 10:00 MT works. I’ll send a calendar hold shortly.
+        </div>
+        <div id="preview-full">
+          <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.45; color: #111111;">
+            <tr>
+              <td style="vertical-align: top; padding-right: 14px;">
+                <a href="https://panthra.ca" style="text-decoration: none;">
+                  <img src="/assets/email-signature/panthra-sig-72.png" width="72" height="72" alt="PANTHRA" style="display: block; border: 0; outline: none; width: 72px; height: 72px;" />
+                </a>
+              </td>
+              <td style="vertical-align: top; border-left: 2px solid #9333ea; padding-left: 14px;">
+                <div style="font-size: 16px; font-weight: 700; color: #0a0a0f; letter-spacing: 0.02em;">Gurshaan Gill</div>
+                <div style="font-size: 13px; color: #52525b; padding-top: 2px;">Founder · PANTHRA</div>
+                <div style="font-size: 12px; color: #71717a; font-style: italic; padding-top: 6px;">Silent protection. Absolute security.</div>
+                <div style="padding-top: 8px; font-size: 13px; color: #3f3f46;">
+                  <a href="https://panthra.ca" style="color: #7c3aed; text-decoration: none;">panthra.ca</a>
+                  <span style="color: #a1a1aa;"> · </span>
+                  <a href="mailto:contact@panthra.ca" style="color: #3f3f46; text-decoration: none;">contact@panthra.ca</a>
+                  <span style="color: #a1a1aa;"> · </span>
+                  <a href="tel:+15878160621" style="color: #3f3f46; text-decoration: none;">+1 587-816-0621</a>
+                </div>
+                <div style="padding-top: 4px; font-size: 12px; color: #71717a;">421 7 Ave SW, Calgary, AB T2P 4K9</div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="button" data-copy-target="preview-full">Copy for email</button>
+        <button type="button" class="secondary" data-copy-file="signature-full.html">Copy absolute HTML file</button>
+      </div>
+      <div class="status" id="status-full" aria-live="polite"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Compact signature</h2>
+      <div class="mail-frame">
+        <div id="preview-compact">
+          <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 1.4; color: #111111;">
+            <tr>
+              <td style="vertical-align: middle; padding-right: 10px;">
+                <a href="https://panthra.ca" style="text-decoration: none;">
+                  <img src="/assets/email-signature/panthra-sig-48.png" width="48" height="48" alt="PANTHRA" style="display: block; border: 0; outline: none; width: 48px; height: 48px;" />
+                </a>
+              </td>
+              <td style="vertical-align: middle;">
+                <div style="font-weight: 700; color: #0a0a0f;">Gurshaan Gill · PANTHRA</div>
+                <div style="color: #52525b; padding-top: 2px;">
+                  <a href="https://panthra.ca" style="color: #7c3aed; text-decoration: none;">panthra.ca</a>
+                  · <a href="mailto:contact@panthra.ca" style="color: #3f3f46; text-decoration: none;">contact@panthra.ca</a>
+                  · <a href="tel:+15878160621" style="color: #3f3f46; text-decoration: none;">+1 587-816-0621</a>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="button" data-copy-target="preview-compact">Copy for email</button>
+        <button type="button" class="secondary" data-copy-file="signature-compact.html">Copy absolute HTML file</button>
+      </div>
+      <div class="status" id="status-compact" aria-live="polite"></div>
+    </section>
+  </div>
+
+  <script>
+    (function () {
+      var ABSOLUTE_ORIGIN = "https://panthra.ca";
+
+      function toAbsoluteEmailHtml(html) {
+        return html
+          .replace(
+            /src=(["'])\/assets\/email-signature\//g,
+            "src=$1" + ABSOLUTE_ORIGIN + "/assets/email-signature/"
+          )
+          .replace(
+            /src=(["'])(?:\.\.\/\.\.\/\.\.)?\/?assets\/email-signature\//g,
+            "src=$1" + ABSOLUTE_ORIGIN + "/assets/email-signature/"
+          )
+          .trim();
+      }
+
+      function setStatus(el, message) {
+        if (el) el.textContent = message;
+      }
+
+      async function copyHtml(html, statusEl) {
+        try {
+          if (navigator.clipboard && window.ClipboardItem) {
+            var item = new ClipboardItem({
+              "text/html": new Blob([html], { type: "text/html" }),
+              "text/plain": new Blob([html], { type: "text/plain" }),
+            });
+            await navigator.clipboard.write([item]);
+          } else if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(html);
+          } else {
+            var ta = document.createElement("textarea");
+            ta.value = html;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand("copy");
+            document.body.removeChild(ta);
+          }
+          setStatus(statusEl, "Copied — paste into your email client signature settings.");
+        } catch (err) {
+          setStatus(statusEl, "Copy failed — select the signature and copy manually.");
+          console.error(err);
+        }
+      }
+
+      document.querySelectorAll("[data-copy-target]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var id = btn.getAttribute("data-copy-target");
+          var node = document.getElementById(id);
+          var statusEl = document.getElementById(id === "preview-full" ? "status-full" : "status-compact");
+          if (!node) return;
+          var absolute = toAbsoluteEmailHtml(node.innerHTML);
+          copyHtml(absolute, statusEl);
+        });
+      });
+
+      document.querySelectorAll("[data-copy-file]").forEach(function (btn) {
+        btn.addEventListener("click", async function () {
+          var file = btn.getAttribute("data-copy-file");
+          var statusEl = file.indexOf("compact") >= 0
+            ? document.getElementById("status-compact")
+            : document.getElementById("status-full");
+          try {
+            var res = await fetch(file, { cache: "no-store" });
+            if (!res.ok) throw new Error("HTTP " + res.status);
+            var html = await res.text();
+            await copyHtml(html.trim(), statusEl);
+          } catch (err) {
+            setStatus(statusEl, "Could not load " + file + " — open it directly instead.");
+            console.error(err);
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
