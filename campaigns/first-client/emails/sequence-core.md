@@ -7,7 +7,7 @@ Replace everything in `{{brackets}}`. The first sentence of Email 1 must be spec
 
 ```
 Gurshaan Gill
-Founder, PANTHRA
+CSO, PANTHRA
 Calgary, AB
 panthra.ca
 contact@panthra.ca
@@ -38,7 +38,7 @@ If useful, reply with a couple of times that work this week (or next), or grab a
 If this isn't relevant, just say "pass" and I won't follow up.
 
 Gurshaan Gill
-Founder, PANTHRA
+CSO, PANTHRA
 Calgary, AB | panthra.ca
 ```
 
@@ -122,7 +122,7 @@ I'll assume the timing isn't right for a Security Snapshot and close your file o
 Either way, wishing {{Company}} a strong quarter.
 
 Gurshaan
-Founder, PANTHRA
+CSO, PANTHRA
 contact@panthra.ca | panthra.ca
 
 P.S. If you'd like me to stop emailing entirely, reply "unsubscribe" and I'll remove you immediately.
