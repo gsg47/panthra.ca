@@ -1,21 +1,2 @@
-company,industry,city,employees_est,contact_name,title,email,personalization_note,source,status,email1_date,email2_date,email3_date,email4_date,last_reply,call_booked,outcome,notes
-Riverbend Law LLP (EXAMPLE),Legal,Calgary,35,Jordan Lee,Managing Partner,jordan@example.com,Hybrid team + client portal on site,Website contact page,Sequence,2026-07-19,,,,,,,"Replace this example row with real prospects"
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
+company,industry,city,employees_est,contact_name,title,email,personalization_note,source,status,next_follow_up,email1_date,email2_date,email3_date,email4_date,last_reply_date,last_reply_summary,call_booked_date,outcome,notes
+Riverbend Law LLP (EXAMPLE),Legal,Calgary,35,Jordan Lee,Managing Partner,jordan@example.com,Hybrid team + client portal on site,Website contact page,email1_sent,2026-07-22,2026-07-19,,,,,,"Replace this example row — delete when you add real prospects"
