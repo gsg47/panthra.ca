@@ -64,14 +64,14 @@ Quality beats volume. 10 highly researched emails beat 200 generic blasts.
 1. Confirm sending from a real domain mailbox (`contact@panthra.ca` or your name `@panthra.ca`).
 2. Warm the domain: send normal mail for a few days before cold outreach.
 3. Add a short, human signature (name, title, panthra.ca, Calgary).
-4. Copy `prospects/tracker.csv` into a sheet and fill rows as you research.
+4. Import `prospects/tracker.csv` into Google Sheets and set up dropdowns (see `prospects/tracker-guide.md`).
 
 ### Daily loop (45–90 minutes)
 
 1. Research **5–8** prospects (see `prospects/research-checklist.md`).
 2. Send **5–8** Email 1 messages (personalized first line required).
 3. Process replies same day (`emails/reply-scripts.md`).
-4. Log everything in the tracker.
+4. Log everything in the tracker — update `status`, dates, and `next_follow_up`.
 
 ### Follow-up schedule
 
@@ -100,7 +100,8 @@ Stop the sequence the moment they reply (yes, no, or question).
 | `emails/industry-variants.md` | Opening hooks by industry |
 | `emails/reply-scripts.md` | How to handle yes / no / objections |
 | `prospects/research-checklist.md` | How to find and qualify leads |
-| `prospects/tracker.csv` | Send / reply / call tracker |
+| `prospects/tracker.csv` | Send / reply / call tracker (Sheet-ready) |
+| `prospects/tracker-guide.md` | Statuses, follow-up timing, Sheets setup |
 | `signature/` | Panthra-themed email signature (HTML + plain text) |
 
 ## After the first client
