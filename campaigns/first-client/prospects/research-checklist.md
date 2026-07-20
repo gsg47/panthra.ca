@@ -38,12 +38,12 @@ Avoid blasting `info@` alone when a named partner email exists.
 
 ## Minimum research before sending (3 minutes)
 
-Capture in the tracker (`tracker.csv` — see `tracker-guide.md`):
+Capture in the tracker workbook (`PANTHRA-first-client-tracker.xlsx` — see `tracker-guide.md`), on the matching industry tab:
 
 | Field | Example |
 |-------|---------|
 | Company | Riverbend Law LLP |
-| Industry | Legal |
+| Industry tab | Legal |
 | City | Calgary |
 | Contact name | Jordan Lee |
 | Title | Managing Partner |
