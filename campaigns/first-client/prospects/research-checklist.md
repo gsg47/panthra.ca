@@ -38,7 +38,7 @@ Avoid blasting `info@` alone when a named partner email exists.
 
 ## Minimum research before sending (3 minutes)
 
-Capture in the tracker:
+Capture in the tracker (`tracker.csv` — see `tracker-guide.md`):
 
 | Field | Example |
 |-------|---------|
@@ -50,6 +50,8 @@ Capture in the tracker:
 | Email | jordan@riverbendlaw.ca |
 | Personalization note | Hybrid team, client portal mentioned on site |
 | Source | Google Maps + site contact page |
+| Status | `research` → then `email1_sent` after you send |
+| Next follow-up | Email 1 date + 3 days (for Email 2) |
 
 ## Email verification (lightweight)
 
